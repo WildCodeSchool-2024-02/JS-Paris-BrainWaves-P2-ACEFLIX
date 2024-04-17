@@ -2,6 +2,7 @@ import { useState } from "react";
 import Top10 from "../../components/Top10/Top10";
 import "./home.css";
 import Popular from "../../components/Popular/Popular";
+import Banner from "../../components/Banner/Banner";
 
 export default function Home() {
   // Initialisation des states
@@ -68,6 +69,7 @@ export default function Home() {
           Series
         </button>
       </div>
+      <Banner />
       <Top10 status={status} uniqueTop={uniqueTop} />
       <Popular
         status={status}
