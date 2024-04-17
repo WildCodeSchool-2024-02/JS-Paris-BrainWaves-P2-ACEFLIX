@@ -7,10 +7,6 @@ body {
   height: 100vh;
 }
 
-#root {
-  margin: 0 90px 0 90px;
-}
-
 h1 {
   font-size: 45px;
   font-family: "Tilt Neon", sans-serif;
@@ -29,17 +25,12 @@ button {
   border-radius: 7px;
   text-align: center;
   padding: 10px;
-  margin: 15px;
   border: none;
   box-shadow: 0 0 7px black;
 }
 
 /* Media pour tablette */
-@media (max-width: 1000px) {
-  #root {
-    margin: 0 10px 0 10px;
-  }
-
+@media (max-width: 1025px) {
   h1 {
     font-size: 35px;
   }
@@ -47,10 +38,6 @@ button {
 
 /* Media pour mobile */
 @media (max-width: 600px) {
-  #root {
-    margin: 0 10px 0 10px;
-  }
-
   h1 {
     font-size: 25px;
   }

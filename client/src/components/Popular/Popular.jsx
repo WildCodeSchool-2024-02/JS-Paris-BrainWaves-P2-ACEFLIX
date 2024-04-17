@@ -47,7 +47,7 @@ export default function Popular({ status, uniqueTendances, shuffle }) {
   }
 
   return (
-    <div>
+    <div className="slider-popular">
       <h1 className="main-title">POPULAR</h1>
       <div className="slider-container">
         <Swiper

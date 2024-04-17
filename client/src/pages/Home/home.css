@@ -38,6 +38,14 @@
   z-index: 30;
 }
 
+.slider-popular {
+  margin: 0 90px 0 90px;
+}
+
+.slider-top10 {
+  margin: 0 90px 0 90px;
+}
+
 @media (max-width: 1025px) {
   .swiper-button-prev {
     display: none;
@@ -45,5 +53,17 @@
 
   .swiper-button-next {
     display: none;
+  }
+
+  .slider-popular {
+    margin: 0;
+  }
+
+  .slider-top10 {
+    margin: 0;
+  }
+
+  .main-title {
+    margin-left: 20px;
   }
 }
