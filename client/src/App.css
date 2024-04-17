@@ -35,6 +35,12 @@ button {
   box-shadow: 0 0 7px black;
 }
 
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 /* Media pour tablette */
 @media (max-width: 1000px) {
   #root {

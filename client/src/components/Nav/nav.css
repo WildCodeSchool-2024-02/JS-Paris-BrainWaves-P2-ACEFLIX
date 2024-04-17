@@ -1,0 +1,25 @@
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(237, 5, 5);
+  height: 100%;
+  width: 300px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 0%;
+}
+
+ul li {
+  color: whitesmoke;
+  list-style-type: none;
+  font-family: "Tilt Neon", sans-serif;
+  font-size: 20px;
+}
