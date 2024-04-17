@@ -5,11 +5,6 @@ body {
   background-color: black;
   width: 100vw;
   height: 100vh;
-  transition: all 1s ease-in-out;
-}
-
-#root {
-  margin: 0 90px 0 90px;
 }
 
 h1 {
@@ -30,7 +25,6 @@ button {
   border-radius: 7px;
   text-align: center;
   padding: 10px;
-  margin: 15px;
   border: none;
   box-shadow: 0 0 7px black;
 }
@@ -42,11 +36,7 @@ nav {
 }
 
 /* Media pour tablette */
-@media (max-width: 1000px) {
-  #root {
-    margin: 0;
-  }
-
+@media (max-width: 1025px) {
   h1 {
     font-size: 35px;
   }
@@ -54,10 +44,6 @@ nav {
 
 /* Media pour mobile */
 @media (max-width: 600px) {
-  #root {
-    margin: 0;
-  }
-
   h1 {
     font-size: 25px;
   }
