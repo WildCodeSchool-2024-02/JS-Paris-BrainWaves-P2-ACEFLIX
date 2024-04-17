@@ -3,7 +3,7 @@ import "./bannercard.css";
 import PropTypes from "prop-types";
 import { FaPlay } from "react-icons/fa";
 
-export default function BannerCard({ image, overview, title, id }) {
+export default function BannerCard({ image, overview, title, id, setBlackScreen, setIdVideo }) {
   const [content, setContent] = useState(null);
 
   useEffect(() => {
@@ -20,6 +20,12 @@ export default function BannerCard({ image, overview, title, id }) {
     genresContent = content.genres;
     voteaverage = content.vote_average;
   }
+
+  const handleclick = () => {
+    setBlackScreen(true)
+    setIdVideo(id)
+    document.body.classList.add('active')
+}
 
   return (
     <div className="card-container">
@@ -51,7 +57,8 @@ export default function BannerCard({ image, overview, title, id }) {
             </p>
           )}
         </div>
-        <div className="button-container">
+        <div className="button-container" onClick={handleclick}
+        role="presentation">
           <button type="button" className="play">
             <p>PLAY</p>
             <FaPlay className="play-icon" />
@@ -71,4 +78,6 @@ BannerCard.propTypes = {
   overview: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  setIdVideo: PropTypes.func.isRequired,
+  setBlackScreen: PropTypes.func.isRequired,
 };
