@@ -1,0 +1,153 @@
+#card {
+  margin: 7px;
+}
+
+/* j'ai laissé swiper container pour les sliders tu peux le modifier si tu veux */
+.swiper_container {
+  margin: 0px;
+  padding: 10px;
+  position: relative;
+  width: 90%;
+}
+.swiper-slide {
+  width: 200px;
+  height: 300px;
+  border-radius: 2px;
+  margin: 20px auto;
+  cursor: pointer;
+  box-shadow: 0 0 5px black;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+.swiper-slide img {
+  object-fit: cover;
+  background-size: cover;
+  object-position: center;
+}
+.hidden-display {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  line-height: 12px;
+  background-color: rgba(0, 0, 0, 0.625);
+  animation: popUp 0.5s ease-in-out alternate forwards;
+  display: none;
+}
+.btn-container {
+  position: absolute;
+  right: 10px;
+  bottom: 2px;
+
+  border-radius: 50%;
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hidden-display button {
+  color: white;
+  background-color: rgba(255, 0, 0, 0);
+  cursor: pointer;
+  background-color: black;
+  box-shadow: none;
+}
+.hidden-display button:hover {
+  font-size: 1.1rem;
+  color: rgb(155, 42, 216);
+  filter: drop-shadow(0 0 40px rgb(18, 17, 18));
+}
+@keyframes popUp {
+  from {
+    transform: translateY(100px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+#card .hidden-display h3 {
+  font-size: 12px;
+  color: white;
+  animation: popUp 0.5s ease-in-out alternate forwards;
+}
+#card .hidden-display p {
+  opacity: 1;
+  font-size: 10px;
+  color: white;
+  animation: popUp 0.5s ease-in-out alternate forwards;
+}
+#card .hidden-display .vote {
+  color: rgb(176, 121, 228);
+  opacity: 1;
+  animation: popUp 0.5s ease-in-out alternate forwards;
+  font-size: 12px;
+  background-color: black;
+  width: 20%;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.btn-container button {
+  font-size: 1.5rem;
+  color: white;
+  background-color: rgba(255, 0, 0, 0);
+}
+
+.swiper-slide:hover {
+  box-shadow: 0 0 25px white;
+  transition: all 1s ease-in-out;
+  z-index: 1;
+  transform: scale(1.2);
+}
+.swiper-slide:hover .hidden-display {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  align-items: center;
+  text-align: left;
+  display: block;
+}
+
+@media screen and (max-width: 1100px) {
+  .swiper-slide {
+    width: 150px;
+    height: 250px;
+    margin: 5px auto;
+  }
+
+  .swiper-slide:hover {
+    box-shadow: 0 0 25px white;
+    transition: all 1s ease-in-out;
+    z-index: 1;
+    transform: scale(1);
+  }
+
+  .swiper-slide img {
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .swiper-slide {
+    width: 120px;
+    height: 220px;
+    margin: 5px auto;
+  }
+  .swiper-slide:hover {
+    box-shadow: 0 0 25px white;
+    transition: all 1s ease-in-out;
+    z-index: 1;
+    transform: scale(1);
+  }
+  .swiper-slide img {
+    object-fit: cover;
+    width: 100%;
+  }
+}

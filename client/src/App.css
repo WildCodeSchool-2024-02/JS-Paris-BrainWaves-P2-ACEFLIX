@@ -1,20 +1,53 @@
 body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.7;
-  color: #eee;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
 }
 
-.container {
-  height: 100vh;
-  background-image: url("./assets/images/background.webp");
-  background-size: cover;
-  background-position: top;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 30px;
+#root {
+}
+
+h1 {
+  font-size: 45px;
+  font-size: 20px;
+  font-family: "Tilt Neon", sans-serif;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+}
+
+button {
+  border-radius: 7px;
+  text-align: center;
+  padding: 10px;
+  margin: 15px;
+  border: none;
+  box-shadow: 0 0 7px black;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Media pour tablette */
+@media (max-width: 1000px) {
+  #root {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 35px;
+  }
+}
+
+/* Media pour mobile */
+@media (max-width: 600px) {
+  #root {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
 }
