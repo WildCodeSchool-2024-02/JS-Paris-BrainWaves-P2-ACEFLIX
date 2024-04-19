@@ -87,12 +87,12 @@ export default function Popular({ status, uniqueTendances, shuffle }) {
             {status
               ? uniqueTendances?.map((content) => (
                   <SwiperSlide key={content.id}>
-                    <Card image={content.poster_path} id={content.id} />
+                    <Card card={content.poster_path} />
                   </SwiperSlide>
                 ))
               : allTendances?.map((content) => (
                   <SwiperSlide key={content.id}>
-                    <Card image={content.poster_path} id={content.id} />
+                    <Card card={content} />
                   </SwiperSlide>
                 ))}
           </div>

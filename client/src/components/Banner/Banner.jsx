@@ -46,6 +46,7 @@ export default function Banner({ setBlackScreen, setIdVideo }) {
           disableOnInteraction: true,
           pauseOnMouseEnter: true,
         }}
+        
         className="swipper-cinema-content"
       >
         {newCinema?.map((content) => (

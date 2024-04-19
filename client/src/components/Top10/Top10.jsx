@@ -90,12 +90,12 @@ export default function Top10({ status, uniqueTop }) {
           {status
             ? uniqueTop?.map((content) => (
                 <SwiperSlide key={content.id}>
-                  <Card image={content.poster_path} id={content.id} />
+                  <Card card={content} />
                 </SwiperSlide>
               ))
             : TopContent?.map((content) => (
                 <SwiperSlide key={content.id}>
-                  <Card image={content.poster_path} id={content.id} />
+                  <Card card={content} />
                 </SwiperSlide>
               ))}
         </Swiper>

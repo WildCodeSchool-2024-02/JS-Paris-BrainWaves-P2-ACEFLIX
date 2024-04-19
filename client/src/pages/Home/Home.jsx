@@ -4,6 +4,9 @@ import "./home.css";
 import Popular from "../../components/Popular/Popular";
 import Banner from "../../components/Banner/Banner";
 import Video from "../../components/Video/Video";
+import SecondHeader from "../../components/SecondHeader/SecondHeader";
+
+
 
 export default function Home() {
   // Initialisation des states
@@ -82,6 +85,8 @@ export default function Home() {
         uniqueTendances={uniqueTendances}
         shuffle={shuffle}
       />
+
+      <SecondHeader/>
     </section>
   );
 }
