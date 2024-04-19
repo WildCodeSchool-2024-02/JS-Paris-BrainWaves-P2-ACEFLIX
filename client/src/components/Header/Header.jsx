@@ -1,15 +1,18 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./header.css";
 import { IoSearch } from "react-icons/io5";
 import { SlMenu } from "react-icons/sl";
 import aceflixLogo from "../../assets/images/aceflixLogo.png";
 import DisplaySearchResults from "../DisplaySearchResults/DisplaySearchResults";
 
-export default function Header() {
+export default function Header({ setIsOpen }) {
   const [search, setSearch] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
   const [display, setDisplay] = useState(false);
+  const navigate = useNavigate();
 
   const apiKey = "aea07ae608264c18c1ea1431604753c3";
   const fetchResults = `https://api.themoviedb.org/3/search/multi?query=${inputValue}&include_adult=false&language=en-US&page=1&api_key=${apiKey}`;
@@ -31,16 +34,29 @@ export default function Header() {
     return true;
   };
 
+  const openNav = () => {
+    setIsOpen(true);
+  };
+
   return (
-    <>
+    <header>
       <div id="Header">
         <div className="hearder-burger">
-          <button aria-label="menu" className="burger-btn" type="button">
+          <button
+            aria-label="menu"
+            className="burger-btn"
+            type="button"
+            onClick={openNav}
+          >
             <SlMenu />
           </button>
         </div>
 
-        <div className="aceflix-logo">
+        <div
+          className="aceflix-logo"
+          onClick={() => navigate("/")}
+          role="presentation"
+        >
           <img src={aceflixLogo} alt="Aceflix-Logo" />
         </div>
 
@@ -72,6 +88,10 @@ export default function Header() {
           setDisplay={setDisplay}
         />
       )}
-    </>
+    </header>
   );
 }
+
+Header.propTypes = {
+  setIsOpen: PropTypes.func.isRequired,
+};

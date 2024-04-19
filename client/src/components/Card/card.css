@@ -6,9 +6,7 @@
   position: relative;
 }
 #card img {
-  object-fit: cover;
-  background-size: cover;
-  object-position: center;
+  width: 100%;
 }
 #card .hidden-display {
   padding: 5px;
@@ -19,6 +17,10 @@
   background-color: rgba(0, 0, 0, 0.625);
   animation: popUp 0.5s ease-in-out alternate forwards;
   display: none;
+}
+
+h3 {
+  font-family: "Poppins", sans-serif;
 }
 .btn-container {
   position: absolute;

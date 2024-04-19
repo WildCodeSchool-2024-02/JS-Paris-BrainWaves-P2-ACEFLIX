@@ -12,7 +12,7 @@
   padding: 10px;
   position: relative;
   animation: UptoBottom 1s alternate ease-in-out forwards;
-  z-index: 90;
+  z-index: 51;
 }
 @keyframes UptoBottom {
   from {
