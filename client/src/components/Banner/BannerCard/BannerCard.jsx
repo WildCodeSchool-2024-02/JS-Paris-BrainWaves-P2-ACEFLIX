@@ -3,7 +3,14 @@ import "./bannercard.css";
 import PropTypes from "prop-types";
 import { FaPlay } from "react-icons/fa";
 
-export default function BannerCard({ image, overview, title, id, setBlackScreen, setIdVideo }) {
+export default function BannerCard({
+  image,
+  overview,
+  title,
+  id,
+  setBlackScreen,
+  setIdVideo,
+}) {
   const [content, setContent] = useState(null);
 
   useEffect(() => {
@@ -22,10 +29,10 @@ export default function BannerCard({ image, overview, title, id, setBlackScreen,
   }
 
   const handleclick = () => {
-    setBlackScreen(true)
-    setIdVideo(id)
-    document.body.classList.add('active')
-}
+    setBlackScreen(true);
+    setIdVideo(id);
+    document.body.classList.add("active");
+  };
 
   return (
     <div className="card-container">
@@ -57,9 +64,8 @@ export default function BannerCard({ image, overview, title, id, setBlackScreen,
             </p>
           )}
         </div>
-        <div className="button-container" onClick={handleclick}
-        role="presentation">
-          <button type="button" className="play">
+        <div className="button-container">
+          <button type="button" className="play" onClick={handleclick}>
             <p>PLAY</p>
             <FaPlay className="play-icon" />
           </button>

@@ -46,6 +46,14 @@ export default function Banner({ setBlackScreen, setIdVideo }) {
           disableOnInteraction: true,
           pauseOnMouseEnter: true,
         }}
+        breakpoints={{
+          1025: {
+            direction: "vertical",
+          },
+          200: {
+            direction: "horizontal",
+          },
+        }}
         className="swipper-cinema-content"
       >
         {newCinema?.map((content) => (

@@ -60,7 +60,7 @@ export default function Home() {
   };
 
   return (
-    <section className= "home">
+    <section className="home">
       {blackScreen && (
         <Video idVideo={idVideo} setBlackScreen={setBlackScreen} />
       )}
