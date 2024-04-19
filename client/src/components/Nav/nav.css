@@ -6,8 +6,7 @@ nav {
   background-color: rgb(1, 1, 1);
   height: 100%;
   width: 300px;
-  z-index: 20;
-  transform: translateX(-50%);
+  transform: translateX(-100%);
   transition: all 0.2s ease;
 }
 
@@ -45,6 +44,7 @@ ul li p {
 
 .logo {
   margin-bottom: 90px;
+  cursor: pointer;
 }
 
 .icon {
@@ -54,7 +54,7 @@ ul li p {
   top: 15px;
   right: 15px;
   cursor: pointer;
-  z-index: 10;
+  z-index: 65;
 }
 
 .list-nav-elements {
@@ -68,33 +68,9 @@ ul li p {
   display: none;
 }
 
-/* .mobile-nav {
-  width: 100vw;
-  border: 10px solid red;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  z-index: 1000;
-  display: none;
-}
-
-.mobile-nav button {
-  color: whitesmoke;
-  background-color: black;
-  font-size: 25px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  font-weight: 700;
-}
-
-.mobile-nav button span {
-  font-size: initial;
-}*/
 @media (max-width: 1025px) {
   nav {
+    transform: translateX(0);
     width: 100%;
     height: 80px;
     background-color: none;

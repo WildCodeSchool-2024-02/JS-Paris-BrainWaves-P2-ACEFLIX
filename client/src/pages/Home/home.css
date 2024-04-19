@@ -1,3 +1,11 @@
+#SecondHeader {
+  position: absolute;
+  top: 110px;
+  z-index: 50;
+  right: 50%;
+  transform: translateX(50%);
+}
+
 .active {
   overflow-y: hidden;
 }

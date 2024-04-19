@@ -6,30 +6,39 @@ import { IoHomeOutline } from "react-icons/io5";
 import { BiCameraMovie } from "react-icons/bi";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { BiMoviePlay } from "react-icons/bi";
-import { CiMenuBurger } from "react-icons/ci";
 import "./nav.css";
 
 export default function Nav({ setIsOpen, isOpen }) {
   const navigate = useNavigate();
 
-  const closeNav = () => {
+  const navigateHome = () => {
     setIsOpen(false);
+    navigate("/");
   };
 
-  const openNav = () => {
-    setIsOpen(true);
+  const navigateMovie = () => {
+    setIsOpen(false);
+    navigate("/filter/movie");
+  };
+
+  const navigateSerie = () => {
+    setIsOpen(false);
+    navigate("/filter/tv");
+  };
+
+  const closeNav = () => {
+    setIsOpen(false);
   };
 
   return (
     <nav className={isOpen ? "open" : ""}>
       <div className="icon">
         <RxCross2 className="close-nav" onClick={closeNav} />
-        <CiMenuBurger onClick={openNav} />
       </div>
       <ul>
         <li
           className="list-nav-elements"
-          onClick={() => navigate("/")}
+          onClick={navigateHome}
           role="presentation"
         >
           <IoHomeOutline className="icon-nav" />
@@ -37,7 +46,7 @@ export default function Nav({ setIsOpen, isOpen }) {
         </li>
         <li
           className="list-nav-elements"
-          onClick={() => navigate("/filter/movie")}
+          onClick={navigateMovie}
           role="presentation"
         >
           <BiMoviePlay className="icon-nav" />
@@ -45,7 +54,7 @@ export default function Nav({ setIsOpen, isOpen }) {
         </li>
         <li
           className="list-nav-elements"
-          onClick={() => navigate("/filter/tv")}
+          onClick={navigateSerie}
           role="presentation"
         >
           <BiCameraMovie className="icon-nav" />
@@ -56,7 +65,7 @@ export default function Nav({ setIsOpen, isOpen }) {
           <p>Account</p>
         </li>
       </ul>
-      <div className="logo">
+      <div className="logo" onClick={navigateHome} role="presentation">
         <img id="logo" src="./src/assets/images/Logo.png" alt="Logo" />
       </div>
     </nav>
