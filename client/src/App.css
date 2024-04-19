@@ -5,6 +5,7 @@ body {
   background-color: black;
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -31,14 +32,25 @@ button {
 
 nav {
   position: fixed;
-  top: 0;
   left: 0;
+}
+
+.blackscreen-nav {
+  position: fixed;
+  top: 0;
+  z-index: 10;
 }
 
 /* Media pour tablette */
 @media (max-width: 1025px) {
   h1 {
     font-size: 35px;
+  }
+  nav {
+    bottom: 0;
+  }
+  .blackscreen-nav {
+    display: none;
   }
 }
 
