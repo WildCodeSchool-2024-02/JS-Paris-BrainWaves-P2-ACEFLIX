@@ -1,0 +1,220 @@
+.card-container {
+  position: relative;
+}
+
+.img-container::after {
+  content: "";
+  position: absolute;
+  bottom: 150px;
+  left: 0;
+  width: 100vw;
+  height: 250px;
+  background: linear-gradient(180deg, transparent, black);
+  z-index: 1;
+}
+
+.bloc-black {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 600px;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  margin: 0;
+  color: transparent;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.img-cinema {
+  width: 2300px;
+  height: 750px;
+  margin: 0;
+}
+
+.content-container {
+  position: absolute;
+  bottom: 250px;
+  margin-left: 90px;
+  z-index: 2;
+}
+
+.movie-title {
+  color: whitesmoke;
+  font-size: 45px;
+  z-index: 2;
+}
+
+.movie-overview {
+  color: whitesmoke;
+  max-width: 400px;
+  z-index: 2;
+  font-size: 13px;
+}
+
+.reco-release {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.release {
+  font-size: 15px;
+  color: whitesmoke;
+  margin: 0;
+}
+
+.recommandation {
+  color: #45cb65;
+  margin: 0;
+  font-size: 15px;
+}
+
+.language {
+  background-color: rgb(179, 179, 179, 0.5);
+  margin: 0;
+  color: whitesmoke;
+  padding: 0 5px 0 5px;
+  border-radius: 5px;
+}
+
+.runtime {
+  font-size: 15px;
+  color: whitesmoke;
+  margin: 0;
+}
+
+.movie-genres {
+  display: flex;
+  gap: 20px;
+  color: whitesmoke;
+  z-index: 2;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.button-container {
+  display: flex;
+}
+
+.play {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  box-shadow: none;
+  height: 40px;
+  width: 120px;
+  border-radius: 7px;
+  margin: 0 10px 0 0;
+  background-color: #b53dff;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.play:hover {
+  opacity: 0.8;
+}
+
+.play p {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 10px 0 0;
+}
+
+.play-icon {
+  font-size: 17px;
+}
+
+.more {
+  border: none;
+  box-shadow: none;
+  height: 40px;
+  width: 120px;
+  border-radius: 7px;
+  margin-right: 10px;
+  background-color: rgb(26, 26, 26);
+  color: #b53dff;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.more:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 1025px) {
+  .content-container {
+    margin-left: 20px;
+    bottom: 100px;
+  }
+  .img-cinema {
+    width: 1024px;
+    height: 600px;
+  }
+  .img-container::after {
+    bottom: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .movie-overview {
+    display: none;
+  }
+  .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    bottom: 100px;
+    z-index: 2;
+    margin: 0;
+  }
+  .card-container::before {
+    display: none;
+  }
+  .card-container::after {
+    display: none;
+  }
+  .movie-title {
+    text-align: center;
+    font-size: 35px;
+  }
+  .movie-genres {
+    gap: 10px;
+  }
+  .movie-genres p {
+    margin: 5px;
+  }
+  .img-container::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 150px;
+    background: linear-gradient(180deg, transparent, black);
+    z-index: 1;
+  }
+  .reco-release {
+    gap: 7px;
+    justify-content: center;
+  }
+  .img-cinema {
+    width: 1000px;
+  }
+}

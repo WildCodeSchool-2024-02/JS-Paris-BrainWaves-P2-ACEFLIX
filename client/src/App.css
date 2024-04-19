@@ -5,13 +5,15 @@ body {
   background-color: black;
   width: 100vw;
   height: 100vh;
-}
-
-#root {
+  position: relative;
 }
 
 h1 {
   font-size: 45px;
+  font-family: "Tilt Neon", sans-serif;
+}
+
+h2 {
   font-size: 20px;
   font-family: "Tilt Neon", sans-serif;
 }
@@ -24,18 +26,12 @@ button {
   border-radius: 7px;
   text-align: center;
   padding: 10px;
-  margin: 15px;
   border: none;
   box-shadow: 0 0 7px black;
-  font-family: "Poppins", sans-serif;
 }
 
 /* Media pour tablette */
-@media (max-width: 1000px) {
-  #root {
-    margin: 0;
-  }
-
+@media (max-width: 1025px) {
   h1 {
     font-size: 35px;
   }
@@ -43,10 +39,6 @@ button {
 
 /* Media pour mobile */
 @media (max-width: 600px) {
-  #root {
-    margin: 0;
-  }
-
   h1 {
     font-size: 25px;
   }

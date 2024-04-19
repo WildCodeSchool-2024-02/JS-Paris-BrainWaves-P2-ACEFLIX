@@ -5,10 +5,10 @@
   background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
   backdrop-filter: blur(5px);
   width: 100vw;
-  position: relative;
+  position: fixed;
+  top: 0;
   animation: mainHeaderMove 1s ease-in-out alternate forwards;
   z-index: 100;
-  position: sticky;
 }
 .burger-btn {
   font-size: 1.8rem;
@@ -25,7 +25,8 @@
 }
 .aceflix-logo {
   position: fixed;
-  left: 45%;
+  right: 50%;
+  transform: translateX(50%);
   transition: all 1s ease-in-out;
 }
 .aceflix-logo img {
@@ -145,13 +146,16 @@
 @media only screen and (max-width: 350px) {
   #Header {
     flex-direction: column;
+    justify-content: center;
     flex-wrap: wrap;
+    height: 100px;
   }
-  .main-search-input {
-  }
-
   .aceflix-logo {
-    width: 30%;
-    margin-bottom: -40px;
+    position: fixed;
+    right: 55px;
+    top: 0;
+    display: none;
+    transition: all 1s ease-in-out;
+    width: 100vw;
   }
 }
