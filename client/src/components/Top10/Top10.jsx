@@ -10,7 +10,7 @@ import Card from "../Card/Card";
 import useFetch from "../../useFetch";
 import "swiper/css/free-mode";
 
-export default function Top10({ status, uniqueTop }) {
+export default function Top10({ status, uniqueTop, setBlackScreen, setIdVideo }) {
   // URL des Movies et Series les mieux notés
   const moviesFetchURL =
     "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3";
@@ -90,12 +90,12 @@ export default function Top10({ status, uniqueTop }) {
           {status
             ? uniqueTop?.map((content) => (
                 <SwiperSlide key={content.id}>
-                  <Card image={content.poster_path} id={content.id} />
+                  <Card card={content} id={content.id} setBlackScreen={setBlackScreen} setIdVideo={setIdVideo}/>
                 </SwiperSlide>
               ))
             : TopContent?.map((content) => (
                 <SwiperSlide key={content.id}>
-                  <Card image={content.poster_path} id={content.id} />
+                  <Card card={content} id={content.id} setBlackScreen={setBlackScreen} setIdVideo={setIdVideo}/>
                 </SwiperSlide>
               ))}
         </Swiper>
@@ -107,4 +107,6 @@ export default function Top10({ status, uniqueTop }) {
 Top10.propTypes = {
   status: PropTypes.bool.isRequired,
   uniqueTop: PropTypes.oneOfType([PropTypes.array.isRequired]).isRequired,
+  setBlackScreen: PropTypes.func.isRequired,
+  setIdVideo: PropTypes.func.isRequired
 };

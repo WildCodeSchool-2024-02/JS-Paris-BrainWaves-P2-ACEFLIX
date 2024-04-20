@@ -30,7 +30,7 @@ export default function BannerCard({
 
   const handleclick = () => {
     setBlackScreen(true);
-    setIdVideo(id);
+    setIdVideo(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US&api_key=aea07ae608264c18c1ea1431604753c3`);
     document.body.classList.add("active");
   };
 

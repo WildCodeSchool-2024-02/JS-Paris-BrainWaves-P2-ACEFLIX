@@ -84,13 +84,13 @@ export default function Filter() {
           {genreStatus &&
             idFilter?.map((content) => (
               <div className="card-filter" key={content.id}>
-                <Card image={content.poster_path} id={content.id} />
+                <Card card={content} />
               </div>
             ))}
           {!genreStatus &&
             dataFilter?.map((content) => (
               <div className="card-filter" key={content.id}>
-                <Card image={content.poster_path} id={content.id} />
+                <Card card={content} />
               </div>
             ))}
         </div>

@@ -4,6 +4,7 @@ import "./home.css";
 import Popular from "../../components/Popular/Popular";
 import Banner from "../../components/Banner/Banner";
 import Video from "../../components/Video/Video";
+import SecondHeader from "../../components/SecondHeader/SecondHeader";
 
 export default function Home() {
   // Initialisation des states
@@ -11,7 +12,10 @@ export default function Home() {
   const [uniqueTop, setUniqueTop] = useState([]); // State qui vient ajouter les données d'une seule catégorie
   const [uniqueTendances, setUniqueTendances] = useState([]); // State qui vient ajouter les données d'une seule catégorie
   const [blackScreen, setBlackScreen] = useState(false); // State qui permet d'afficher et cacher le popupvideo
-  const [idVideo, setIdVideo] = useState(0); // State qui permet de récupérer l'id de la vidéo cliquée
+  const [idVideo, setIdVideo] = useState(""); // State qui permet de récupérer l'id de la vidéo cliquée
+  const [activeMovie, setActiveMovie] = useState(false);
+  const [activeSerie, setActiveSerie] = useState(false);
+  const [activeAll, setActiveAll] = useState(true);
 
   // URL à fetch
   const moviesFetch =
@@ -29,6 +33,9 @@ export default function Home() {
 
   const handleMovies = () => {
     setStatus(true);
+    setActiveAll(false);
+    setActiveSerie(false);
+    setActiveMovie(true);
     fetch(moviesFetch)
       .then((response) => response.json())
       .then((response) => setUniqueTop(response.results.splice(0, 10)))
@@ -43,6 +50,9 @@ export default function Home() {
 
   const handleSeries = () => {
     setStatus(true);
+    setActiveAll(false);
+    setActiveMovie(false);
+    setActiveSerie(true);
     fetch(seriesFetch)
       .then((response) => response.json())
       .then((response) => setUniqueTop(response.results.splice(0, 10)))
@@ -57,6 +67,9 @@ export default function Home() {
 
   const handleAll = () => {
     setStatus(false);
+    setActiveMovie(false);
+    setActiveSerie(false);
+    setActiveAll(true);
   };
 
   return (
@@ -64,23 +77,29 @@ export default function Home() {
       {blackScreen && (
         <Video idVideo={idVideo} setBlackScreen={setBlackScreen} />
       )}
-      <div className="static-button">
-        <button type="button" className="filter-button" onClick={handleAll}>
-          All
-        </button>
-        <button type="button" className="filter-button" onClick={handleMovies}>
-          Movies
-        </button>
-        <button type="button" className="filter-button" onClick={handleSeries}>
-          Series
-        </button>
-      </div>
       <Banner setBlackScreen={setBlackScreen} setIdVideo={setIdVideo} />
-      <Top10 status={status} uniqueTop={uniqueTop} />
+      <Top10
+        status={status}
+        uniqueTop={uniqueTop}
+        setBlackScreen={setBlackScreen}
+        setIdVideo={setIdVideo}
+        idVideo={idVideo}
+      />
       <Popular
         status={status}
         uniqueTendances={uniqueTendances}
         shuffle={shuffle}
+        setBlackScreen={setBlackScreen}
+        setIdVideo={setIdVideo}
+        idVideo={idVideo}
+      />
+      <SecondHeader
+        handleAll={handleAll}
+        handleMovies={handleMovies}
+        handleSeries={handleSeries}
+        activeAll={activeAll}
+        activeMovie={activeMovie}
+        activeSerie={activeSerie}
       />
     </section>
   );

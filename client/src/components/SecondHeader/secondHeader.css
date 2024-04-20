@@ -1,0 +1,36 @@
+#SecondHeader {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  flex: 1;
+}
+.SecondHeader-btn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.button-filter-content {
+  display: flex;
+  justify-content: center;
+  width: 80px;
+  padding: 10px 20px;
+  color: white;
+  background-color: black;
+  opacity: 0.6;
+  box-shadow: 0 0 10px black;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.button-filter-content {
+  box-shadow: 0 0 15px rgb(212, 57, 236);
+}
+
+.isActive {
+  background-color: #b53dff;
+  opacity: 1;
+}
