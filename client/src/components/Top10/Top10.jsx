@@ -10,7 +10,7 @@ import Card from "../Card/Card";
 import useFetch from "../../useFetch";
 import "swiper/css/free-mode";
 
-export default function Top10({ status, uniqueTop, setBlackScreen, setIdVideo }) {
+export default function Top10({ status, uniqueTop }) {
   // URL des Movies et Series les mieux notés
   const moviesFetchURL =
     "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3";
@@ -56,46 +56,47 @@ export default function Top10({ status, uniqueTop, setBlackScreen, setIdVideo })
       <div className="slider-container">
         <Swiper
           modules={[Navigation, FreeMode]}
-          spaceBetween={5}
+          spaceBetween={10}
           slidesPerView={6}
-          loop={false}
           // eslint-disable-next-line react/jsx-boolean-value
           freeMode={true}
           centeredSlides={false}
           breakpoints={{
             1200: {
               slidesPerView: 6,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
             750: {
               slidesPerView: 5,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
             500: {
               slidesPerView: 4,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
             320: {
               slidesPerView: 3,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
             280: {
               slidesPerView: 2,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
           }}
           navigation
           className="mySwiper"
         >
           {status
-            ? uniqueTop?.map((content) => (
+            ? uniqueTop?.map((content, index) => (
                 <SwiperSlide key={content.id}>
-                  <Card card={content} id={content.id} setBlackScreen={setBlackScreen} setIdVideo={setIdVideo}/>
+                  <p className="test-top">{index + 1}</p>
+                  <Card card={content} />
                 </SwiperSlide>
               ))
-            : TopContent?.map((content) => (
+            : TopContent?.map((content, index) => (
                 <SwiperSlide key={content.id}>
-                  <Card card={content} id={content.id} setBlackScreen={setBlackScreen} setIdVideo={setIdVideo}/>
+                  <p className="test-top">{index + 1}</p>
+                  <Card card={content} />
                 </SwiperSlide>
               ))}
         </Swiper>
@@ -107,6 +108,4 @@ export default function Top10({ status, uniqueTop, setBlackScreen, setIdVideo })
 Top10.propTypes = {
   status: PropTypes.bool.isRequired,
   uniqueTop: PropTypes.oneOfType([PropTypes.array.isRequired]).isRequired,
-  setBlackScreen: PropTypes.func.isRequired,
-  setIdVideo: PropTypes.func.isRequired
 };

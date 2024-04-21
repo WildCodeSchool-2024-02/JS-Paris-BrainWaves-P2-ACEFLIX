@@ -11,12 +11,17 @@
   cursor: pointer;
   min-width: 100px;
   height: 33px;
-  background-color: rgba(227, 227, 227, 0.7);
+  background-color: rgba(61, 61, 61, 0.7);
+  opacity: 0.6;
   font-weight: 600;
+  color: whitesmoke;
+  transition: all 0.3s ease-in-out;
 }
 
 .buttons-movies:hover {
-  background-color: rgba(227, 227, 227);
+  background-color: #b53dff;
+  box-shadow: 0 0 15px #b53dff;
+  opacity: 1;
 }
 
 .buttons-movies-container::-webkit-scrollbar {
@@ -27,6 +32,11 @@
 .buttons-movies:focus-visible {
   background-color: #b53dff;
   color: whitesmoke;
+}
+
+.active-genre {
+  background-color: #b53dff;
+  opacity: 1;
 }
 
 .button-filter {

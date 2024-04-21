@@ -89,6 +89,14 @@ a {
   display: none;
 }
 
+.genre-display {
+  color: whitesmoke;
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  font-style: italic;
+}
+
 @media (max-width: 1025px) {
   .filter-page {
     margin: 0 10px;

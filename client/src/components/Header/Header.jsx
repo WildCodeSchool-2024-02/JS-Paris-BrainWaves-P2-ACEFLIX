@@ -39,6 +39,12 @@ export default function Header({
     return true;
   };
 
+  const handleSearchKey = (e) => {
+    if (e.key === "Enter") {
+      searchResult();
+    }
+  };
+
   const openNav = () => {
     setIsOpen(true);
   };
@@ -79,7 +85,8 @@ export default function Header({
             aria-label="search"
             value={inputValue}
             onInput={handleInput}
-            placeholder="Search for movies, series...."
+            onKeyDown={handleSearchKey}
+            placeholder="Search for movies, series & actors ..."
           />
 
           <button

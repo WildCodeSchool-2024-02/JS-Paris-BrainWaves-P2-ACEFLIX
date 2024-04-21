@@ -38,12 +38,12 @@ export default function Home() {
     setActiveMovie(true);
     fetch(moviesFetch)
       .then((response) => response.json())
-      .then((response) => setUniqueTop(response.results.splice(0, 10)))
+      .then((response) => setUniqueTop(response.results.slice(0, 10)))
       .catch((err) => console.error(err));
     fetch(popularMovies)
       .then((response) => response.json())
       .then((response) =>
-        setUniqueTendances(shuffle(response.results).splice(0, 15))
+        setUniqueTendances(shuffle(response.results).slice(0, 20))
       )
       .catch((err) => console.error(err));
   };
@@ -55,12 +55,12 @@ export default function Home() {
     setActiveSerie(true);
     fetch(seriesFetch)
       .then((response) => response.json())
-      .then((response) => setUniqueTop(response.results.splice(0, 10)))
+      .then((response) => setUniqueTop(response.results.slice(0, 10)))
       .catch((err) => console.error(err));
     fetch(popularSeries)
       .then((response) => response.json())
       .then((response) =>
-        setUniqueTendances(shuffle(response.results).splice(0, 15))
+        setUniqueTendances(shuffle(response.results).slice(0, 20))
       )
       .catch((err) => console.error(err));
   };
@@ -78,20 +78,11 @@ export default function Home() {
         <Video idVideo={idVideo} setBlackScreen={setBlackScreen} />
       )}
       <Banner setBlackScreen={setBlackScreen} setIdVideo={setIdVideo} />
-      <Top10
-        status={status}
-        uniqueTop={uniqueTop}
-        setBlackScreen={setBlackScreen}
-        setIdVideo={setIdVideo}
-        idVideo={idVideo}
-      />
+      <Top10 status={status} uniqueTop={uniqueTop} />
       <Popular
         status={status}
         uniqueTendances={uniqueTendances}
         shuffle={shuffle}
-        setBlackScreen={setBlackScreen}
-        setIdVideo={setIdVideo}
-        idVideo={idVideo}
       />
       <SecondHeader
         handleAll={handleAll}

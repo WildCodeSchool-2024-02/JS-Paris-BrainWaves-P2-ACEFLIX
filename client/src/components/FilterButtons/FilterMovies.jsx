@@ -7,6 +7,8 @@ export default function FilterMovies({
   setIdGenre,
   setGenreStatus,
   setPage,
+  setDisplayGenre,
+  displayGenre,
 }) {
   const url =
     "https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=aea07ae608264c18c1ea1431604753c3";
@@ -20,47 +22,67 @@ export default function FilterMovies({
   });
 
   const handleFilter = (e) => {
-    setFilter(e.target.value);
+    setFilter(e.target.value.toLowerCase());
     setGenreStatus(false);
     setPage(1);
+    setDisplayGenre({ name: e.target.value });
   };
 
   const handleGenres = (e) => {
     setIdGenre(e.target.value);
     setGenreStatus(true);
     setPage(1);
+    setDisplayGenre(
+      genresName.filter((genre) => genre.id === parseInt(e.target.value, 10))[0]
+    );
   };
 
   return (
     <div className="buttons-movies-container">
       <button
         type="button"
-        value="popular"
-        className="buttons-movies"
+        value="Popular"
+        className={
+          displayGenre.name === "Popular"
+            ? "buttons-movies active-genre"
+            : "buttons-movies"
+        }
         onClick={handleFilter}
       >
         Popular
       </button>
       <button
         type="button"
-        value="upcoming"
-        className="buttons-movies"
+        value="Upcoming"
+        className={
+          displayGenre.name === "Upcoming"
+            ? "buttons-movies active-genre"
+            : "buttons-movies"
+        }
         onClick={handleFilter}
       >
         Upcoming
       </button>
       <button
         type="button"
-        value="top_rated"
-        className="buttons-movies"
+        value="Top_rated"
+        className={
+          displayGenre.name === "Top_rated"
+            ? "buttons-movies active-genre"
+            : "buttons-movies"
+        }
         onClick={handleFilter}
       >
         Top rated
       </button>
       <button
         type="button"
-        value="now_playing"
-        className="buttons-movies"
+        value="Now_playing"
+        className={
+          displayGenre.name === "Now_playing"
+            ? "buttons-movies active-genre"
+            : "buttons-movies"
+        }
         onClick={handleFilter}
       >
         Now playing
@@ -70,7 +92,11 @@ export default function FilterMovies({
           type="button"
           key={content.id}
           value={content.id}
-          className="buttons-movies"
+          className={
+            displayGenre.id === content.id
+              ? "buttons-movies active-genre"
+              : "buttons-movies"
+          }
           onClick={handleGenres}
         >
           {content.name}
@@ -85,4 +111,9 @@ FilterMovies.propTypes = {
   setIdGenre: PropTypes.func.isRequired,
   setGenreStatus: PropTypes.func.isRequired,
   setPage: PropTypes.func.isRequired,
+  setDisplayGenre: PropTypes.func.isRequired,
+  displayGenre: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.number,
+  }).isRequired,
 };

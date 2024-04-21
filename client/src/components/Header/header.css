@@ -3,7 +3,6 @@
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-  /* backdrop-filter: blur(5px); */
   width: 100vw;
   animation: mainHeaderMove 1s ease-in-out alternate forwards;
   z-index: 50;
@@ -14,16 +13,16 @@
 }
 .burger-btn {
   font-size: 1.8rem;
-  background-color: rgba(240, 248, 255, 0);
+  background-color: transparent;
   color: #b53dff;
   cursor: pointer;
   opacity: 0.7;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 .burger-btn:hover {
   opacity: 1;
   filter: drop-shadow(0 0 20px #b53dff);
-  transform: scale(0.7);
+  transform: scale(0.9);
 }
 .aceflix-logo {
   position: fixed;
@@ -32,21 +31,23 @@
   transition: all 1s ease-in-out;
 }
 .aceflix-logo img {
-  width: 120px;
+  width: 110px;
   cursor: pointer;
 }
 
 .main-search-input {
+  display: flex;
+  justify-content: flex-end;
   box-sizing: border-box;
   overflow: hidden;
   border-radius: 10px;
   padding: 0px;
-  width: fit-content;
+  width: 30%;
   transition: all 1s ease-in-out;
   margin: 30px 90px 30px 30px;
 }
 .main-search-input:hover {
-  box-shadow: 0 0 10px #cb82f8;
+  box-shadow: 0 0 10px #b53dff;
 }
 .header-input {
   padding: 10px;
@@ -57,6 +58,7 @@
   color: white;
   margin: 0px;
   border: none;
+  width: 100%;
 }
 .header-input::placeholder {
   color: whitesmoke;
@@ -67,7 +69,7 @@
   cursor: pointer;
   transition: all 0.5s ease-in-out;
   overflow: hidden;
-  opacity: 0.5;
+  opacity: 1;
   animation: mooveSearchButton 2s ease-in-out infinite forwards;
   background-color: #b53dff;
   margin: 0px;
@@ -147,13 +149,10 @@
     width: 80px;
   }
 
-  .header-input {
-    display: flex;
-  }
-
   .main-search-input {
     display: flex;
     flex-wrap: nowrap;
+    width: 60%;
   }
 }
 

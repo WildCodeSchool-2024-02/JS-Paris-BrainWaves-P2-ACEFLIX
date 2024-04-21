@@ -61,7 +61,9 @@ export default function Nav({
           onClick={navigateHome}
           role="presentation"
         >
-          <IoHomeOutline className="icon-nav" />
+          <IoHomeOutline
+            className={!homeActive ? "icon-nav" : "icon-nav active-link"}
+          />
           <p>Home</p>
         </li>
         <li
@@ -71,7 +73,9 @@ export default function Nav({
           onClick={navigateMovie}
           role="presentation"
         >
-          <BiMoviePlay className="icon-nav" />
+          <BiMoviePlay
+            className={!movieActive ? "icon-nav" : "icon-nav active-link"}
+          />
           <p>Movies</p>
         </li>
         <li
@@ -81,7 +85,9 @@ export default function Nav({
           onClick={navigateSerie}
           role="presentation"
         >
-          <BiCameraMovie className="icon-nav" />
+          <BiCameraMovie
+            className={!serieActive ? "icon-nav" : "icon-nav active-link"}
+          />
           <p>Series</p>
         </li>
         <li className="list-nav-elements">

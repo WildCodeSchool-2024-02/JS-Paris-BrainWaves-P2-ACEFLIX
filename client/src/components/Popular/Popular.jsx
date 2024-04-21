@@ -9,13 +9,7 @@ import "./popular.css";
 import useFetch from "../../useFetch";
 import Card from "../Card/Card";
 
-export default function Popular({
-  status,
-  uniqueTendances,
-  shuffle,
-  setBlackScreen,
-  setIdVideo,
-}) {
+export default function Popular({ status, uniqueTendances, shuffle }) {
   // URL des Movies et Series tendances
   const tendancesMoviesFetchURL =
     "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3";
@@ -43,7 +37,7 @@ export default function Popular({
   // Fusion + mélange des tendances movies + series et limité à 15
   let allTendances = [];
   if (tendancesMovies && tendancesSeries) {
-    allTendances = ShuffleConcat(tendancesMovies, tendancesSeries).slice(0, 15);
+    allTendances = ShuffleConcat(tendancesMovies, tendancesSeries).slice(0, 20);
   }
   if (loadingTendancesMovies || loadingTendancesSeries) {
     return <h1>LOADING ...</h1>;
@@ -58,32 +52,30 @@ export default function Popular({
       <div className="slider-container">
         <Swiper
           modules={[Navigation, FreeMode]}
-          spaceBetween={5}
+          spaceBetween={10}
           slidesPerView={6}
-          // eslint-disable-next-line react/jsx-boolean-value
-          loop={true}
           // eslint-disable-next-line react/jsx-boolean-value
           freeMode={true}
           breakpoints={{
             1200: {
               slidesPerView: 6,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
             750: {
               slidesPerView: 5,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
             500: {
               slidesPerView: 4,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
             320: {
               slidesPerView: 3,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
             280: {
               slidesPerView: 2,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
           }}
           navigation
@@ -93,22 +85,12 @@ export default function Popular({
             {status
               ? uniqueTendances?.map((content) => (
                   <SwiperSlide key={content.id}>
-                    <Card
-                      card={content}
-                      id={content.id}
-                      setBlackScreen={setBlackScreen}
-                      setIdVideo={setIdVideo}
-                    />
+                    <Card card={content} />
                   </SwiperSlide>
                 ))
               : allTendances?.map((content) => (
                   <SwiperSlide key={content.id}>
-                    <Card
-                      card={content}
-                      id={content.id}
-                      setBlackScreen={setBlackScreen}
-                      setIdVideo={setIdVideo}
-                    />
+                    <Card card={content} />
                   </SwiperSlide>
                 ))}
           </div>
@@ -122,6 +104,4 @@ Popular.propTypes = {
   status: PropTypes.bool.isRequired,
   uniqueTendances: PropTypes.oneOfType([PropTypes.array.isRequired]).isRequired,
   shuffle: PropTypes.func.isRequired,
-  setBlackScreen: PropTypes.func.isRequired,
-  setIdVideo: PropTypes.func.isRequired,
 };
