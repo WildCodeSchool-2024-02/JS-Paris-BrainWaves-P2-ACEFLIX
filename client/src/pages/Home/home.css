@@ -49,6 +49,10 @@
   margin: 0 90px 0 90px;
 }
 
+.drama-slider {
+  margin: 0 90px 0 90px;
+}
+
 @media (max-width: 1025px) {
   .swiper-button-prev {
     display: none;
@@ -67,6 +71,10 @@
   }
 
   .horror-slider {
+    margin: 0;
+  }
+
+  .drama-slider {
     margin: 0;
   }
 
