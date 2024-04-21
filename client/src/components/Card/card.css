@@ -119,10 +119,17 @@ h3 {
   font-weight: 600;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   #card img {
     object-fit: cover;
     width: 100%;
+  }
+  .appreciated {
+    width: 50px;
+    height: 20px;
+  }
+  .appreciated p {
+    font-size: 6px;
   }
 }
 
