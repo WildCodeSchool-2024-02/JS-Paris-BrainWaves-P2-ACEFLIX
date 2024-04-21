@@ -126,11 +126,13 @@ export default function Filter() {
             ))}
         </div>
         <div className="pagination-wrapper">
-          <a href={page > 1 ? "#top-page" : null}>
+          <a
+            href={page > 1 ? "#top-page" : null}
+            onClick={() => page > 1 && setPage(page - 1)}
+          >
             <button
               type="button"
               className={page === 1 ? "button-filter-stop" : "button-filter"}
-              onClick={() => page > 1 && setPage(page - 1)}
             >
               {" "}
               <p className="href-disable">Pour le href</p>
@@ -138,12 +140,8 @@ export default function Filter() {
             </button>
           </a>
           <p className="pagination">{page}</p>
-          <a href="#top-page">
-            <button
-              type="button"
-              className="button-filter"
-              onClick={() => setPage(page + 1)}
-            >
+          <a href="#top-page" onClick={() => setPage(page + 1)}>
+            <button type="button" className="button-filter">
               <p className="href-disable">Pour le href</p>
               <MdOutlineArrowForwardIos className="arrow-page" />
             </button>

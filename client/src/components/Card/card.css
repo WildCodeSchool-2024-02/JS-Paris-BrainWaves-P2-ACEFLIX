@@ -96,6 +96,29 @@ h3 {
   display: block;
 }
 
+.appreciated {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* transform: translateX(-50%); */
+  width: 100px;
+  height: 35px;
+  background-color: #b53dff;
+  border-radius: 5px;
+  box-shadow: -2px 2px 2px rgb(61, 61, 61);
+}
+
+.appreciated p {
+  color: whitesmoke;
+  margin: 0;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 600;
+}
+
 @media screen and (max-width: 500px) {
   #card img {
     object-fit: cover;
