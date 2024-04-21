@@ -42,7 +42,7 @@ ul li p {
   margin: 5px 0 0 0;
 }
 
-ul li p:hover {
+ul li :hover {
   color: #b53dff;
   transform: scale(1.05);
 }

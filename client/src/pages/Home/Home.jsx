@@ -5,6 +5,7 @@ import Popular from "../../components/Popular/Popular";
 import Banner from "../../components/Banner/Banner";
 import Video from "../../components/Video/Video";
 import SecondHeader from "../../components/SecondHeader/SecondHeader";
+import Horror from "../../components/Horror/Horror";
 
 export default function Home() {
   // Initialisation des states
@@ -16,6 +17,7 @@ export default function Home() {
   const [activeMovie, setActiveMovie] = useState(false);
   const [activeSerie, setActiveSerie] = useState(false);
   const [activeAll, setActiveAll] = useState(true);
+  const [movieContent, setMovieContent] = useState(false);
 
   // URL à fetch
   const moviesFetch =
@@ -36,6 +38,7 @@ export default function Home() {
     setActiveAll(false);
     setActiveSerie(false);
     setActiveMovie(true);
+    setMovieContent(true);
     fetch(moviesFetch)
       .then((response) => response.json())
       .then((response) => setUniqueTop(response.results.slice(0, 10)))
@@ -53,6 +56,7 @@ export default function Home() {
     setActiveAll(false);
     setActiveMovie(false);
     setActiveSerie(true);
+    setMovieContent(false);
     fetch(seriesFetch)
       .then((response) => response.json())
       .then((response) => setUniqueTop(response.results.slice(0, 10)))
@@ -70,6 +74,7 @@ export default function Home() {
     setActiveMovie(false);
     setActiveSerie(false);
     setActiveAll(true);
+    setMovieContent(false);
   };
 
   return (
@@ -84,6 +89,7 @@ export default function Home() {
         uniqueTendances={uniqueTendances}
         shuffle={shuffle}
       />
+      {movieContent && <Horror shuffle={shuffle}/>}
       <SecondHeader
         handleAll={handleAll}
         handleMovies={handleMovies}

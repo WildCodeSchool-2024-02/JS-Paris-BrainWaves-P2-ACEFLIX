@@ -45,6 +45,10 @@
   margin: 0 90px 0 90px;
 }
 
+.horror-slider {
+  margin: 0 90px 0 90px;
+}
+
 @media (max-width: 1025px) {
   .swiper-button-prev {
     display: none;
@@ -59,6 +63,10 @@
   }
 
   .slider-top10 {
+    margin: 0;
+  }
+
+  .horror-slider {
     margin: 0;
   }
 
