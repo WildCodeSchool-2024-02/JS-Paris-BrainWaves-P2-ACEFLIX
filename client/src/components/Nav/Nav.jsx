@@ -8,21 +8,39 @@ import { MdOutlineAccountCircle } from "react-icons/md";
 import { BiMoviePlay } from "react-icons/bi";
 import "./nav.css";
 
-export default function Nav({ setIsOpen, isOpen }) {
+export default function Nav({
+  setIsOpen,
+  isOpen,
+  setHomeActive,
+  homeActive,
+  setSerieActive,
+  serieActive,
+  setMovieActive,
+  movieActive,
+}) {
   const navigate = useNavigate();
 
   const navigateHome = () => {
     setIsOpen(false);
+    setMovieActive(false);
+    setSerieActive(false);
+    setHomeActive(true);
     navigate("/");
   };
 
   const navigateMovie = () => {
     setIsOpen(false);
+    setMovieActive(true);
+    setSerieActive(false);
+    setHomeActive(false);
     navigate("/filter/movie");
   };
 
   const navigateSerie = () => {
     setIsOpen(false);
+    setMovieActive(false);
+    setSerieActive(true);
+    setHomeActive(false);
     navigate("/filter/tv");
   };
 
@@ -37,27 +55,39 @@ export default function Nav({ setIsOpen, isOpen }) {
       </div>
       <ul>
         <li
-          className="list-nav-elements"
+          className={
+            !homeActive ? "list-nav-elements" : "list-nav-elements active-link"
+          }
           onClick={navigateHome}
           role="presentation"
         >
-          <IoHomeOutline className="icon-nav" />
+          <IoHomeOutline
+            className={!homeActive ? "icon-nav" : "icon-nav active-link"}
+          />
           <p>Home</p>
         </li>
         <li
-          className="list-nav-elements"
+          className={
+            !movieActive ? "list-nav-elements" : "list-nav-elements active-link"
+          }
           onClick={navigateMovie}
           role="presentation"
         >
-          <BiMoviePlay className="icon-nav" />
+          <BiMoviePlay
+            className={!movieActive ? "icon-nav" : "icon-nav active-link"}
+          />
           <p>Movies</p>
         </li>
         <li
-          className="list-nav-elements"
+          className={
+            !serieActive ? "list-nav-elements" : "list-nav-elements active-link"
+          }
           onClick={navigateSerie}
           role="presentation"
         >
-          <BiCameraMovie className="icon-nav" />
+          <BiCameraMovie
+            className={!serieActive ? "icon-nav" : "icon-nav active-link"}
+          />
           <p>Series</p>
         </li>
         <li className="list-nav-elements">
@@ -75,4 +105,10 @@ export default function Nav({ setIsOpen, isOpen }) {
 Nav.propTypes = {
   setIsOpen: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
+  setHomeActive: PropTypes.func.isRequired,
+  homeActive: PropTypes.bool.isRequired,
+  setSerieActive: PropTypes.func.isRequired,
+  serieActive: PropTypes.bool.isRequired,
+  setMovieActive: PropTypes.func.isRequired,
+  movieActive: PropTypes.bool.isRequired,
 };

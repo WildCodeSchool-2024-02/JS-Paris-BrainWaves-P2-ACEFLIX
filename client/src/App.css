@@ -26,13 +26,12 @@ p {
 button {
   border-radius: 7px;
   text-align: center;
-  padding: 10px;
   border: none;
-  box-shadow: 0 0 7px black;
 }
 
 nav {
   position: fixed;
+  top: 0;
   left: 0;
   z-index: 60;
 }
@@ -55,6 +54,7 @@ header {
     font-size: 35px;
   }
   nav {
+    position: sticky;
     bottom: 0;
     right: 0;
   }

@@ -1,0 +1,90 @@
+.buttons-movies-container {
+  top: 400px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  overflow-x: scroll;
+  margin: 10px 10px 30px 10px;
+}
+
+.buttons-movies {
+  cursor: pointer;
+  min-width: 100px;
+  height: 33px;
+  background-color: rgba(61, 61, 61, 0.7);
+  opacity: 0.6;
+  font-weight: 600;
+  color: whitesmoke;
+  transition: all 0.3s ease-in-out;
+}
+
+.buttons-movies:hover {
+  background-color: #b53dff;
+  box-shadow: 0 0 15px #b53dff;
+  opacity: 1;
+}
+
+.buttons-movies-container::-webkit-scrollbar {
+  display: none;
+}
+
+.buttons-movies:focus,
+.buttons-movies:focus-visible {
+  background-color: #b53dff;
+  color: whitesmoke;
+}
+
+.active-genre {
+  background-color: #b53dff;
+  opacity: 1;
+}
+
+.button-filter {
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 10px;
+  background-color: rgba(227, 227, 227, 0.7);
+}
+
+.arrow-page {
+  font-size: 20px;
+}
+
+.button-filter:hover {
+  background-color: rgba(227, 227, 227);
+}
+
+.button-filter:hover {
+  background-color: rgba(227, 227, 227);
+}
+
+.button-filter-stop {
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 10px;
+  background-color: rgb(56, 56, 56);
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .buttons-movies {
+    min-width: 70px;
+    height: 30px;
+    font-size: 10px;
+  }
+}

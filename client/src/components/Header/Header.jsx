@@ -7,7 +7,12 @@ import { SlMenu } from "react-icons/sl";
 import aceflixLogo from "../../assets/images/aceflixLogo.png";
 import DisplaySearchResults from "../DisplaySearchResults/DisplaySearchResults";
 
-export default function Header({ setIsOpen }) {
+export default function Header({
+  setIsOpen,
+  setHomeActive,
+  setMovieActive,
+  setSerieActive,
+}) {
   const [search, setSearch] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
@@ -34,8 +39,21 @@ export default function Header({ setIsOpen }) {
     return true;
   };
 
+  const handleSearchKey = (e) => {
+    if (e.key === "Enter") {
+      searchResult();
+    }
+  };
+
   const openNav = () => {
     setIsOpen(true);
+  };
+
+  const navigateHome = () => {
+    navigate("/");
+    setHomeActive(true);
+    setMovieActive(false);
+    setSerieActive(false);
   };
 
   return (
@@ -54,7 +72,7 @@ export default function Header({ setIsOpen }) {
 
         <div
           className="aceflix-logo"
-          onClick={() => navigate("/")}
+          onClick={navigateHome}
           role="presentation"
         >
           <img src={aceflixLogo} alt="Aceflix-Logo" />
@@ -67,7 +85,8 @@ export default function Header({ setIsOpen }) {
             aria-label="search"
             value={inputValue}
             onInput={handleInput}
-            placeholder="Search for movies, series...."
+            onKeyDown={handleSearchKey}
+            placeholder="Search for movies, series & actors ..."
           />
 
           <button
@@ -94,4 +113,7 @@ export default function Header({ setIsOpen }) {
 
 Header.propTypes = {
   setIsOpen: PropTypes.func.isRequired,
+  setHomeActive: PropTypes.func.isRequired,
+  setSerieActive: PropTypes.func.isRequired,
+  setMovieActive: PropTypes.func.isRequired,
 };

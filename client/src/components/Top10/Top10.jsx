@@ -56,45 +56,46 @@ export default function Top10({ status, uniqueTop }) {
       <div className="slider-container">
         <Swiper
           modules={[Navigation, FreeMode]}
-          spaceBetween={5}
+          spaceBetween={10}
           slidesPerView={6}
-          loop={false}
           // eslint-disable-next-line react/jsx-boolean-value
           freeMode={true}
           centeredSlides={false}
           breakpoints={{
             1200: {
               slidesPerView: 6,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
             750: {
               slidesPerView: 5,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
             500: {
               slidesPerView: 4,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
             320: {
               slidesPerView: 3,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
             280: {
               slidesPerView: 2,
-              spaceBetween: 5,
+              spaceBetween: 10,
             },
           }}
           navigation
           className="mySwiper"
         >
           {status
-            ? uniqueTop?.map((content) => (
+            ? uniqueTop?.map((content, index) => (
                 <SwiperSlide key={content.id}>
+                  <p className="test-top">{index + 1}</p>
                   <Card card={content} />
                 </SwiperSlide>
               ))
-            : TopContent?.map((content) => (
+            : TopContent?.map((content, index) => (
                 <SwiperSlide key={content.id}>
+                  <p className="test-top">{index + 1}</p>
                   <Card card={content} />
                 </SwiperSlide>
               ))}

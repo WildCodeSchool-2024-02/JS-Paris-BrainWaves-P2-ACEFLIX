@@ -5,8 +5,10 @@ import Popular from "../../components/Popular/Popular";
 import Banner from "../../components/Banner/Banner";
 import Video from "../../components/Video/Video";
 import SecondHeader from "../../components/SecondHeader/SecondHeader";
-
-
+import Horror from "../../components/Horror/Horror";
+import Drama from "../../components/Drama/Drama";
+import Family from "../../components/Family/Family";
+import Reality from "../../components/Reality/Reality";
 
 export default function Home() {
   // Initialisation des states
@@ -14,7 +16,12 @@ export default function Home() {
   const [uniqueTop, setUniqueTop] = useState([]); // State qui vient ajouter les données d'une seule catégorie
   const [uniqueTendances, setUniqueTendances] = useState([]); // State qui vient ajouter les données d'une seule catégorie
   const [blackScreen, setBlackScreen] = useState(false); // State qui permet d'afficher et cacher le popupvideo
-  const [idVideo, setIdVideo] = useState(0); // State qui permet de récupérer l'id de la vidéo cliquée
+  const [idVideo, setIdVideo] = useState(""); // State qui permet de récupérer l'url de la vidéo cliquée
+  const [activeMovie, setActiveMovie] = useState(false); // State qui permet de mettre en surbrillance quand l'utilisateur est sur la catégorie movie
+  const [activeSerie, setActiveSerie] = useState(false); // State qui permet de mettre en surbrillance quand l'utilisateur est sur la catégorie serie
+  const [activeAll, setActiveAll] = useState(true); // State qui permet de mettre en surbrillance quand l'utilisateur est sur la catégorie all
+  const [movieContent, setMovieContent] = useState(false); // State qui permet d'afficher les sections contenant uniquement des films
+  const [serieContent, setSerieContent] = useState(false); // State qui permet d'afficher les sections contenant uniquement des series
 
   // URL à fetch
   const moviesFetch =
@@ -32,52 +39,52 @@ export default function Home() {
 
   const handleMovies = () => {
     setStatus(true);
+    setActiveAll(false);
+    setActiveSerie(false);
+    setActiveMovie(true);
+    setMovieContent(true);
+    setSerieContent(false);
     fetch(moviesFetch)
       .then((response) => response.json())
-      .then((response) => setUniqueTop(response.results.splice(0, 10)))
+      .then((response) => setUniqueTop(response.results.slice(0, 10)))
       .catch((err) => console.error(err));
     fetch(popularMovies)
       .then((response) => response.json())
-      .then((response) =>
-        setUniqueTendances(shuffle(response.results).splice(0, 15))
-      )
+      .then((response) => setUniqueTendances(shuffle(response.results)))
       .catch((err) => console.error(err));
   };
 
   const handleSeries = () => {
     setStatus(true);
+    setActiveAll(false);
+    setActiveMovie(false);
+    setActiveSerie(true);
+    setMovieContent(false);
+    setSerieContent(true);
     fetch(seriesFetch)
       .then((response) => response.json())
-      .then((response) => setUniqueTop(response.results.splice(0, 10)))
+      .then((response) => setUniqueTop(response.results.slice(0, 10)))
       .catch((err) => console.error(err));
     fetch(popularSeries)
       .then((response) => response.json())
-      .then((response) =>
-        setUniqueTendances(shuffle(response.results).splice(0, 15))
-      )
+      .then((response) => setUniqueTendances(shuffle(response.results)))
       .catch((err) => console.error(err));
   };
 
   const handleAll = () => {
     setStatus(false);
+    setActiveMovie(false);
+    setActiveSerie(false);
+    setActiveAll(true);
+    setMovieContent(false);
+    setSerieContent(false);
   };
 
   return (
-    <section className= "home">
+    <section className="home">
       {blackScreen && (
         <Video idVideo={idVideo} setBlackScreen={setBlackScreen} />
       )}
-      <div className="static-button">
-        <button type="button" className="filter-button" onClick={handleAll}>
-          All
-        </button>
-        <button type="button" className="filter-button" onClick={handleMovies}>
-          Movies
-        </button>
-        <button type="button" className="filter-button" onClick={handleSeries}>
-          Series
-        </button>
-      </div>
       <Banner setBlackScreen={setBlackScreen} setIdVideo={setIdVideo} />
       <Top10 status={status} uniqueTop={uniqueTop} />
       <Popular
@@ -85,8 +92,18 @@ export default function Home() {
         uniqueTendances={uniqueTendances}
         shuffle={shuffle}
       />
-
-      <SecondHeader/>
+      {movieContent && <Family shuffle={shuffle} />}
+      {movieContent && <Horror shuffle={shuffle} />}
+      {serieContent && <Reality shuffle={shuffle} />}
+      {serieContent && <Drama shuffle={shuffle} />}
+      <SecondHeader
+        handleAll={handleAll}
+        handleMovies={handleMovies}
+        handleSeries={handleSeries}
+        activeAll={activeAll}
+        activeMovie={activeMovie}
+        activeSerie={activeSerie}
+      />
     </section>
   );
 }

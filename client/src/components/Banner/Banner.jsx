@@ -41,12 +41,18 @@ export default function Banner({ setBlackScreen, setIdVideo }) {
         // eslint-disable-next-line react/jsx-boolean-value
         loop={true}
         modules={[Autoplay]}
-        // autoplay={{
-        //   delay: 4000,
-        //   disableOnInteraction: true,
-        //   pauseOnMouseEnter: true,
-        // }}
-        
+        autoplay={{
+          delay: 4000,
+          pauseOnMouseEnter: true,
+        }}
+        breakpoints={{
+          1025: {
+            direction: "vertical",
+          },
+          200: {
+            direction: "horizontal",
+          },
+        }}
         className="swipper-cinema-content"
       >
         {newCinema?.map((content) => (
