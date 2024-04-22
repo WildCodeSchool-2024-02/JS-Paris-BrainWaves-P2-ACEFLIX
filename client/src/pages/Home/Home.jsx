@@ -8,6 +8,7 @@ import SecondHeader from "../../components/SecondHeader/SecondHeader";
 import Horror from "../../components/Horror/Horror";
 import Drama from "../../components/Drama/Drama";
 import Family from "../../components/Family/Family";
+import Reality from "../../components/Reality/Reality";
 
 export default function Home() {
   // Initialisation des states
@@ -93,6 +94,7 @@ export default function Home() {
       />
       {movieContent && <Family shuffle={shuffle} />}
       {movieContent && <Horror shuffle={shuffle} />}
+      {serieContent && <Reality shuffle={shuffle} />}
       {serieContent && <Drama shuffle={shuffle} />}
       <SecondHeader
         handleAll={handleAll}

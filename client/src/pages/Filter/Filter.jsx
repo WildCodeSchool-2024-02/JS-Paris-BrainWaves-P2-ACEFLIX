@@ -113,17 +113,23 @@ export default function Filter() {
         </div>
         <div className="card-filter-container">
           {genreStatus &&
-            idFilter?.map((content) => (
-              <div className="card-filter" key={content.id}>
-                <Card card={content} id={content.id} />
-              </div>
-            ))}
+            idFilter?.map(
+              (content) =>
+                content.poster_path && (
+                  <div className="card-filter" key={content.id}>
+                    <Card card={content} id={content.id} />
+                  </div>
+                )
+            )}
           {!genreStatus &&
-            dataFilter?.map((content) => (
-              <div className="card-filter" key={content.id}>
-                <Card card={content} id={content.id} />
-              </div>
-            ))}
+            dataFilter?.map(
+              (content) =>
+                content.poster_path && (
+                  <div className="card-filter" key={content.id}>
+                    <Card card={content} id={content.id} />
+                  </div>
+                )
+            )}
         </div>
         <div className="pagination-wrapper">
           <a

@@ -57,6 +57,10 @@
   margin: 0 90px 0 90px;
 }
 
+.reality-slider {
+  margin: 0 90px 0 90px;
+}
+
 @media (max-width: 1025px) {
   .swiper-button-prev {
     display: none;
@@ -83,6 +87,10 @@
   }
 
   .family-slider {
+    margin: 0;
+  }
+
+  .reality-slider {
     margin: 0;
   }
 
