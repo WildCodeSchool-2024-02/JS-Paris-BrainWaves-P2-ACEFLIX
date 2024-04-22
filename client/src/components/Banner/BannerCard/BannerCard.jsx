@@ -1,17 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import "./bannercard.css";
 import PropTypes from "prop-types";
 import { FaPlay } from "react-icons/fa";
+import VideoContext from "../../ContextVideo";
 
-export default function BannerCard({
-  image,
-  overview,
-  title,
-  id,
-  setBlackScreen,
-  setIdVideo,
-}) {
+export default function BannerCard({ image, overview, title, id }) {
   const [content, setContent] = useState(null);
+  const { setUrlVideo, setBlackScreen } = useContext(VideoContext);
 
   useEffect(() => {
     fetch(
@@ -30,7 +25,7 @@ export default function BannerCard({
 
   const handleclick = () => {
     setBlackScreen(true);
-    setIdVideo(
+    setUrlVideo(
       `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US&api_key=aea07ae608264c18c1ea1431604753c3`
     );
     document.body.classList.add("active");
@@ -86,6 +81,4 @@ BannerCard.propTypes = {
   overview: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
-  setIdVideo: PropTypes.func.isRequired,
-  setBlackScreen: PropTypes.func.isRequired,
 };

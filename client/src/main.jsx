@@ -25,10 +25,6 @@ const router = createBrowserRouter([
         path: "/final/:type/:id",
         element: <Final />,
       },
-      {
-        path: "/search/:input",
-        element: <Final />,
-      },
     ],
   },
 ]);

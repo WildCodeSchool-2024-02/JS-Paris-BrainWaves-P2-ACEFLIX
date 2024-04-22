@@ -9,7 +9,7 @@ import "./popular.css";
 import useFetch from "../../useFetch";
 import Card from "../Card/Card";
 
-export default function Popular({ status, uniqueTendances, shuffle }) {
+function Popular({ status, uniqueTendances, shuffle }) {
   // URL des Movies et Series tendances
   const tendancesMoviesFetchURL =
     "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3";
@@ -105,3 +105,5 @@ Popular.propTypes = {
   uniqueTendances: PropTypes.oneOfType([PropTypes.array.isRequired]).isRequired,
   shuffle: PropTypes.func.isRequired,
 };
+
+export default Popular;

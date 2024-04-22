@@ -1,5 +1,4 @@
 /* eslint-disable import/no-unresolved */
-import PropTypes from "prop-types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "./banner.css";
@@ -7,7 +6,7 @@ import { Autoplay } from "swiper/modules";
 import useFetch from "../../useFetch";
 import BannerCard from "./BannerCard/BannerCard";
 
-export default function Banner({ setBlackScreen, setIdVideo }) {
+export default function Banner() {
   const cinemaURL =
     "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3";
 
@@ -58,8 +57,6 @@ export default function Banner({ setBlackScreen, setIdVideo }) {
         {newCinema?.map((content) => (
           <SwiperSlide key={content.id}>
             <BannerCard
-              setIdVideo={setIdVideo}
-              setBlackScreen={setBlackScreen}
               image={content.backdrop_path}
               overview={content.overview}
               title={content.original_title}
@@ -71,8 +68,3 @@ export default function Banner({ setBlackScreen, setIdVideo }) {
     </div>
   );
 }
-
-Banner.propTypes = {
-  setIdVideo: PropTypes.func.isRequired,
-  setBlackScreen: PropTypes.func.isRequired,
-};
