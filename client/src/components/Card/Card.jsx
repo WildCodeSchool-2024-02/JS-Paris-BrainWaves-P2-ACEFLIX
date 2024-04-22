@@ -15,7 +15,7 @@ export default function Card({ card }) {
       <div className="hidden-display">
         <div className="info-moviec-card">
           <h3>{card.title ? card.title : card.name}</h3>
-          <p>{card.release_date} </p>
+          <p>{card.release_date ? card.release_date : card.first_air_date} </p>
           <p className="vote">
             {" "}
             {Math.floor(parseFloat(card.vote_average) * 10) / 10}/10

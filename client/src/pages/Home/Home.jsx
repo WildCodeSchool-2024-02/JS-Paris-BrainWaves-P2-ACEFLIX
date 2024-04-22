@@ -14,12 +14,12 @@ export default function Home() {
   const [uniqueTop, setUniqueTop] = useState([]); // State qui vient ajouter les données d'une seule catégorie
   const [uniqueTendances, setUniqueTendances] = useState([]); // State qui vient ajouter les données d'une seule catégorie
   const [blackScreen, setBlackScreen] = useState(false); // State qui permet d'afficher et cacher le popupvideo
-  const [idVideo, setIdVideo] = useState(""); // State qui permet de récupérer l'id de la vidéo cliquée
-  const [activeMovie, setActiveMovie] = useState(false);
-  const [activeSerie, setActiveSerie] = useState(false);
-  const [activeAll, setActiveAll] = useState(true);
-  const [movieContent, setMovieContent] = useState(false);
-  const [serieContent, setSerieContent] = useState(false);
+  const [idVideo, setIdVideo] = useState(""); // State qui permet de récupérer l'url de la vidéo cliquée
+  const [activeMovie, setActiveMovie] = useState(false); // State qui permet de mettre en surbrillance quand l'utilisateur est sur la catégorie movie
+  const [activeSerie, setActiveSerie] = useState(false); // State qui permet de mettre en surbrillance quand l'utilisateur est sur la catégorie serie
+  const [activeAll, setActiveAll] = useState(true); // State qui permet de mettre en surbrillance quand l'utilisateur est sur la catégorie all
+  const [movieContent, setMovieContent] = useState(false); // State qui permet d'afficher les sections contenant uniquement des films
+  const [serieContent, setSerieContent] = useState(false); // State qui permet d'afficher les sections contenant uniquement des series
 
   // URL à fetch
   const moviesFetch =
@@ -48,9 +48,7 @@ export default function Home() {
       .catch((err) => console.error(err));
     fetch(popularMovies)
       .then((response) => response.json())
-      .then((response) =>
-        setUniqueTendances(shuffle(response.results).slice(0, 20))
-      )
+      .then((response) => setUniqueTendances(shuffle(response.results)))
       .catch((err) => console.error(err));
   };
 
@@ -67,9 +65,7 @@ export default function Home() {
       .catch((err) => console.error(err));
     fetch(popularSeries)
       .then((response) => response.json())
-      .then((response) =>
-        setUniqueTendances(shuffle(response.results).slice(0, 20))
-      )
+      .then((response) => setUniqueTendances(shuffle(response.results)))
       .catch((err) => console.error(err));
   };
 
