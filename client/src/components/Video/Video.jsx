@@ -7,11 +7,15 @@ import "./video.css";
 export default function Videos() {
   const [video, setVideo] = useState(null);
   const { urlVideo, setBlackScreen } = useContext(VideoContext);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch(urlVideo)
       .then((response) => response.json())
-      .then((response) => setVideo(response.results));
+      .then((response) => setVideo(response.results))
+      .catch((err) => setError(err))
+      .finally(() => setLoading(false));
   }, [urlVideo]);
 
   const urlTab = [];
@@ -25,6 +29,10 @@ export default function Videos() {
     if (urlTab.length === 0 && video.length > 0) {
       urlTab.push(video[0].key);
     }
+  }
+
+  if (error) {
+    console.info(error);
   }
 
   const handleClose = () => {
@@ -46,7 +54,9 @@ export default function Videos() {
         </div>
       ) : (
         <div className="video-container-empty">
-          <h1 className="no-video">Video not available</h1>
+          <h1 className="no-video">
+            {!loading ? "Video not available" : "LOADING ..."}
+          </h1>
         </div>
       )}
       <IoMdClose

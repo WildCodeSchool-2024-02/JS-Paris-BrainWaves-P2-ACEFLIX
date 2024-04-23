@@ -9,6 +9,7 @@ export default function Card({ card }) {
 
   const handleUrlVideo = () => {
     setBlackScreen(true);
+    document.body.classList.add("active");
     if (card.release_date) {
       setUrlVideo(
         `https://api.themoviedb.org/3/movie/${card.id}/videos?language=en-US&api_key=aea07ae608264c18c1ea1431604753c3`

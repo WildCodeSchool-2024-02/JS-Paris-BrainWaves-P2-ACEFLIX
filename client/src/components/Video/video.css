@@ -25,6 +25,21 @@
   background-color: black;
 }
 
+.video-container-loading {
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  transform: translateX(50%);
+  transform: translateY(50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 650px;
+  width: 1000px;
+  background-color: black;
+  z-index: 5;
+}
+
 .no-video {
   color: white;
   font-size: 50px;
