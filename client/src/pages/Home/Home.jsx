@@ -110,9 +110,9 @@ export default function Home() {
           uniqueTendances={uniqueTendances}
           shuffle={shuffle}
         />
-        <Syfy status={status} uniqueSyfy={uniqueSyfy} shuffle={shuffle}/>
         {movieContent && <Family shuffle={shuffle} />}
         {movieContent && <Horror shuffle={shuffle} />}
+        <Syfy status={status} uniqueSyfy={uniqueSyfy} shuffle={shuffle} />
         {serieContent && <Reality shuffle={shuffle} />}
         {serieContent && <Drama shuffle={shuffle} />}
         <SecondHeader
