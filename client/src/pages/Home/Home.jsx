@@ -9,6 +9,7 @@ import Horror from "../../components/Horror/Horror";
 import Drama from "../../components/Drama/Drama";
 import Family from "../../components/Family/Family";
 import Reality from "../../components/Reality/Reality";
+import Upcoming from "../../components/Upcoming/Upcoming";
 
 export default function Home() {
   // Initialisation des states
@@ -87,6 +88,7 @@ export default function Home() {
       )}
       <Banner setBlackScreen={setBlackScreen} setIdVideo={setIdVideo} />
       <Top10 status={status} uniqueTop={uniqueTop} />
+      {movieContent && <Upcoming />}
       <Popular
         status={status}
         uniqueTendances={uniqueTendances}
