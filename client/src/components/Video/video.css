@@ -26,9 +26,6 @@
 }
 
 .video-container-loading {
-  /* position: absolute;
-  top: 0;
-  left: 0; */
   transform: translateX(50%);
   transform: translateY(50%);
   display: flex;
