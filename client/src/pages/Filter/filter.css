@@ -1,0 +1,142 @@
+.filter-page {
+  margin: 0 90px;
+}
+
+.banner-movie {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 500px;
+  background-image: url("../../assets/images/disney-plus-streaming-service-showcasing-popular-content-and-characters-z4ihs4vo4ho3v0r0.jpg");
+  background-size: cover;
+  background-position: top;
+}
+
+.banner-serie {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 500px;
+  background-image: url("../../assets/images/aabffbe251df89bfa1b3d4a03c71008b.jpg");
+  background-size: cover;
+  background-position: right;
+}
+
+.banner-movie::before {
+  content: "";
+  height: 600px;
+  width: 100vw;
+  background: linear-gradient(135deg, black 10%, transparent);
+}
+
+.banner-serie::before {
+  content: "";
+  height: 600px;
+  width: 100vw;
+  background: linear-gradient(135deg, black 10%, transparent);
+}
+
+.type-movie-serie {
+  position: absolute;
+  top: 200px;
+  left: 180px;
+  width: 500px;
+}
+.type-movie-serie-title {
+  color: white;
+  /* opacity: 0.6; */
+  font-size: 60px;
+  margin: 10px 0;
+}
+.type-movie-serie-desc {
+  color: whitesmoke;
+  font-size: 13px;
+  opacity: 0.6;
+  font-style: italic;
+}
+.card-filter-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.card-filter {
+  width: 230px;
+}
+
+.infinite-scroll-component__outerdiv {
+  width: 100%;
+  display: flex;
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination {
+  color: whitesmoke;
+  margin: 0 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.href-disable {
+  display: none;
+}
+
+.genre-display {
+  color: whitesmoke;
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  font-style: italic;
+}
+
+@media (max-width: 1025px) {
+  .filter-page {
+    margin: 0 10px;
+  }
+  .card-filter {
+    width: 150px;
+  }
+  .type-movie-serie {
+    left: 40px;
+  }
+  .banner-serie {
+    background-position: top;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-filter-container {
+    gap: 5px;
+  }
+  .card-filter {
+    width: 80px;
+  }
+  .type-movie-serie {
+    left: 25px;
+    width: 270px;
+  }
+  .banner-movie::before {
+    width: 100vw;
+    background: none;
+    background-color: rgb(0, 0, 0, 0.4);
+  }
+  .banner-movie {
+    background-position: right;
+  }
+  .banner-serie::before {
+    width: 100vw;
+    background: none;
+    background-color: rgb(0, 0, 0, 0.4);
+  }
+  .banner-serie {
+    background-position: right;
+  }
+}

@@ -1,8 +1,4 @@
 #SecondHeader {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -10,22 +6,32 @@
   flex: 1;
 }
 .SecondHeader-btn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
   margin: 0;
   padding: 0;
 }
-.SecondHeader-btn button {
+
+.button-filter-content {
+  display: flex;
+  justify-content: center;
+  width: 80px;
+  padding: 10px 20px;
   color: white;
   background-color: black;
   opacity: 0.6;
-  width: 50px;
-  box-shadow: 0 0 10px black;
-  transition: all 0.5s ease-in-out;
+  box-shadow: 0 0 15px #b53dff;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
-  margin: 0 5px;
-  text-align: center;
-  padding: 5px;
 }
 
-.SecondHeader-btn button:hover {
-  box-shadow: 0 0 15px rgb(212, 57, 236);
+.button-filter-content:hover {
+  background-color: #b53dff;
+  opacity: 1;
+}
+
+.isActive {
+  background-color: #b53dff;
+  opacity: 1;
 }

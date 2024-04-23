@@ -31,7 +31,7 @@ export default function DisplaySearchResults({
   );
 }
 DisplaySearchResults.propTypes = {
-  results: PropTypes.string.isRequired,
+  results: PropTypes.oneOfType([PropTypes.array.isRequired]).isRequired,
   inputValue: PropTypes.string.isRequired,
   setDisplay: PropTypes.func.isRequired,
 };

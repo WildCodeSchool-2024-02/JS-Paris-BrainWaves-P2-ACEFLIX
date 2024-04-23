@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export default function BlackScreen({ setIsOpen }) {
   const blackscreen = () => {
-  setIsOpen(false);
+    setIsOpen(false);
   };
 
   return (

@@ -36,14 +36,19 @@ ul li {
 ul li p {
   color: whitesmoke;
   list-style-type: none;
-  font-family: "Tilt Neon", sans-serif;
-  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
   cursor: pointer;
   margin: 5px 0 0 0;
 }
 
+ul li :hover {
+  color: #b53dff;
+  transform: scale(1.05);
+}
+
 .logo {
-  margin-bottom: 90px;
+  margin-bottom: 60px;
   cursor: pointer;
 }
 
@@ -66,6 +71,15 @@ ul li p {
 
 .icon-nav {
   display: none;
+}
+
+.active-link p {
+  color: #b53dff;
+}
+
+.close-nav:hover {
+  color: rgb(178, 178, 178);
+  transform: scale(1.05);
 }
 
 @media (max-width: 1025px) {
@@ -93,11 +107,17 @@ ul li p {
     gap: 100px;
   }
   ul li p {
-    font-size: 15px;
+    font-size: 13px;
+  }
+  .active-link {
+    color: #b53dff;
   }
 }
 @media (max-width: 600px) {
   ul {
     gap: 40px;
+  }
+  ul li p {
+    font-size: 10px;
   }
 }

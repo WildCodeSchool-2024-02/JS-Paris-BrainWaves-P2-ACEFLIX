@@ -13,6 +13,11 @@
   position: relative;
   animation: UptoBottom 1s alternate ease-in-out forwards;
   z-index: 51;
+  top: 60px;
+}
+
+.each-card {
+  width: 20%;
 }
 @keyframes UptoBottom {
   from {
@@ -67,10 +72,20 @@
   transition: none;
 }
 
+@media screen and (max-width: 1025px) {
+  .each-card {
+    width: 25%;
+  }
+}
+
 @media screen and (max-width: 900px) {
   .close-Btn {
     background: none;
     box-shadow: none;
+  }
+
+  .each-card {
+    width: 30%;
   }
 }
 

@@ -7,12 +7,29 @@ import BlackScreen from "./components/BlackScreen/BlackScreen";
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [homeActive, setHomeActive] = useState(true);
+  const [movieActive, setMovieActive] = useState(false);
+  const [serieActive, setSerieActive] = useState(false);
   return (
     <>
-      <Header setIsOpen={setIsOpen} />
-      <Nav setIsOpen={setIsOpen} isOpen={isOpen} />
-      {isOpen && <BlackScreen setIsOpen={setIsOpen} />}
+      <Header
+        setIsOpen={setIsOpen}
+        setHomeActive={setHomeActive}
+        setMovieActive={setMovieActive}
+        setSerieActive={setSerieActive}
+      />
       <Outlet />
+      <Nav
+        setIsOpen={setIsOpen}
+        isOpen={isOpen}
+        setHomeActive={setHomeActive}
+        homeActive={homeActive}
+        setSerieActive={setSerieActive}
+        serieActive={serieActive}
+        setMovieActive={setMovieActive}
+        movieActive={movieActive}
+      />
+      {isOpen && <BlackScreen setIsOpen={setIsOpen} />}
     </>
   );
 }

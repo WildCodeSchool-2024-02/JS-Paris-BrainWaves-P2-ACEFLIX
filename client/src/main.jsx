@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         element: <Filter />,
       },
       {
-        path: "/final/:id",
+        path: "/final/:type/:id",
         element: <Final />,
       },
       {
