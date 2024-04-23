@@ -11,6 +11,7 @@ import Family from "../../components/Family/Family";
 import Reality from "../../components/Reality/Reality";
 import VideoContext from "../../components/ContextVideo";
 import Syfy from "../../components/Syfy/Syfy";
+import Upcoming from "../../components/Upcoming/Upcoming";
 
 export default function Home() {
   // Initialisation des states
@@ -125,5 +126,30 @@ export default function Home() {
         />
       </section>
     </VideoContext.Provider>
+    <section className="home">
+      {blackScreen && (
+        <Video idVideo={idVideo} setBlackScreen={setBlackScreen} />
+      )}
+      <Banner setBlackScreen={setBlackScreen} setIdVideo={setIdVideo} />
+      <Top10 status={status} uniqueTop={uniqueTop} />
+      {movieContent && <Upcoming />}
+      <Popular
+        status={status}
+        uniqueTendances={uniqueTendances}
+        shuffle={shuffle}
+      />
+      {movieContent && <Family shuffle={shuffle} />}
+      {movieContent && <Horror shuffle={shuffle} />}
+      {serieContent && <Reality shuffle={shuffle} />}
+      {serieContent && <Drama shuffle={shuffle} />}
+      <SecondHeader
+        handleAll={handleAll}
+        handleMovies={handleMovies}
+        handleSeries={handleSeries}
+        activeAll={activeAll}
+        activeMovie={activeMovie}
+        activeSerie={activeSerie}
+      />
+    </section>
   );
 }
