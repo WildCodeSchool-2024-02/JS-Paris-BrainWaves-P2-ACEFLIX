@@ -29,8 +29,8 @@ export default function Upcoming() {
         modules={[Navigation, FreeMode]}
         spaceBetween={10}
         slidesPerView={6}
-        // eslint-disable-next-line react/jsx-boolean-value
-        freeMode={true}
+
+        freeMode
         centeredSlides={false}
         breakpoints={{
           1200: {
