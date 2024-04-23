@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./header.css";
 import { IoSearch } from "react-icons/io5";
 import { SlMenu } from "react-icons/sl";
 import aceflixLogo from "../../assets/images/aceflixLogo.png";
 import DisplaySearchResults from "../DisplaySearchResults/DisplaySearchResults";
+import VideoContext from "../ContextVideo";
+import Video from "../Video/Video";
 
 export default function Header({
   setIsOpen,
@@ -21,6 +23,9 @@ export default function Header({
 
   const apiKey = "aea07ae608264c18c1ea1431604753c3";
   const fetchResults = `https://api.themoviedb.org/3/search/multi?query=${inputValue}&include_adult=false&language=en-US&page=1&api_key=${apiKey}`;
+
+  const [blackScreen, setBlackScreen] = useState(false);
+  const [urlVideo, setUrlVideo] = useState("");
 
   const handleInput = (e) => {
     setInputValue(e.target.value);
@@ -56,58 +61,66 @@ export default function Header({
     setSerieActive(false);
   };
 
+  const memo = useMemo(
+    () => ({ urlVideo, setUrlVideo, blackScreen, setBlackScreen }),
+    [urlVideo, setUrlVideo, blackScreen, setBlackScreen]
+  );
+
   return (
-    <header>
-      <div id="Header">
-        <div className="hearder-burger">
-          <button
-            aria-label="menu"
-            className="burger-btn"
-            type="button"
-            onClick={openNav}
+    <VideoContext.Provider value={memo}>
+      <header>
+        {blackScreen && <Video />}
+        <div id="Header">
+          <div className="hearder-burger">
+            <button
+              aria-label="menu"
+              className="burger-btn"
+              type="button"
+              onClick={openNav}
+            >
+              <SlMenu />
+            </button>
+          </div>
+
+          <div
+            className="aceflix-logo"
+            onClick={navigateHome}
+            role="presentation"
           >
-            <SlMenu />
-          </button>
+            <img src={aceflixLogo} alt="Aceflix-Logo" />
+          </div>
+
+          <div className="main-search-input">
+            <input
+              className="header-input"
+              type="text"
+              aria-label="search"
+              value={inputValue}
+              onInput={handleInput}
+              onKeyDown={handleSearchKey}
+              placeholder="Search for movies, series & actors ..."
+            />
+
+            <button
+              className="header-search-btn"
+              type="button"
+              onClick={searchResult}
+            >
+              {" "}
+              <IoSearch />{" "}
+            </button>
+          </div>
         </div>
 
-        <div
-          className="aceflix-logo"
-          onClick={navigateHome}
-          role="presentation"
-        >
-          <img src={aceflixLogo} alt="Aceflix-Logo" />
-        </div>
-
-        <div className="main-search-input">
-          <input
-            className="header-input"
-            type="text"
-            aria-label="search"
-            value={inputValue}
-            onInput={handleInput}
-            onKeyDown={handleSearchKey}
-            placeholder="Search for movies, series & actors ..."
+        {display && (
+          <DisplaySearchResults
+            results={search}
+            inputValue={inputValue}
+            setDisplay={setDisplay}
           />
-
-          <button
-            className="header-search-btn"
-            type="button"
-            onClick={searchResult}
-          >
-            {" "}
-            <IoSearch />{" "}
-          </button>
-        </div>
-      </div>
-
-      {display && (
-        <DisplaySearchResults
-          results={search}
-          inputValue={inputValue}
-          setDisplay={setDisplay}
-        />
-      )}
-    </header>
+        )}
+      </header>
+    </VideoContext.Provider>
   );
 }
 

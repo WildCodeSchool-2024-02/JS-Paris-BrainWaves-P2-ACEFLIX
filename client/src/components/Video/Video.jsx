@@ -1,18 +1,22 @@
-import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import ReactPlayer from "react-player/youtube";
-import "./video.css";
 import { IoMdClose } from "react-icons/io";
+import VideoContext from "../ContextVideo";
+import "./video.css";
 
-export default function Videos({ setBlackScreen, idVideo }) {
+export default function Videos() {
   const [video, setVideo] = useState(null);
+  const { urlVideo, setBlackScreen } = useContext(VideoContext);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const url = idVideo;
   useEffect(() => {
-    fetch(url)
+    fetch(urlVideo)
       .then((response) => response.json())
-      .then((response) => setVideo(response.results));
-  }, [url]);
+      .then((response) => setVideo(response.results))
+      .catch((err) => setError(err))
+      .finally(() => setLoading(false));
+  }, [urlVideo]);
 
   const urlTab = [];
   if (video) {
@@ -22,9 +26,13 @@ export default function Videos({ setBlackScreen, idVideo }) {
       }
     });
 
-    if (urlTab.length === 0) {
+    if (urlTab.length === 0 && video.length > 0) {
       urlTab.push(video[0].key);
     }
+  }
+
+  if (error) {
+    console.info(error);
   }
 
   const handleClose = () => {
@@ -34,15 +42,23 @@ export default function Videos({ setBlackScreen, idVideo }) {
 
   return (
     <div className="black-screen">
-      <div className="video-container">
-        <ReactPlayer
-          url={`https://www.youtube.com/watch?v=${urlTab[0]}`}
-          controls
-          playing
-          width="100%"
-          height="100%"
-        />
-      </div>
+      {urlTab?.length > 0 ? (
+        <div className="video-container">
+          <ReactPlayer
+            url={`https://www.youtube.com/watch?v=${urlTab[0]}`}
+            controls
+            playing
+            width="100%"
+            height="100%"
+          />
+        </div>
+      ) : (
+        <div className="video-container-empty">
+          <h1 className="no-video">
+            {!loading ? "Video not available" : "LOADING ..."}
+          </h1>
+        </div>
+      )}
       <IoMdClose
         className="close-mark"
         onClick={handleClose}
@@ -51,8 +67,3 @@ export default function Videos({ setBlackScreen, idVideo }) {
     </div>
   );
 }
-
-Videos.propTypes = {
-  idVideo: PropTypes.string.isRequired,
-  setBlackScreen: PropTypes.func.isRequired,
-};

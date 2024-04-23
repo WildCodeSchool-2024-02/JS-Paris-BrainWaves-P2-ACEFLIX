@@ -32,9 +32,10 @@
 }
 
 .img-cinema {
-  width: 2300px;
+  width: 100vw;
   height: 750px;
   margin: 0;
+  object-fit: cover;
 }
 
 .content-container {
@@ -158,7 +159,6 @@
     bottom: 100px;
   }
   .img-cinema {
-    width: 1024px;
     height: 600px;
   }
   .img-container::after {

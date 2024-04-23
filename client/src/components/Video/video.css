@@ -16,6 +16,32 @@
   width: 1000px;
 }
 
+.video-container-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 650px;
+  width: 1000px;
+  background-color: black;
+}
+
+.video-container-loading {
+  transform: translateX(50%);
+  transform: translateY(50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 650px;
+  width: 1000px;
+  background-color: black;
+  z-index: 5;
+}
+
+.no-video {
+  color: white;
+  font-size: 50px;
+}
+
 .close-mark {
   position: absolute;
   top: 30px;

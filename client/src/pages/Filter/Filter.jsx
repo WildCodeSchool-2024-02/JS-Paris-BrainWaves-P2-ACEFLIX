@@ -1,13 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable import/no-duplicates */
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import FilterMovies from "../../components/FilterButtons/FilterMovies";
 import FilterSeries from "../../components/FilterButtons/FilterSeries";
 import useFetch from "../../useFetch";
 import Card from "../../components/Card/Card";
+import VideoContext from "../../components/ContextVideo";
+import Video from "../../components/Video/Video";
 import "./filter.css";
 
 export default function Filter() {
@@ -24,6 +26,8 @@ export default function Filter() {
 
   const [idGenre, setIdGenre] = useState(0);
   const [genreStatus, setGenreStatus] = useState(false);
+  const [blackScreen, setBlackScreen] = useState(false);
+  const [urlVideo, setUrlVideo] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -56,6 +60,11 @@ export default function Filter() {
     error: errorId,
   } = useFetch(urlGenres);
 
+  const memo = useMemo(
+    () => ({ urlVideo, setUrlVideo, blackScreen, setBlackScreen }),
+    [urlVideo, setUrlVideo, blackScreen, setBlackScreen]
+  );
+
   if (loadingFilter || loadingId) {
     return <h1>LOADING ...</h1>;
   }
@@ -64,96 +73,99 @@ export default function Filter() {
   }
 
   return (
-    <section id="top-page" className="filter-global">
-      <div className={type === "movie" ? "banner-movie" : "banner-serie"}>
-        <div className="type-movie-serie">
-          <h1 className="type-movie-serie-title">
-            {type === "movie" ? `${type.toUpperCase()}S` : "SERIES"}
-          </h1>
-          {type === "movie" ? (
-            <p className="type-movie-serie-desc">
-              Explore an infinite universe of cinematic entertainment: dive into
-              our comprehensive directory of films and series, where each title
-              promises you a unique adventure on the big screen.
-            </p>
-          ) : (
-            <p className="type-movie-serie-desc">
-              Embark on an epic journey through the world of television: delve
-              into our extensive catalogue of series, where every show invites
-              you into its captivating universe, episode by episode.
-            </p>
-          )}
-        </div>
-      </div>
-      <div className="filter-page">
-        <div className="filter-container-global">
-          <p className="genre-display">
-            {type === "movie" ? displayGenre.name : displayGenre2.name}
-          </p>
-          {type === "movie" && (
-            <FilterMovies
-              setFilter={setFilter}
-              setIdGenre={setIdGenre}
-              setGenreStatus={setGenreStatus}
-              setPage={setPage}
-              setDisplayGenre={setDisplayGenre}
-              displayGenre={displayGenre}
-            />
-          )}
-          {type === "tv" && (
-            <FilterSeries
-              setFilter={setFilter}
-              setIdGenre={setIdGenre}
-              setGenreStatus={setGenreStatus}
-              setPage={setPage}
-              setDisplayGenre2={setDisplayGenre2}
-              displayGenre2={displayGenre2}
-            />
-          )}
-        </div>
-        <div className="card-filter-container">
-          {genreStatus &&
-            idFilter?.map(
-              (content) =>
-                content.poster_path && (
-                  <div className="card-filter" key={content.id}>
-                    <Card card={content} id={content.id} />
-                  </div>
-                )
+    <VideoContext.Provider value={memo}>
+      <section id="top-page" className="filter-global">
+        {blackScreen && <Video />}
+        <div className={type === "movie" ? "banner-movie" : "banner-serie"}>
+          <div className="type-movie-serie">
+            <h1 className="type-movie-serie-title">
+              {type === "movie" ? `${type.toUpperCase()}S` : "SERIES"}
+            </h1>
+            {type === "movie" ? (
+              <p className="type-movie-serie-desc">
+                Explore an infinite universe of cinematic entertainment: dive
+                into our comprehensive directory of films and series, where each
+                title promises you a unique adventure on the big screen.
+              </p>
+            ) : (
+              <p className="type-movie-serie-desc">
+                Embark on an epic journey through the world of television: delve
+                into our extensive catalogue of series, where every show invites
+                you into its captivating universe, episode by episode.
+              </p>
             )}
-          {!genreStatus &&
-            dataFilter?.map(
-              (content) =>
-                content.poster_path && (
-                  <div className="card-filter" key={content.id}>
-                    <Card card={content} id={content.id} />
-                  </div>
-                )
-            )}
+          </div>
         </div>
-        <div className="pagination-wrapper">
-          <a
-            href={page > 1 ? "#top-page" : null}
-            onClick={() => page > 1 && setPage(page - 1)}
-          >
-            <button
-              type="button"
-              className={page === 1 ? "button-filter-stop" : "button-filter"}
+        <div className="filter-page">
+          <div className="filter-container-global">
+            <p className="genre-display">
+              {type === "movie" ? displayGenre.name : displayGenre2.name}
+            </p>
+            {type === "movie" && (
+              <FilterMovies
+                setFilter={setFilter}
+                setIdGenre={setIdGenre}
+                setGenreStatus={setGenreStatus}
+                setPage={setPage}
+                setDisplayGenre={setDisplayGenre}
+                displayGenre={displayGenre}
+              />
+            )}
+            {type === "tv" && (
+              <FilterSeries
+                setFilter={setFilter}
+                setIdGenre={setIdGenre}
+                setGenreStatus={setGenreStatus}
+                setPage={setPage}
+                setDisplayGenre2={setDisplayGenre2}
+                displayGenre2={displayGenre2}
+              />
+            )}
+          </div>
+          <div className="card-filter-container">
+            {genreStatus &&
+              idFilter?.map(
+                (content) =>
+                  content.poster_path && (
+                    <div className="card-filter" key={content.id}>
+                      <Card card={content} id={content.id} />
+                    </div>
+                  )
+              )}
+            {!genreStatus &&
+              dataFilter?.map(
+                (content) =>
+                  content.poster_path && (
+                    <div className="card-filter" key={content.id}>
+                      <Card card={content} id={content.id} />
+                    </div>
+                  )
+              )}
+          </div>
+          <div className="pagination-wrapper">
+            <a
+              href={page > 1 ? "#top-page" : null}
+              onClick={() => page > 1 && setPage(page - 1)}
             >
-              {" "}
-              <p className="href-disable">Pour le href</p>
-              <MdOutlineArrowBackIosNew className="arrow-page" />
-            </button>
-          </a>
-          <p className="pagination">{page}</p>
-          <a href="#top-page" onClick={() => setPage(page + 1)}>
-            <button type="button" className="button-filter">
-              <p className="href-disable">Pour le href</p>
-              <MdOutlineArrowForwardIos className="arrow-page" />
-            </button>
-          </a>
+              <button
+                type="button"
+                className={page === 1 ? "button-filter-stop" : "button-filter"}
+              >
+                {" "}
+                <p className="href-disable">Pour le href</p>
+                <MdOutlineArrowBackIosNew className="arrow-page" />
+              </button>
+            </a>
+            <p className="pagination">{page}</p>
+            <a href="#top-page" onClick={() => setPage(page + 1)}>
+              <button type="button" className="button-filter">
+                <p className="href-disable">Pour le href</p>
+                <MdOutlineArrowForwardIos className="arrow-page" />
+              </button>
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </VideoContext.Provider>
   );
 }
