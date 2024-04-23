@@ -1,8 +1,25 @@
 import { FaPlay } from "react-icons/fa";
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import VideoContext from "../ContextVideo";
 import "./card.css";
 
 export default function Card({ card }) {
+  const { setUrlVideo, setBlackScreen } = useContext(VideoContext);
+
+  const handleUrlVideo = () => {
+    setBlackScreen(true);
+    document.body.classList.add("active");
+    if (card.release_date) {
+      setUrlVideo(
+        `https://api.themoviedb.org/3/movie/${card.id}/videos?language=en-US&api_key=aea07ae608264c18c1ea1431604753c3`
+      );
+    } else {
+      setUrlVideo(
+        `https://api.themoviedb.org/3/tv/${card.id}/videos?language=en-US&api_key=aea07ae608264c18c1ea1431604753c3`
+      );
+    }
+  };
   return (
     <div id="card">
       {(card.first_air_date > "2024-04-21" ||
@@ -21,7 +38,11 @@ export default function Card({ card }) {
             {Math.floor(parseFloat(card.vote_average) * 10) / 10}/10
           </p>
 
-          <div className="btn-container">
+          <div
+            className="btn-container"
+            onClick={handleUrlVideo}
+            role="presentation"
+          >
             <button type="button" aria-label="logo">
               <FaPlay />
             </button>
@@ -39,5 +60,6 @@ Card.propTypes = {
     release_date: PropTypes.string,
     vote_average: PropTypes.number,
     first_air_date: PropTypes.string,
+    id: PropTypes.number,
   }).isRequired,
 };

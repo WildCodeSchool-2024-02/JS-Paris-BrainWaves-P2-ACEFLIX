@@ -35,3 +35,10 @@
   background-color: #b53dff;
   opacity: 1;
 }
+
+@media (max-width: 600px) {
+  .button-filter-content {
+    padding: 10px 20px;
+    width: 60px;
+  }
+}
