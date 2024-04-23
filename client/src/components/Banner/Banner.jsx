@@ -43,10 +43,16 @@ export default function Banner({ setBlackScreen, setIdVideo }) {
         modules={[Autoplay]}
         autoplay={{
           delay: 4000,
-          disableOnInteraction: true,
           pauseOnMouseEnter: true,
         }}
-        
+        breakpoints={{
+          1025: {
+            direction: "vertical",
+          },
+          200: {
+            direction: "horizontal",
+          },
+        }}
         className="swipper-cinema-content"
       >
         {newCinema?.map((content) => (

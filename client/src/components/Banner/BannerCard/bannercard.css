@@ -5,7 +5,7 @@
 .img-container::after {
   content: "";
   position: absolute;
-  bottom: 150px;
+  bottom: 130px;
   left: 0;
   width: 100vw;
   height: 250px;

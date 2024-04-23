@@ -7,7 +7,7 @@ import { IoMdClose } from "react-icons/io";
 export default function Videos({ setBlackScreen, idVideo }) {
   const [video, setVideo] = useState(null);
 
-  const url = `https://api.themoviedb.org/3/movie/${idVideo}/videos?language=en-US&api_key=aea07ae608264c18c1ea1431604753c3`;
+  const url = idVideo;
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
@@ -17,7 +17,7 @@ export default function Videos({ setBlackScreen, idVideo }) {
   const urlTab = [];
   if (video) {
     video.forEach((element) => {
-      if (element.type === "Trailer") {
+      if (element.type === "Trailer" || element.type === "Opening Credits") {
         urlTab.push(element.key);
       }
     });
@@ -39,8 +39,8 @@ export default function Videos({ setBlackScreen, idVideo }) {
           url={`https://www.youtube.com/watch?v=${urlTab[0]}`}
           controls
           playing
-          width='100%'
-          height='100%'
+          width="100%"
+          height="100%"
         />
       </div>
       <IoMdClose
@@ -53,6 +53,6 @@ export default function Videos({ setBlackScreen, idVideo }) {
 }
 
 Videos.propTypes = {
-  idVideo: PropTypes.number.isRequired,
+  idVideo: PropTypes.string.isRequired,
   setBlackScreen: PropTypes.func.isRequired,
 };

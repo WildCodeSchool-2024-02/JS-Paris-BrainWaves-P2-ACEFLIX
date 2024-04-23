@@ -5,6 +5,7 @@ body {
   background-color: black;
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
   position: relative;
 }
 
@@ -25,15 +26,40 @@ p {
 button {
   border-radius: 7px;
   text-align: center;
-  padding: 10px;
   border: none;
-  box-shadow: 0 0 7px black;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+}
+
+.blackscreen-nav {
+  position: fixed;
+  top: 0;
+  z-index: 52;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  z-index: 50;
 }
 
 /* Media pour tablette */
 @media (max-width: 1025px) {
   h1 {
     font-size: 35px;
+  }
+  nav {
+    position: sticky;
+    bottom: 0;
+    right: 0;
+  }
+  .blackscreen-nav {
+    display: none;
   }
 }
 
