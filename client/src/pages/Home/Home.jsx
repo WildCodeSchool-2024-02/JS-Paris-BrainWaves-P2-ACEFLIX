@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useContext, useState } from "react";
+import VideoContext from "../../components/ContextVideo";
 import Top10 from "../../components/Top10/Top10";
 import "./home.css";
 import Popular from "../../components/Popular/Popular";
@@ -9,9 +10,9 @@ import Horror from "../../components/Horror/Horror";
 import Drama from "../../components/Drama/Drama";
 import Family from "../../components/Family/Family";
 import Reality from "../../components/Reality/Reality";
-import VideoContext from "../../components/ContextVideo";
 import Syfy from "../../components/Syfy/Syfy";
 import Upcoming from "../../components/Upcoming/Upcoming";
+import War from "../../components/War/War";
 
 export default function Home() {
   // Initialisation des states
@@ -19,13 +20,14 @@ export default function Home() {
   const [uniqueTop, setUniqueTop] = useState([]); // State qui vient ajouter les données d'une seule catégorie
   const [uniqueTendances, setUniqueTendances] = useState([]); // State qui vient ajouter les données d'une seule catégorie
   const [uniqueSyfy, setUniqueSyfy] = useState([]); // State qui vient ajouter les données d'une seule catégorie
+  const [uniqueWar, setUniqueWar] = useState([]); // State qui vient ajouter les données d'une seule catégorie
   const [activeMovie, setActiveMovie] = useState(false); // State qui permet de mettre en surbrillance quand l'utilisateur est sur la catégorie movie
   const [activeSerie, setActiveSerie] = useState(false); // State qui permet de mettre en surbrillance quand l'utilisateur est sur la catégorie serie
   const [activeAll, setActiveAll] = useState(true); // State qui permet de mettre en surbrillance quand l'utilisateur est sur la catégorie all
   const [movieContent, setMovieContent] = useState(false); // State qui permet d'afficher les sections contenant uniquement des films
   const [serieContent, setSerieContent] = useState(false); // State qui permet d'afficher les sections contenant uniquement des series
-  const [blackScreen, setBlackScreen] = useState(false);
-  const [urlVideo, setUrlVideo] = useState("");
+  const { blackScreen } = useContext(VideoContext);
+
   // URL à fetch
   const moviesFetch =
     "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3";
@@ -39,11 +41,12 @@ export default function Home() {
     "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=878&api_key=aea07ae608264c18c1ea1431604753c3";
   const syfySeries =
     "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10765&api_key=aea07ae608264c18c1ea1431604753c3";
-
-
+  const warMovies =
+    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10752&api_key=aea07ae608264c18c1ea1431604753c3";
+  const warSeries =
+    "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10768&api_key=aea07ae608264c18c1ea1431604753c3";
 
   // Comportements
-
   const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
 
   const handleMovies = () => {
@@ -65,8 +68,10 @@ export default function Home() {
       .then((response) => response.json())
       .then((response) => setUniqueSyfy(response.results))
       .catch((err) => console.error(err));
-   
-   
+    fetch(warMovies)
+      .then((response) => response.json())
+      .then((response) => setUniqueWar(response.results))
+      .catch((err) => console.error(err));
   };
 
   const handleSeries = () => {
@@ -88,7 +93,10 @@ export default function Home() {
       .then((response) => response.json())
       .then((response) => setUniqueSyfy(response.results))
       .catch((err) => console.error(err));
-   
+    fetch(warSeries)
+      .then((response) => response.json())
+      .then((response) => setUniqueWar(response.results))
+      .catch((err) => console.error(err));
   };
 
   const handleAll = () => {
@@ -100,28 +108,24 @@ export default function Home() {
     setSerieContent(false);
   };
 
-  const memo = useMemo(
-    () => ({ urlVideo, setUrlVideo, blackScreen, setBlackScreen }),
-    [urlVideo, setUrlVideo, blackScreen, setBlackScreen]
-  );
-
   return (
-    <VideoContext.Provider value={memo}>
-      <section className="home">
-        {blackScreen && <Video />}
-        <Banner />
-        <Top10 status={status} uniqueTop={uniqueTop} />1
-        {movieContent && <Upcoming />}
-        <Popular
-          status={status}
-          uniqueTendances={uniqueTendances}
-          shuffle={shuffle}
-        />
-        {movieContent && <Family shuffle={shuffle} />}
-        {movieContent && <Horror shuffle={shuffle} />}
-        <Syfy status={status} uniqueSyfy={uniqueSyfy} shuffle={shuffle} />
-        {serieContent && <Reality shuffle={shuffle} />}
-        {serieContent && <Drama shuffle={shuffle} />}
+    <section className="home" id="haut-page">
+      {blackScreen && <Video />}
+      <Banner />
+      <Top10 status={status} uniqueTop={uniqueTop} />
+      {movieContent && <Upcoming />}
+      {movieContent && <Family shuffle={shuffle} />}
+      <Popular
+        status={status}
+        uniqueTendances={uniqueTendances}
+        shuffle={shuffle}
+      />
+      {movieContent && <Horror shuffle={shuffle} />}
+      <Syfy status={status} uniqueSyfy={uniqueSyfy} shuffle={shuffle} />
+      {serieContent && <Reality shuffle={shuffle} />}
+      <War status={status} uniqueWar={uniqueWar} shuffle={shuffle} />
+      {serieContent && <Drama shuffle={shuffle} />}
+      <a href="#haut-page" aria-label="anker">
         <SecondHeader
           handleAll={handleAll}
           handleMovies={handleMovies}
@@ -130,7 +134,7 @@ export default function Home() {
           activeMovie={activeMovie}
           activeSerie={activeSerie}
         />
-      </section>
-    </VideoContext.Provider>
+      </a>
+    </section>
   );
 }

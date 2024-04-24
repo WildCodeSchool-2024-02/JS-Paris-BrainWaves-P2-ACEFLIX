@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { VideoContextProvider } from "./components/ContextVideo";
 
 
 import Final from "./pages/Final/Final";
@@ -34,6 +35,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <VideoContextProvider>
+      <RouterProvider router={router} />
+    </VideoContextProvider>
   </React.StrictMode>
 );

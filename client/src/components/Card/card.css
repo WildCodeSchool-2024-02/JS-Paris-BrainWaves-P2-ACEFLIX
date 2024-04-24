@@ -19,6 +19,7 @@
   animation: popUp 0.5s ease-in-out alternate forwards;
   display: none;
   z-index: 6;
+  text-overflow: ellipsis;
 }
 
 h3 {
@@ -59,12 +60,18 @@ h3 {
 }
 
 #card .hidden-display h3 {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 600;
   margin: 10px 0;
+  /* width: 100%; */
   color: white;
   animation: popUp 0.5s ease-in-out alternate forwards;
 }
+
+.text-area {
+  width: 205px;
+}
+
 #card .hidden-display p {
   opacity: 1;
   font-size: 13px;

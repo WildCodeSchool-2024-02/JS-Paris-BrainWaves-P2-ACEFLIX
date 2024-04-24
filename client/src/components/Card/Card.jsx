@@ -26,6 +26,21 @@ export default function Card({ card }) {
       );
     }
   };
+  const pointer = "...";
+  let nameDisplay = "";
+  if (card.title) {
+    if (card.title.length > 40) {
+      nameDisplay = card.title.slice(0, 48) + pointer;
+    } else {
+      nameDisplay = card.title;
+    }
+  } else {
+    nameDisplay = card.name;
+    if (nameDisplay.length > 40) {
+      nameDisplay = nameDisplay.slice(0, 48) + pointer;
+    }
+  }
+
   return (
     <div id="card">
       {(card.first_air_date > "2024-04-21" ||
@@ -42,7 +57,9 @@ export default function Card({ card }) {
       />
       <div className="hidden-display">
         <div className="info-moviec-card">
-          <h3>{card.title ? card.title : card.name}</h3>
+          <div className="text-area">
+            <h3>{nameDisplay}</h3>
+          </div>
           <p>{card.release_date ? card.release_date : card.first_air_date} </p>
           <p className="vote">
             {" "}
