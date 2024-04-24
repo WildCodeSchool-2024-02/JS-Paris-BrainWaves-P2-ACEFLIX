@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { VideoContextProvider } from "./components/ContextVideo";
 
 import Home from "./pages/Home/Home";
 import Filter from "./pages/Filter/Filter";
@@ -33,6 +34,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <VideoContextProvider>
+      <RouterProvider router={router} />
+    </VideoContextProvider>
   </React.StrictMode>
 );
