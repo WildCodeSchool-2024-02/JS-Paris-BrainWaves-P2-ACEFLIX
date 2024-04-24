@@ -40,6 +40,8 @@ export default function Home() {
   const syfySeries =
     "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10765&api_key=aea07ae608264c18c1ea1431604753c3";
 
+
+
   // Comportements
 
   const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
@@ -63,6 +65,8 @@ export default function Home() {
       .then((response) => response.json())
       .then((response) => setUniqueSyfy(response.results))
       .catch((err) => console.error(err));
+   
+   
   };
 
   const handleSeries = () => {
@@ -84,6 +88,7 @@ export default function Home() {
       .then((response) => response.json())
       .then((response) => setUniqueSyfy(response.results))
       .catch((err) => console.error(err));
+   
   };
 
   const handleAll = () => {
@@ -105,7 +110,8 @@ export default function Home() {
       <section className="home">
         {blackScreen && <Video />}
         <Banner />
-        <Top10 status={status} uniqueTop={uniqueTop} />
+        <Top10 status={status} uniqueTop={uniqueTop} />1
+        {movieContent && <Upcoming />}
         <Popular
           status={status}
           uniqueTendances={uniqueTendances}
@@ -126,30 +132,5 @@ export default function Home() {
         />
       </section>
     </VideoContext.Provider>
-    <section className="home">
-      {blackScreen && (
-        <Video idVideo={idVideo} setBlackScreen={setBlackScreen} />
-      )}
-      <Banner setBlackScreen={setBlackScreen} setIdVideo={setIdVideo} />
-      <Top10 status={status} uniqueTop={uniqueTop} />
-      {movieContent && <Upcoming />}
-      <Popular
-        status={status}
-        uniqueTendances={uniqueTendances}
-        shuffle={shuffle}
-      />
-      {movieContent && <Family shuffle={shuffle} />}
-      {movieContent && <Horror shuffle={shuffle} />}
-      {serieContent && <Reality shuffle={shuffle} />}
-      {serieContent && <Drama shuffle={shuffle} />}
-      <SecondHeader
-        handleAll={handleAll}
-        handleMovies={handleMovies}
-        handleSeries={handleSeries}
-        activeAll={activeAll}
-        activeMovie={activeMovie}
-        activeSerie={activeSerie}
-      />
-    </section>
   );
 }
