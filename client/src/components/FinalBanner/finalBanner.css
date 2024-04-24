@@ -55,8 +55,6 @@
   position: absolute;
   top: 0px;
   display: flex;
-  /* justify-content: flex-start;
-  align-items: flex-start; */
   padding: 60px 20px 20px 20px;
   width: 90vw;
   z-index: 2;
@@ -75,10 +73,6 @@
   height: 500px;
 }
 
-.image-box:hover {
-  box-shadow: 0 0 40px white;
-  cursor: pointer;
-}
 .gradient-bg {
   position: absolute;
   bottom: -10px;
@@ -92,7 +86,6 @@
 
 .first-container .image-box img {
   height: 100%;
-  /* object-fit: cover; */
   background-size: cover;
   box-shadow: 0 0 20px black;
   border-radius: 5px;
@@ -118,16 +111,18 @@
 .episode {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: rgba(0, 0, 0, 0.531);
   color: white;
   cursor: pointer;
   width: 120px;
   height: 40px;
+  border-radius: 7px;
 }
 
 .episode h2 {
   font-size: 17px;
+  padding: 0 10px 0 10px;
 }
 
 .info-and-butons {
@@ -137,7 +132,7 @@
   line-height: 20px;
   color: whitesmoke;
   height: 400px;
-  gap: 15px;
+  gap: 10px;
 }
 
 .title {
@@ -169,13 +164,13 @@
 .budget {
   font-weight: 300;
   font-style: italic;
-  margin: 10px 0;
+  margin: 0;
 }
 
 .revenue {
   font-weight: 300;
   font-style: italic;
-  margin: 10px 0;
+  margin: 0;
 }
 
 .genres {
@@ -245,7 +240,7 @@
   width: 35%;
   color: whitesmoke;
   text-shadow: 0 0 5px black;
-  padding: 20px;
+  padding-left: 20px;
   transition: all 0.5s ease-in-out;
   animation: fromRight 0.5s ease-in-out alternate backwards;
 }
@@ -258,7 +253,6 @@
 .second-container:hover {
   background-color: rgba(0, 0, 0, 0.459);
   border-radius: 15px;
-  /* transform: scale(1.05); */
   z-index: 50;
 }
 
@@ -269,7 +263,7 @@
   }
 
   .first-container .image-box img {
-    min-width: 100%;
+    min-width: 90%;
   }
 
   .banner-info-container {
@@ -282,6 +276,10 @@
   .second-container {
     display: block;
     width: 90%;
+  }
+
+  .second-container h2 {
+    margin: 0;
   }
   .info-and-butons {
     justify-content: flex-start;
@@ -312,6 +310,10 @@
     font-size: 30px;
     margin: 5px 0 0 0;
     text-align: center;
+  }
+
+  .episode {
+    justify-content: center;
   }
 
   .episode h2 {

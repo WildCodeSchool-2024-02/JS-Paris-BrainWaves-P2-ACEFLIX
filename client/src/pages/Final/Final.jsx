@@ -5,6 +5,7 @@ import VideoContext from "../../components/ContextVideo";
 import FinalBanner from "../../components/FinalBanner/FinalBanner";
 import Suggest from "../../components/Suggest/Suggest";
 import Videos from "../../components/Video/Video";
+import Comments from "../../components/Comments/Comments";
 
 export default function Final() {
   const { type, id } = useParams();
@@ -24,8 +25,9 @@ export default function Final() {
   return (
     <div id="Final">
       {blackScreen && <Videos />}
-      {bannerInfo && <FinalBanner bannerInfo={bannerInfo} />}
+      {bannerInfo && <FinalBanner bannerInfo={bannerInfo} type={type} />}
       <Suggest id={id} type={type} bannerInfo={bannerInfo} />
+      <Comments />
     </div>
   );
 }

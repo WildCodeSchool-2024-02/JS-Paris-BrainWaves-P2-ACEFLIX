@@ -4,14 +4,14 @@ import PropTypes from "prop-types";
 import { useContext } from "react";
 import VideoContext from "../ContextVideo";
 
-export default function FinalBanner({ bannerInfo }) {
+export default function FinalBanner({ bannerInfo, type }) {
   const { setUrlVideo, setBlackScreen } = useContext(VideoContext);
   const backImg = `https://image.tmdb.org/t/p/original${bannerInfo.backdrop_path}`;
 
   const handleclick = () => {
     setBlackScreen(true);
     setUrlVideo(
-      `https://api.themoviedb.org/3/movie/${bannerInfo.id}/videos?language=en-US&api_key=aea07ae608264c18c1ea1431604753c3`
+      `https://api.themoviedb.org/3/${type}/${bannerInfo.id}/videos?language=en-US&api_key=aea07ae608264c18c1ea1431604753c3`
     );
     document.body.classList.add("active");
   };
@@ -33,21 +33,20 @@ export default function FinalBanner({ bannerInfo }) {
           </div>
           <div className="info-and-butons">
             <h1 className="title">{bannerInfo.title || bannerInfo.name}</h1>
-            {bannerInfo.first_air_date && (
+            {bannerInfo.last_air_date && (
               <div className="episode">
                 <h2>
                   {
                     bannerInfo?.seasons[bannerInfo.seasons.length - 1]
                       .season_number
                   }{" "}
-                  Season
+                  Season(s)
                 </h2>
               </div>
             )}
             <div className="groupement">
               <p className="the release-date">
-                Release Date :{" "}
-                {bannerInfo.release_date || bannerInfo.first_air_date}{" "}
+                {bannerInfo.release_date || bannerInfo.last_air_date}{" "}
               </p>
               {bannerInfo.runtime && (
                 <p className="theTime">
@@ -116,11 +115,12 @@ export default function FinalBanner({ bannerInfo }) {
 }
 
 FinalBanner.propTypes = {
+  type: PropTypes.string.isRequired,
   bannerInfo: PropTypes.shape({
     id: PropTypes.number,
     backdrop_path: PropTypes.string,
     poster_path: PropTypes.string,
-    first_air_date: PropTypes.string,
+    last_air_date: PropTypes.string,
     title: PropTypes.string,
     name: PropTypes.string,
     release_date: PropTypes.string,

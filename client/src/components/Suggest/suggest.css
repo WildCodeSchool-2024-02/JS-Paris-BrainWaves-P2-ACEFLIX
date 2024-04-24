@@ -1,12 +1,22 @@
 .card-suggest {
-  width: 400px;
+  width: 50%;
   margin-bottom: 20px;
   cursor: pointer;
 }
 
+.container-suggest {
+  display: flex;
+  gap: 10px;
+  height: 350px;
+  overflow-x: scroll;
+}
+
+.container-suggest::-webkit-scrollbar {
+  display: none;
+}
+
 .img-suggest {
-  width: 100%;
-  height: 100%;
+  height: 70%;
 }
 
 .bloc-text-container {
@@ -14,7 +24,7 @@
   flex-direction: row-reverse;
   justify-content: flex-end;
   align-items: center;
-  margin-left: 10px;
+  margin: 10px 0 0 10px;
 }
 
 .description-suggest {
@@ -72,12 +82,8 @@
 
 @media (max-width: 1025px) {
   .container-suggest {
-    display: flex;
-    gap: 10px;
-    height: 220px;
-    overflow-x: scroll;
+    height: 230px;
   }
-
   .card-suggest {
     height: 100px;
     width: 400px;
