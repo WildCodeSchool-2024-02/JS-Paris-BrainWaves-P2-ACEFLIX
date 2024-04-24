@@ -1,12 +1,14 @@
 import { useEffect, useState, useContext } from "react";
 import "./bannercard.css";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
 import VideoContext from "../../ContextVideo";
 
 export default function BannerCard({ image, overview, title, id }) {
   const [content, setContent] = useState(null);
   const { setUrlVideo, setBlackScreen } = useContext(VideoContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(
@@ -30,6 +32,8 @@ export default function BannerCard({ image, overview, title, id }) {
     );
     document.body.classList.add("active");
   };
+
+  const handleNavigate = () => navigate(`/final/movie/${id}`);
 
   return (
     <div className="card-container">
@@ -66,7 +70,7 @@ export default function BannerCard({ image, overview, title, id }) {
             <p>PLAY</p>
             <FaPlay className="play-icon" />
           </button>
-          <button type="button" className="more">
+          <button type="button" className="more" onClick={handleNavigate}>
             {" "}
             MORE{" "}
           </button>
