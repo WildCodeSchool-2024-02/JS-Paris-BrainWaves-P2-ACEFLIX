@@ -1,10 +1,16 @@
 import { FaPlay } from "react-icons/fa";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import VideoContext from "../ContextVideo";
 import "./card.css";
 
+
 export default function Card({ card }) {
+  const navigate = useNavigate();
+
+  const handleNavigate = () =>  card.release_date ? navigate(`/final/movie/${card.id}`) : navigate(`/final/tv/${card.id}`)
+  
   const { setUrlVideo, setBlackScreen } = useContext(VideoContext);
 
   const handleUrlVideo = () => {
@@ -43,7 +49,12 @@ export default function Card({ card }) {
           <p>Coming soon</p>
         </div>
       )}
-      <img src={`https://image.tmdb.org/t/p/w500/${card.poster_path}`} alt="" />
+      <img
+        onClick={handleNavigate}
+        role="presentation"
+        src={`https://image.tmdb.org/t/p/w500/${card.poster_path}`}
+        alt=" osterImage"
+      />
       <div className="hidden-display">
         <div className="info-moviec-card">
           <div className="text-area">
@@ -69,14 +80,15 @@ export default function Card({ card }) {
     </div>
   );
 }
+
 Card.propTypes = {
   card: PropTypes.shape({
-    poster_path: PropTypes.string,
-    title: PropTypes.string,
-    name: PropTypes.string,
-    release_date: PropTypes.string,
-    vote_average: PropTypes.number,
-    first_air_date: PropTypes.string,
-    id: PropTypes.number,
+    id: PropTypes.string.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    release_date: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    first_air_date: PropTypes.string.isRequired,
   }).isRequired,
-};
+}
