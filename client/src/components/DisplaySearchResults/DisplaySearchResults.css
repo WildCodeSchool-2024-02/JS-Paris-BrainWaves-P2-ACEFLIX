@@ -68,7 +68,9 @@
   justify-content: center;
   width: 100%;
   margin-top: 80px;
-  overflow: scroll;
+  overflow-y: scroll;
+  scrollbar-color: rgb(193, 58, 251) transparent;
+  scroll-behavior: smooth;
   transition: none;
 }
 
