@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./header.css";
 import { IoSearch } from "react-icons/io5";
 import { SlMenu } from "react-icons/sl";
 import aceflixLogo from "../../assets/images/aceflixLogo.png";
 import DisplaySearchResults from "../DisplaySearchResults/DisplaySearchResults";
+import VideoContext from "../ContextVideo";
+import Video from "../Video/Video";
 
 export default function Header({
   setIsOpen,
@@ -15,6 +17,7 @@ export default function Header({
 }) {
   const [search, setSearch] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const { blackScreen } = useContext(VideoContext);
 
   const [display, setDisplay] = useState(false);
   const navigate = useNavigate();
@@ -58,6 +61,7 @@ export default function Header({
 
   return (
     <header>
+      {blackScreen && <Video />}
       <div id="Header">
         <div className="hearder-burger">
           <button

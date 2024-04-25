@@ -1,13 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable import/no-duplicates */
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import FilterMovies from "../../components/FilterButtons/FilterMovies";
 import FilterSeries from "../../components/FilterButtons/FilterSeries";
 import useFetch from "../../useFetch";
 import Card from "../../components/Card/Card";
+import VideoContext from "../../components/ContextVideo";
+import Video from "../../components/Video/Video";
 import "./filter.css";
 
 export default function Filter() {
@@ -24,6 +26,7 @@ export default function Filter() {
 
   const [idGenre, setIdGenre] = useState(0);
   const [genreStatus, setGenreStatus] = useState(false);
+  const { blackScreen } = useContext(VideoContext);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -65,6 +68,7 @@ export default function Filter() {
 
   return (
     <section id="top-page" className="filter-global">
+      {blackScreen && <Video />}
       <div className={type === "movie" ? "banner-movie" : "banner-serie"}>
         <div className="type-movie-serie">
           <h1 className="type-movie-serie-title">

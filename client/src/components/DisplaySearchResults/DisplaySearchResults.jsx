@@ -10,6 +10,11 @@ export default function DisplaySearchResults({
   const disappear = () => {
     setDisplay(false);
   };
+
+  const handleClose = () => {
+    setDisplay(false);
+  };
+
   return (
     <div id="DisplaySearchResults">
       <button className="close-Btn" type="button" onClick={disappear}>
@@ -20,11 +25,19 @@ export default function DisplaySearchResults({
         <p> sorry no result for {inputValue}</p>
       ) : (
         <div className="card-list">
-          {results.map((card) => (
-            <div className="each-card" key={card.id}>
-              <Card card={card} />
-            </div>
-          ))}
+          {results.map(
+            (card) =>
+              card.poster_path && (
+                <div
+                  className="each-card"
+                  key={card.id}
+                  onClick={handleClose}
+                  role="presentation"
+                >
+                  <Card card={card} />
+                </div>
+              )
+          )}
         </div>
       )}
     </div>

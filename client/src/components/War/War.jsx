@@ -5,57 +5,50 @@ import { FreeMode, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/scrollbar";
-import "./popular.css";
 import useFetch from "../../useFetch";
 import Card from "../Card/Card";
+import "./war.css";
 
-function Popular({ status, uniqueTendances, shuffle }) {
-  // URL des Movies et Series tendances
-  const tendancesMoviesFetchURL =
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3";
-  const tendancesSeriesFetchURL =
-    "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3";
+export default function War({ status, uniqueWar, shuffle }) {
+  // URL des Movies et Series Syfy
+  const warMoviesFetchURL =
+    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10752&api_key=aea07ae608264c18c1ea1431604753c3";
+  const warSeriesFetchURL =
+    "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10768&api_key=aea07ae608264c18c1ea1431604753c3";
 
   // Fetch de ces contenus via le Hook useFetch (20 de chaque)
   const {
-    data: tendancesMovies,
-    loading: loadingTendancesMovies,
-    error: errorTendancesMovies,
-  } = useFetch(tendancesMoviesFetchURL);
+    data: warMovies,
+    loading: loadingWarMovies,
+    error: errorWarMovies,
+  } = useFetch(warMoviesFetchURL);
   const {
-    data: tendancesSeries,
-    loading: loadingTendancesSeries,
-    error: errorTendancesSeries,
-  } = useFetch(tendancesSeriesFetchURL);
-
-  // Fonction permettant de mélanger 2 tableaux après les avoir concaténés
-  const ShuffleConcat = (arr1, arr2) => {
-    const final = shuffle(arr1.concat(arr2));
-    return final;
-  };
+    data: warSeries,
+    loading: loadingWarSeries,
+    error: errorWarSeries,
+  } = useFetch(warSeriesFetchURL);
 
   // Fusion + mélange des tendances movies + series et limité à 15
-  let allTendances = [];
-  if (tendancesMovies && tendancesSeries) {
-    allTendances = ShuffleConcat(tendancesMovies, tendancesSeries).slice(0, 20);
+  let allWar = [];
+  if (warMovies && warSeries) {
+    allWar = shuffle(warMovies.slice(0, 10).concat(warSeries.slice(0, 10)));
   }
-  if (loadingTendancesMovies || loadingTendancesSeries) {
+  if (loadingWarMovies || loadingWarSeries) {
     return <h1>LOADING ...</h1>;
   }
-  if (errorTendancesMovies || errorTendancesSeries) {
+  if (errorWarMovies || errorWarSeries) {
     console.info("Error");
   }
 
   return (
     <div className="slider-popular">
-      <h1 className="main-title">POPULAR</h1>
+      <h1 className="main-title">WAR</h1>
       <div className="slider-container">
         <Swiper
           modules={[Navigation, FreeMode]}
           spaceBetween={10}
           slidesPerView={6}
-          // eslint-disable-next-line react/jsx-boolean-value
-          freeMode={true}
+          freeMode
           breakpoints={{
             1200: {
               slidesPerView: 6,
@@ -83,12 +76,12 @@ function Popular({ status, uniqueTendances, shuffle }) {
         >
           <div>
             {status
-              ? uniqueTendances?.map((content) => (
+              ? uniqueWar?.map((content) => (
                   <SwiperSlide key={content.id}>
                     <Card card={content} />
                   </SwiperSlide>
                 ))
-              : allTendances?.map((content) => (
+              : allWar?.map((content) => (
                   <SwiperSlide key={content.id}>
                     <Card card={content} />
                   </SwiperSlide>
@@ -100,10 +93,8 @@ function Popular({ status, uniqueTendances, shuffle }) {
   );
 }
 
-Popular.propTypes = {
+War.propTypes = {
   status: PropTypes.bool.isRequired,
-  uniqueTendances: PropTypes.oneOfType([PropTypes.array.isRequired]).isRequired,
+  uniqueWar: PropTypes.oneOfType([PropTypes.array.isRequired]).isRequired,
   shuffle: PropTypes.func.isRequired,
 };
-
-export default Popular;

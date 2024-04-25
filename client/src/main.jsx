@@ -2,11 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { VideoContextProvider } from "./components/ContextVideo";
 
-import Home from "./pages/Home/Home";
-import Filter from "./pages/Filter/Filter";
+
 import Final from "./pages/Final/Final";
 import App from "./App";
+import Home from "./pages/Home/Home";
+import Filter from "./pages/Filter/Filter";
 
 const router = createBrowserRouter([
   {
@@ -25,10 +27,6 @@ const router = createBrowserRouter([
         path: "/final/:type/:id",
         element: <Final />,
       },
-      {
-        path: "/search/:input",
-        element: <Final />,
-      },
     ],
   },
 ]);
@@ -37,6 +35,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <VideoContextProvider>
+      <RouterProvider router={router} />
+    </VideoContextProvider>
   </React.StrictMode>
 );
