@@ -14,10 +14,10 @@ export default function Final() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const theKey = "aea07ae608264c18c1ea1431604753c3";
+  const theKey = import.meta.env.API_KEY;
   const fetchUrlBanner = `https://api.themoviedb.org/3/${type}/${id}?language=en-US&api_key=${theKey}`;
   const fetchComment = `https://api.themoviedb.org/3/${type}/${id}/reviews?language=en-US&page=1&api_key=${theKey}`;
-  const actorsFetchURL = `https://api.themoviedb.org/3/${type}/${id}/credits?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3`;
+  const actorsFetchURL = `https://api.themoviedb.org/3/${type}/${id}/credits?language=en-US&page=1&api_key=${theKey}`;
 
   const [bannerInfo, setBannerInfo] = useState(null);
 

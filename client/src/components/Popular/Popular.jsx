@@ -11,10 +11,11 @@ import Card from "../Card/Card";
 
 function Popular({ status, uniqueTendances, shuffle }) {
   // URL des Movies et Series tendances
+  const theApiKey = import.meta.env.API_KEY;
   const tendancesMoviesFetchURL =
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3";
+  `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=${theApiKey} `;
   const tendancesSeriesFetchURL =
-    "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3";
+  `https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&api_key=${theApiKey}`;
 
   // Fetch de ces contenus via le Hook useFetch (20 de chaque)
   const {

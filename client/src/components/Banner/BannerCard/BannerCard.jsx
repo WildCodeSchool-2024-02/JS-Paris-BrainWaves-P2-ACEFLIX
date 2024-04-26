@@ -26,9 +26,10 @@ export default function BannerCard({ image, overview, title, id }) {
   }
 
   const handleclick = () => {
+    const theApiKey = import.meta.env.API_KEY;
     setBlackScreen(true);
     setUrlVideo(
-      `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US&api_key=aea07ae608264c18c1ea1431604753c3`
+      `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US&api_key=${theApiKey}`
     );
     document.body.classList.add("active");
   };

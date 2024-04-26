@@ -44,15 +44,15 @@ export default function Filter() {
       clearTimeout(timer);
     };
   }, [type]);
-
-  const url = `https://api.themoviedb.org/3/${type}/${filter}?language=en-US&page=${page}&api_key=aea07ae608264c18c1ea1431604753c3`;
+  const theApiKey = import.meta.env.API_KEY;
+  const url = `https://api.themoviedb.org/3/${type}/${filter}?language=en-US&page=${page}&api_key=${theApiKey}`;
   const {
     data: dataFilter,
     loading: loadingFilter,
     error: errorLoading,
   } = useFetch(url);
 
-  const urlGenres = `https://api.themoviedb.org/3/discover/${type}?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${idGenre}&api_key=aea07ae608264c18c1ea1431604753c3`;
+  const urlGenres = `https://api.themoviedb.org/3/discover/${type}?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${idGenre}&api_key=${theApiKey}`;
   const {
     data: idFilter,
     loading: loadingId,

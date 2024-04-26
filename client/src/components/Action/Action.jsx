@@ -11,7 +11,7 @@ import Card from "../Card/Card";
 
 export default function Action({ status, actions }) {
 
-  const theApiKey= "aea07ae608264c18c1ea1431604753c3"
+  const theApiKey= import.meta.env.API_KEY
   const actionMoviesFetchURL = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=28&api_key=${theApiKey}`
   const actionSeriesFetchURL = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10759&api_key=${theApiKey} `
  

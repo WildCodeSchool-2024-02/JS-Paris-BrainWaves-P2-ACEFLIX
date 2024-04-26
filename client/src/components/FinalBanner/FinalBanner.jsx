@@ -7,11 +7,12 @@ import VideoContext from "../ContextVideo";
 export default function FinalBanner({ bannerInfo, type }) {
   const { setUrlVideo, setBlackScreen } = useContext(VideoContext);
   const backImg = `https://image.tmdb.org/t/p/original${bannerInfo.backdrop_path}`;
+  const theApiKey = import.meta.env.API_KEY;
 
   const handleclick = () => {
     setBlackScreen(true);
     setUrlVideo(
-      `https://api.themoviedb.org/3/${type}/${bannerInfo.id}/videos?language=en-US&api_key=aea07ae608264c18c1ea1431604753c3`
+      `https://api.themoviedb.org/3/${type}/${bannerInfo.id}/videos?language=en-US&api_key=${theApiKey}`
     );
     document.body.classList.add("active");
   };

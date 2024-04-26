@@ -22,7 +22,7 @@ export default function Header({
   const [display, setDisplay] = useState(false);
   const navigate = useNavigate();
 
-  const apiKey = "aea07ae608264c18c1ea1431604753c3";
+  const apiKey = import.meta.env.API_KEY;
   const fetchResults = `https://api.themoviedb.org/3/search/multi?query=${inputValue}&include_adult=false&language=en-US&page=1&api_key=${apiKey}`;
 
   const handleInput = (e) => {
