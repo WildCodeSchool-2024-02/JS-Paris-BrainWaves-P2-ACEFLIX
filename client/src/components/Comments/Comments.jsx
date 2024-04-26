@@ -18,7 +18,7 @@ export default function Comments({ comments }) {
 
   const addNewComment = () => {
     if (!nameValue || !commentValue) {
-      return ;
+      return;
     }
     SetAddComment([
       ...addComment,
@@ -29,11 +29,10 @@ export default function Comments({ comments }) {
   };
 
   const keyPressed = (e) => {
-    if( e.key === "Enter"){
+    if (e.key === "Enter") {
       addNewComment();
     }
-    
-  }
+  };
 
   const deleteComment = (index) => {
     SetAddComment(addComment.filter((_, i) => i !== index));
@@ -110,8 +109,7 @@ export default function Comments({ comments }) {
 Comments.propTypes = {
   comments: PropTypes.arrayOf(
     PropTypes.shape({
-      index: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-        .isRequired,
+      index: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       author: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
       created_at: PropTypes.string.isRequired,

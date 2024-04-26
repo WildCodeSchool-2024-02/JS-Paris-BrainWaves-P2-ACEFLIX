@@ -2,3 +2,24 @@
   display: flex;
   flex-direction: column;
 }
+
+.suggest-content {
+  margin: 0 30px 0 30px;
+}
+
+.credits-components {
+  margin: 0 30px 0 30px;
+}
+
+.positionnement-factice {
+  margin: auto;
+}
+
+@media (max-width: 1025px) {
+  .suggest-content {
+    margin: 0;
+  }
+  .credits-components {
+    margin: 0;
+  }
+}

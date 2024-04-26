@@ -5,12 +5,14 @@ import { useContext } from "react";
 import VideoContext from "../ContextVideo";
 import "./card.css";
 
-
 export default function Card({ card }) {
   const navigate = useNavigate();
 
-  const handleNavigate = () =>  card.release_date ? navigate(`/final/movie/${card.id}`) : navigate(`/final/tv/${card.id}`)
-  
+  const handleNavigate = () =>
+    card.release_date
+      ? navigate(`/final/movie/${card.id}`)
+      : navigate(`/final/tv/${card.id}`);
+
   const { setUrlVideo, setBlackScreen } = useContext(VideoContext);
 
   const handleUrlVideo = () => {
@@ -53,7 +55,7 @@ export default function Card({ card }) {
         onClick={handleNavigate}
         role="presentation"
         src={`https://image.tmdb.org/t/p/w500/${card.poster_path}`}
-        alt=" osterImage"
+        alt="posterImage"
       />
       <div className="hidden-display">
         <div className="info-moviec-card">
@@ -83,12 +85,12 @@ export default function Card({ card }) {
 
 Card.propTypes = {
   card: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     poster_path: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    release_date: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    name: PropTypes.string,
+    release_date: PropTypes.string,
     vote_average: PropTypes.number.isRequired,
-    first_air_date: PropTypes.string.isRequired,
+    first_air_date: PropTypes.string,
   }).isRequired,
-}
+};

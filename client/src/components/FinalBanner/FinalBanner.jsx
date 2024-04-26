@@ -1,11 +1,24 @@
 import "./finalBanner.css";
 import { FaPlay } from "react-icons/fa";
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import VideoContext from "../ContextVideo";
 
-export default function FinalBanner({ bannerInfo }) {
+export default function FinalBanner({ bannerInfo, type }) {
+  const { setUrlVideo, setBlackScreen } = useContext(VideoContext);
   const backImg = `https://image.tmdb.org/t/p/original${bannerInfo.backdrop_path}`;
+
+  const handleclick = () => {
+    setBlackScreen(true);
+    setUrlVideo(
+      `https://api.themoviedb.org/3/${type}/${bannerInfo.id}/videos?language=en-US&api_key=aea07ae608264c18c1ea1431604753c3`
+    );
+    document.body.classList.add("active");
+  };
+
   return (
     <div id="FinalBanner">
+      <div className="gradient-bg">Box</div>
       <div className="bannerContainer">
         <img className="image-backdrop" src={backImg} alt="" />
       </div>
@@ -17,55 +30,72 @@ export default function FinalBanner({ bannerInfo }) {
               src={`https://image.tmdb.org/t/p/w300/${bannerInfo.poster_path}`}
               alt="poster"
             />
-            {bannerInfo.first_air_date && (
-              <div className="episode">
-                <h2>season</h2>
-              </div>
-            )}
           </div>
           <div className="info-and-butons">
-            <h1 className="title">
-              {bannerInfo.original_title || bannerInfo.original_name}
-            </h1>
-            <p className="the release-date">
-              {bannerInfo.release_date || bannerInfo.first_air_date}{" "}
-            </p>
-            {bannerInfo.runtime && (
-              <p className="theTime">
-                {Math.floor(bannerInfo.runtime / 60)} h{" "}
-                {bannerInfo.runtime % 60} min{" "}
-                <span>{bannerInfo.original_language.toUpperCase()}</span>
+            <h1 className="title">{bannerInfo.title || bannerInfo.name}</h1>
+            {bannerInfo.last_air_date && (
+              <div className="episode">
+                <h2>
+                  {
+                    bannerInfo?.seasons[bannerInfo.seasons.length - 1]
+                      .season_number
+                  }{" "}
+                  Season(s)
+                </h2>
+              </div>
+            )}
+            <div className="groupement">
+              <p className="the release-date">
+                {bannerInfo.release_date || bannerInfo.last_air_date}{" "}
               </p>
-            )}
-            <p className="genres">
-              {" "}
-              Genres :{" "}
-              {bannerInfo.genres.map((genre) => genre.name).join(" , ")}{" "}
-            </p>
-            <p className="average-vote">
-              {bannerInfo.vote_average.toFixed(1)} / 10
-            </p>
-            {bannerInfo.budget && (
-              <p className="budget">Budget : {bannerInfo.budget} US dollars</p>
-            )}
-            {bannerInfo.revenue && (
-              <p className="revenue">
-                Revenue : {bannerInfo.revenue} US dollars
+              {bannerInfo.runtime ? (
+                <p className="theTime">
+                  {Math.floor(bannerInfo.runtime / 60)} h{" "}
+                  {bannerInfo.runtime % 60} min{" "}
+                  <span>{bannerInfo.original_language.toUpperCase()}</span>
+                </p>
+              ) : null}
+              <p className="genres">
+                {" "}
+                {bannerInfo.genres
+                  .map((genre) => genre.name)
+                  .slice(0, 2)
+                  .join(" , ")}{" "}
               </p>
+              {bannerInfo.vote_average !== 0 ? (
+                <p className="average-vote">
+                  Average rating {Math.floor(bannerInfo.vote_average * 10)} %
+                </p>
+              ) : (
+                <p className="average-vote">No rating for the moment</p>
+              )}
+            </div>
+            {bannerInfo.overview && (
+              <div className="synopsis">
+                <h2>Synopsis</h2>
+                <p>{bannerInfo.overview || bannerInfo.tagline}</p>
+              </div>
             )}
-            <button className="watch-btn" type="button" onClick={" "}>
-              {" "}
-              Watch <FaPlay />{" "}
-            </button>
-            {bannerInfo.homepage && (
-              <a
-                className="website-Url"
-                href={bannerInfo.homepage}
-                target="blank"
-              >
-                check
-              </a>
-            )}
+            <div className="button-container-banner">
+              <button className="watch-btn" type="button" onClick={handleclick}>
+                PLAY <FaPlay className="play-icon-banner" />
+              </button>
+              {bannerInfo.homepage ? (
+                <a
+                  className="website-Url"
+                  href={bannerInfo.homepage}
+                  target="blank"
+                >
+                  <button type="button" className="more">
+                    CHECK
+                  </button>
+                </a>
+              ) : (
+                <button type="button" className="more-inactive">
+                  CHECK
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
@@ -81,29 +111,32 @@ export default function FinalBanner({ bannerInfo }) {
 }
 
 FinalBanner.propTypes = {
+  type: PropTypes.string.isRequired,
   bannerInfo: PropTypes.shape({
+    id: PropTypes.number,
     backdrop_path: PropTypes.string,
-    poster_path: PropTypes.string.isRequired,
-    first_air_date: PropTypes.string.isRequired,
-    original_title: PropTypes.string.isRequired,
-    original_name: PropTypes.string.isRequired,
-    release_date: PropTypes.string.isRequired,
-    runtime: PropTypes.number.isRequired,
-    original_language: PropTypes.string.isRequired,
+    poster_path: PropTypes.string,
+    last_air_date: PropTypes.string,
+    title: PropTypes.string,
+    name: PropTypes.string,
+    release_date: PropTypes.string,
+    runtime: PropTypes.number,
+    original_language: PropTypes.string,
     genres: PropTypes.arrayOf(
       PropTypes.shape({
-        name: PropTypes.string.isRequired,
+        name: PropTypes.string,
       })
     ),
-    vote_average: PropTypes.number.isRequired,
-    budget: PropTypes.number.isRequired,
-    revenue: PropTypes.number.isRequired,
-    homepage: PropTypes.string.isRequired,
-    overview: PropTypes.string.isRequired,
-    tagline: PropTypes.string.isRequired,
-  }),
-};
-
-FinalBanner.defaultProps = {
-  bannerInfo: null,
+    vote_average: PropTypes.number,
+    budget: PropTypes.number,
+    revenue: PropTypes.number,
+    homepage: PropTypes.string,
+    overview: PropTypes.string,
+    tagline: PropTypes.string,
+    seasons: PropTypes.arrayOf(
+      PropTypes.shape({
+        season_number: PropTypes.number.isRequired,
+      })
+    ),
+  }).isRequired,
 };
