@@ -122,7 +122,27 @@
 
 @media (max-width: 600px) {
   .img-suggest {
-    width: 220px;
-    height: 120px;
+    width: 200px;
+    height: 100px;
+  }
+  .suggest-title {
+    font-size: 15px;
+  }
+
+  .container-suggest {
+    height: 170px;
+    padding-bottom: 10px;
+  }
+
+  .recommandation-suggest {
+    font-size: 10px;
+  }
+
+  .language-suggest {
+    font-size: 12px;
+  }
+
+  .title-context {
+    font-size: 12px;
   }
 }
