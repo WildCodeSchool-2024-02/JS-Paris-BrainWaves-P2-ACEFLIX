@@ -48,13 +48,13 @@ export default function FinalBanner({ bannerInfo, type }) {
               <p className="the release-date">
                 {bannerInfo.release_date || bannerInfo.last_air_date}{" "}
               </p>
-              {bannerInfo.runtime && (
+              {bannerInfo.runtime ? (
                 <p className="theTime">
                   {Math.floor(bannerInfo.runtime / 60)} h{" "}
                   {bannerInfo.runtime % 60} min{" "}
                   <span>{bannerInfo.original_language.toUpperCase()}</span>
                 </p>
-              )}
+              ) : null}
               <p className="genres">
                 {" "}
                 {bannerInfo.genres
@@ -62,9 +62,13 @@ export default function FinalBanner({ bannerInfo, type }) {
                   .slice(0, 2)
                   .join(" , ")}{" "}
               </p>
-              <p className="average-vote">
-                Average rating {Math.floor(bannerInfo.vote_average * 10)} %
-              </p>
+              {bannerInfo.vote_average !== 0 ? (
+                <p className="average-vote">
+                  Average rating {Math.floor(bannerInfo.vote_average * 10)} %
+                </p>
+              ) : (
+                <p className="average-vote">No rating for the moment</p>
+              )}
             </div>
             {bannerInfo.overview && (
               <div className="synopsis">
@@ -72,14 +76,6 @@ export default function FinalBanner({ bannerInfo, type }) {
                 <p>{bannerInfo.overview || bannerInfo.tagline}</p>
               </div>
             )}
-            {bannerInfo.budget ? (
-              <p className="budget">Budget : {bannerInfo.budget} US dollars</p>
-            ) : null}
-            {bannerInfo.revenue ? (
-              <p className="revenue">
-                Revenue : {bannerInfo.revenue} US dollars
-              </p>
-            ) : null}
             <div className="button-container-banner">
               <button className="watch-btn" type="button" onClick={handleclick}>
                 PLAY <FaPlay className="play-icon-banner" />

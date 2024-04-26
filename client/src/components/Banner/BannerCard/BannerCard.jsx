@@ -61,7 +61,7 @@ export default function BannerCard({ image, overview, title, id }) {
           <p className="language">{content?.original_language.toUpperCase()}</p>
           {content && (
             <p className="runtime">
-              {Math.floor(content.runtime / 60)}h{content.runtime % 60}m
+              {Math.floor(content.runtime / 60)} h {content.runtime % 60} min
             </p>
           )}
         </div>

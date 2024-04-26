@@ -10,3 +10,9 @@
 .positionnement-factice {
   margin: auto;
 }
+
+@media (max-width: 1025px) {
+  .suggest-content {
+    margin: 0;
+  }
+}

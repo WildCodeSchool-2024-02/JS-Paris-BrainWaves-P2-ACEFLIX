@@ -9,10 +9,8 @@
   gap: 10px;
   height: 350px;
   overflow-x: scroll;
-}
-
-.container-suggest::-webkit-scrollbar {
-  display: none;
+  scrollbar-color: #b53dff transparent;
+  scrollbar-width: thin;
 }
 
 .img-suggest {
@@ -24,7 +22,7 @@
   flex-direction: row-reverse;
   justify-content: flex-end;
   align-items: center;
-  margin: 10px 0 0 10px;
+  margin: 10px 0 10px 0;
 }
 
 .description-suggest {
@@ -81,12 +79,14 @@
 }
 
 @media (max-width: 1025px) {
+  .container-suggest::-webkit-scrollbar {
+    display: none;
+  }
   .container-suggest {
     height: 230px;
+    padding-bottom: 10px;
   }
   .card-suggest {
-    height: 100px;
-    width: 400px;
     margin-bottom: 20px;
   }
 

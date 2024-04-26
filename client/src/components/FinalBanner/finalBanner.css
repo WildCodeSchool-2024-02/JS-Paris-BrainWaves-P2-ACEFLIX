@@ -55,7 +55,7 @@
   position: absolute;
   top: 0px;
   display: flex;
-  padding: 60px 20px 20px 20px;
+  padding: 100px 20px 20px 20px;
   width: 90vw;
   z-index: 2;
 }
@@ -206,7 +206,7 @@
   cursor: pointer;
   font-size: 17px;
   font-weight: 600;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .more-inactive {
@@ -228,7 +228,7 @@
 }
 
 .watch-btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
   background-color: rgba(0, 0, 0, 0.692);
 }
 
@@ -268,6 +268,7 @@
 
   .banner-info-container {
     flex-direction: column;
+    padding: 60px 20px 20px 20px;
     gap: 0px;
   }
   .first-container {
