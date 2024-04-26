@@ -61,7 +61,7 @@ export default function Suggest({ id, type }) {
               </div>
             )
         )}
-      </div>
+      </div> 
     </div>
   );
 }
