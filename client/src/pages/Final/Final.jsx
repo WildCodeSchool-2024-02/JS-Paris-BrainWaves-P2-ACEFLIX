@@ -3,6 +3,7 @@ import "./final.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import FinalBanner from "../../components/FinalBanner/FinalBanner";
+import Actors from "../../components/Actors/Actors";
 import Comments from "../../components/Comments/Comments";
 
 
@@ -36,6 +37,7 @@ export default function Final() {
     return(
         <div id="Final">
                {bannerInfo && <FinalBanner bannerInfo={bannerInfo} />}
+               <Actors type={type} id={id}/>
                {comments && <Comments comments={comments} setComments={setComments} />}        
        </div>
     )

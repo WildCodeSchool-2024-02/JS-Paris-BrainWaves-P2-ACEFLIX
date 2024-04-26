@@ -1,0 +1,85 @@
+.container {
+  display: flex;
+  color: whitesmoke;
+  gap: 25px;
+  overflow-x: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #b53dff transparent;
+  margin-top: 50px;
+}
+.actor-name {
+  font-size: 15px;
+  margin: 0;
+  font-weight: 600;
+  margin-top: 10px;
+  text-align: center;
+}
+.actor-img {
+  height: 170px;
+  width: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.actor-containt {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.character-name {
+  margin: 0;
+  font-size: 12px;
+  font-style: italic;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.actor-name-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+}
+.credits-title {
+  margin: 20px 0 20px 10px;
+  font-size: 20px;
+  color: whitesmoke;
+}
+@media (max-width: 1025px) {
+  .container::-webkit-scrollbar {
+    display: none;
+  }
+  .actor-img {
+    height: 170px;
+    width: 150px;
+  }
+  .credits-title {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container::-webkit-scrollbar {
+    display: none;
+  }
+  .actor-img {
+    height: 120px;
+    width: 100px;
+  }
+  .actor-name {
+    font-size: 10px;
+    margin: 0;
+    font-weight: 500;
+    margin-top: 10px;
+  }
+
+  .character-name {
+    margin: 0;
+    font-size: 8px;
+    font-style: italic;
+    opacity: 0.9;
+  }
+}
