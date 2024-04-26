@@ -2,7 +2,7 @@
   color: white;
   padding: 5px;
   line-height: 25px;
-  width: 50%;
+  width: 90%;
   box-sizing: border-box;
   margin: 10px;
   border-radius: 5px;
@@ -94,7 +94,10 @@
 .all-list-container {
   box-sizing: border-box;
   overflow: scroll;
-  max-height: 500px;
+  overflow-y: scroll;
+  scrollbar-color: rgb(193, 58, 251) transparent;
+  scroll-behavior: smooth;
+  max-height: 400px;
 }
 .comments-list-container {
   display: flex;
