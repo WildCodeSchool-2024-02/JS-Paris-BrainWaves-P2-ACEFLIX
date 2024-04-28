@@ -148,6 +148,7 @@
   padding: 0 5px 0 5px;
   border-radius: 5px;
 }
+
 .average-vote {
   color: #45cb65;
   margin: 0 0 10px 0;
@@ -200,7 +201,6 @@
   height: 40px;
   width: 120px;
   border-radius: 7px;
-  margin: 0 10px 0 0;
   background-color: #b53dff;
   color: whitesmoke;
   cursor: pointer;
@@ -301,6 +301,11 @@
   .info-and-butons {
     align-items: center;
   }
+
+  .card-suggest {
+    min-width: 200px;
+  }
+
   .image-box {
     margin-top: 20px;
     width: 250px;
@@ -308,9 +313,10 @@
   }
 
   .title {
-    font-size: 30px;
+    font-size: 22px;
     margin: 5px 0 0 0;
     text-align: center;
+    line-height: normal;
   }
 
   .episode {
@@ -328,10 +334,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
     padding: 0;
     width: 100%;
   }
+
+  .first-container .image-box img {
+    min-width: 100%;
+  }
+
   .info-and-butons {
     width: 90%;
     line-height: 10px;
@@ -363,12 +373,26 @@
 
   .genres {
     margin: 10px 0;
+    font-size: 12px;
   }
 
-  .budget {
-    display: none;
+  .average-vote {
+    font-size: 13px;
+    font-weight: 400;
   }
-  .revenue {
-    display: none;
+
+  .release-date {
+    font-size: 14px;
+  }
+
+  .watch-btn {
+    width: 100px;
+    height: 35px;
+    font-size: 14px;
+  }
+  .more {
+    width: 100px;
+    height: 35px;
+    font-size: 14px;
   }
 }

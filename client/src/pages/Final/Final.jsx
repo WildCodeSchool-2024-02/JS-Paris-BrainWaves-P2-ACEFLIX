@@ -1,6 +1,7 @@
 import "./final.css";
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 import VideoContext from "../../components/ContextVideo";
 import FinalBanner from "../../components/FinalBanner/FinalBanner";
 import Actors from "../../components/Actors/Actors";
@@ -54,14 +55,26 @@ export default function Final() {
   }, [actorsFetchURL]);
 
   return (
-    <div id="Final">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      id="top-page"
+    >
       {blackScreen && <Video />}
       {bannerInfo && <FinalBanner bannerInfo={bannerInfo} type={type} />}
-      {data && <Actors data={data} loading={loading} error={error} />}
+      {data && (
+        <Actors
+          data={data}
+          loading={loading}
+          error={error}
+          bannerInfo={bannerInfo}
+        />
+      )}
       {bannerInfo?.vote_average && (
         <Suggest id={id} type={type} bannerInfo={bannerInfo} />
       )}
       {comments && <Comments comments={comments} setComments={setComments} />}
-    </div>
+    </motion.div>
   );
 }

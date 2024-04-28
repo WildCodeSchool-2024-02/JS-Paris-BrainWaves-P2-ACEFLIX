@@ -119,10 +119,12 @@
   background-color: #b53dff;
   color: whitesmoke;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .play:hover {
-  filter: brightness(1.2);
+  transform: scale(1.03);
+  background-color: rgba(0, 0, 0, 0.692);
 }
 
 .play p {
@@ -141,7 +143,6 @@
   height: 40px;
   width: 120px;
   border-radius: 7px;
-  margin-right: 10px;
   background-color: rgb(26, 26, 26);
   color: #b53dff;
   font-size: 17px;
@@ -192,7 +193,7 @@
   }
   .movie-title {
     text-align: center;
-    font-size: 35px;
+    font-size: 30px;
   }
   .movie-genres {
     gap: 10px;
@@ -216,5 +217,24 @@
   }
   .img-cinema {
     width: 1000px;
+    height: 500px;
+  }
+  .more {
+    width: 100px;
+    height: 35px;
+    font-size: 14px;
+  }
+
+  .play {
+    width: 100px;
+    height: 35px;
+  }
+
+  .play p {
+    font-size: 14px;
+  }
+
+  .play-icon {
+    font-size: 14px;
   }
 }

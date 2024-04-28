@@ -49,9 +49,9 @@ export default function BannerCard({ image, overview, title, id }) {
         <h1 className="movie-title">{title}</h1>
         <p className="movie-overview">{overview}</p>
         <div className="movie-genres">
-          {genresContent?.map((value) => (
-            <p key={value.name}>{value.name}</p>
-          ))}
+          {genresContent
+            ?.map((value) => <p key={value.name}>{value.name}</p>)
+            .slice(0, 3)}
         </div>
         <div className="reco-release">
           <p className="recommandation">

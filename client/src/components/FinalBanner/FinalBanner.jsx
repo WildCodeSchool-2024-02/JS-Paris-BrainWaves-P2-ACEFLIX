@@ -101,7 +101,7 @@ export default function FinalBanner({ bannerInfo, type }) {
 
         {bannerInfo.overview && (
           <div className="second-container">
-            <h2>Synopsis</h2>
+            <h2>SYNOPSIS</h2>
             <p>{bannerInfo.overview || bannerInfo.tagline}</p>
           </div>
         )}

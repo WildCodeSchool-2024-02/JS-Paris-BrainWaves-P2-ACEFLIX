@@ -45,8 +45,8 @@ export default function Card({ card }) {
 
   return (
     <div id="card">
-      {(card.first_air_date > "2024-04-21" ||
-        card.release_date > "2024-04-21") && (
+      {(card.first_air_date > "2024-04-30" ||
+        card.release_date > "2024-04-30") && (
         <div className="appreciated">
           <p>Coming soon</p>
         </div>

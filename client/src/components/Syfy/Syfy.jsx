@@ -14,7 +14,7 @@ export default function Syfy({ status, uniqueSyfy, shuffle }) {
   const syfyMoviesFetchURL =
     "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=878&api_key=aea07ae608264c18c1ea1431604753c3";
   const syfySeriesFetchURL =
-    "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10765&api_key=aea07ae608264c18c1ea1431604753c3";
+    `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&watch_region=US&with_genres=10765&with_watch_providers=8&api_key=aea07ae608264c18c1ea1431604753c3`;
 
   // Fetch de ces contenus via le Hook useFetch (20 de chaque)
   const {

@@ -15,7 +15,7 @@ export default function Videos() {
       .then((response) => response.json())
       .then((response) => setVideo(response.results))
       .catch((err) => setError(err))
-      .finally(() => setLoading(false ));
+      .finally(() => setLoading(false));
   }, [urlVideo]);
 
   const urlTab = [];
