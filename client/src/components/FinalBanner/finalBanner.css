@@ -1,0 +1,398 @@
+#FinalBanner {
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0;
+  width: 100vw;
+  height: 700px;
+  padding: 0;
+}
+
+@keyframes fromLeft {
+  from {
+    transform: translateX(-1000px);
+  }
+  to {
+    transform: translate(0px);
+  }
+}
+
+@keyframes fromRight {
+  from {
+    transform: translateX(1000px);
+  }
+  to {
+    transform: translate(0px);
+  }
+}
+
+.bannerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-backdrop {
+  width: 100vw;
+  height: 700px;
+  filter: blur(2px);
+  opacity: 0.5;
+  transition: all 0.5s ease-in-out;
+  background-position: center;
+  display: flex;
+  object-fit: cover;
+  background-position: center;
+}
+#FinalBanner:hover .image-backdrop {
+  opacity: 0.3;
+  filter: blur(10px);
+}
+
+.banner-info-container {
+  position: absolute;
+  top: 0px;
+  display: flex;
+  padding: 100px 20px 20px 20px;
+  width: 90vw;
+  z-index: 2;
+}
+
+.first-container {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 20px;
+  animation: fromLeft 0.5s ease-in-out alternate backwards;
+  transition: all 1s ease-in-out;
+}
+.image-box {
+  width: 400px;
+  height: 500px;
+}
+
+.gradient-bg {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  color: transparent;
+  width: 100vw;
+  height: 200px;
+  background: linear-gradient(0deg, black, transparent);
+  z-index: 1;
+}
+
+.first-container .image-box img {
+  height: 100%;
+  background-size: cover;
+  box-shadow: 0 0 20px black;
+  border-radius: 5px;
+}
+
+.second-container {
+  display: none;
+}
+
+.synopsis {
+  max-width: 1000px;
+}
+
+.synopsis h2 {
+  font-size: 20px;
+}
+
+.synopsis p {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.episode {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: rgba(0, 0, 0, 0.531);
+  color: white;
+  cursor: pointer;
+  width: 120px;
+  height: 40px;
+  border-radius: 7px;
+}
+
+.episode h2 {
+  font-size: 17px;
+  padding: 0 10px 0 10px;
+}
+
+.info-and-butons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  line-height: 20px;
+  color: whitesmoke;
+  height: 400px;
+  gap: 10px;
+}
+
+.title {
+  text-shadow: 0 0 10px black;
+  margin: 5px 0 0 0;
+  line-height: 45px;
+  font-size: 40px;
+}
+.info-and-butons .theTime span {
+  background-color: rgb(179, 179, 179, 0.5);
+  margin: 0;
+  color: whitesmoke;
+  padding: 0 5px 0 5px;
+  border-radius: 5px;
+}
+
+.average-vote {
+  color: #45cb65;
+  margin: 0 0 10px 0;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.release-date {
+  font-size: 17px;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+.budget {
+  font-weight: 300;
+  font-style: italic;
+  margin: 0;
+}
+
+.revenue {
+  font-weight: 300;
+  font-style: italic;
+  margin: 0;
+}
+
+.genres {
+  font-size: 13px;
+  font-weight: 400;
+  font-style: italic;
+  margin: 3px 0;
+}
+
+.theTime {
+  font-size: 15px;
+  font-weight: 400;
+  margin: 3px 0;
+}
+
+.button-container-banner {
+  display: flex;
+  gap: 6px;
+}
+
+.watch-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  box-shadow: none;
+  height: 40px;
+  width: 120px;
+  border-radius: 7px;
+  background-color: #b53dff;
+  color: whitesmoke;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.more-inactive {
+  border: none;
+  box-shadow: none;
+  height: 40px;
+  width: 120px;
+  border-radius: 7px;
+  margin-right: 10px;
+  background-color: rgb(26, 26, 26);
+  color: #b53dff;
+  font-size: 17px;
+  font-weight: 600;
+  opacity: 0.4;
+}
+
+.play-icon-banner {
+  margin-left: 10px;
+}
+
+.watch-btn:hover {
+  transform: scale(1.03);
+  background-color: rgba(0, 0, 0, 0.692);
+}
+
+.more-Url:hover {
+  transform: scale(1.05);
+}
+
+.second-container {
+  width: 35%;
+  color: whitesmoke;
+  text-shadow: 0 0 5px black;
+  padding-left: 20px;
+  transition: all 0.5s ease-in-out;
+  animation: fromRight 0.5s ease-in-out alternate backwards;
+}
+
+.second-container p {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.second-container:hover {
+  background-color: rgba(0, 0, 0, 0.459);
+  border-radius: 15px;
+  z-index: 50;
+}
+
+@media screen and (max-width: 1025px) {
+  .image-box {
+    width: 300px;
+    height: 350px;
+  }
+
+  .first-container .image-box img {
+    min-width: 90%;
+  }
+
+  .banner-info-container {
+    flex-direction: column;
+    padding: 60px 20px 20px 20px;
+    gap: 0px;
+  }
+  .first-container {
+    margin-top: 20px;
+  }
+  .second-container {
+    display: block;
+    width: 90%;
+  }
+
+  .second-container h2 {
+    margin: 0;
+  }
+  .info-and-butons {
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 350px;
+  }
+
+  .title {
+    font-size: 35px;
+  }
+
+  .synopsis {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .info-and-butons {
+    align-items: center;
+  }
+
+  .card-suggest {
+    min-width: 200px;
+  }
+
+  .image-box {
+    margin-top: 20px;
+    width: 250px;
+    height: 300px;
+  }
+
+  .title {
+    font-size: 22px;
+    margin: 5px 0 0 0;
+    text-align: center;
+    line-height: normal;
+  }
+
+  .episode {
+    justify-content: center;
+  }
+
+  .episode h2 {
+    font-weight: 300;
+    font-size: 15px;
+  }
+  .watch-btn {
+    margin-bottom: 25px;
+  }
+  .first-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    width: 100%;
+  }
+
+  .first-container .image-box img {
+    min-width: 100%;
+  }
+
+  .info-and-butons {
+    width: 90%;
+    line-height: 10px;
+  }
+
+  .groupement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  .info-and-butons p {
+    line-height: 12px;
+  }
+  #FinalBanner {
+    font-size: 0.7rem;
+    overflow: hidden;
+  }
+
+  .banner-info-container {
+    padding: 0;
+    width: 99%;
+    margin-top: 40px;
+  }
+  .second-container {
+    display: none;
+  }
+
+  .genres {
+    margin: 10px 0;
+    font-size: 12px;
+  }
+
+  .average-vote {
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  .release-date {
+    font-size: 14px;
+  }
+
+  .watch-btn {
+    width: 100px;
+    height: 35px;
+    font-size: 14px;
+  }
+  .more {
+    width: 100px;
+    height: 35px;
+    font-size: 14px;
+  }
+}

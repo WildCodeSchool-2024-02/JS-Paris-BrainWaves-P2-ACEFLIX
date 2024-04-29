@@ -1,0 +1,148 @@
+.card-suggest {
+  width: 50%;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.container-suggest {
+  display: flex;
+  gap: 10px;
+  height: 350px;
+  overflow-x: scroll;
+  scrollbar-color: #b53dff transparent;
+  scrollbar-width: thin;
+}
+
+.img-suggest {
+  height: 70%;
+}
+
+.bloc-text-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px 0 10px 0;
+}
+
+.description-suggest {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.bloc-text-container h2 {
+  color: whitesmoke;
+  margin: 5px 0 0 0;
+}
+
+.bloc-poster-container {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.img-poster-suggest {
+  width: 100%;
+  height: 100%;
+}
+
+.suggest-title {
+  margin: 20px 0 20px 10px;
+  font-size: 20px;
+  color: whitesmoke;
+}
+
+.recommandation-suggest {
+  color: rgb(164, 164, 164);
+  margin: 0;
+  font-size: 13px;
+}
+
+.language-suggest {
+  background-color: rgb(179, 179, 179, 0.5);
+  margin: 0;
+  color: whitesmoke;
+  padding: 0 5px 0 5px;
+  border-radius: 5px;
+}
+
+.title-context {
+  font-size: 17px;
+}
+
+.title-context:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 1025px) {
+  .container-suggest::-webkit-scrollbar {
+    display: none;
+  }
+  .container-suggest {
+    height: 230px;
+    padding-bottom: 10px;
+  }
+  .card-suggest {
+    margin-bottom: 20px;
+  }
+
+  .img-suggest {
+    min-width: 250px;
+    min-height: 150px;
+  }
+
+  .suggest-title {
+    font-size: 17px;
+  }
+
+  .recommandation-suggest {
+    font-size: 12px;
+  }
+
+  .language-suggest {
+    font-size: 15px;
+  }
+
+  .title-context {
+    font-size: 15px;
+  }
+
+  .bloc-poster-container {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 600px) {
+  .img-suggest {
+    min-width: 200px;
+    min-height: 100px;
+  }
+  .suggest-title {
+    font-size: 15px;
+  }
+
+  .container-suggest {
+    height: 170px;
+    padding-bottom: 10px;
+  }
+
+  .recommandation-suggest {
+    font-size: 10px;
+  }
+
+  .language-suggest {
+    font-size: 12px;
+  }
+
+  .title-context {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,9 @@
+.swipper-cinema-content {
+  height: 600px;
+}
+
+@media (max-width: 600px) {
+  .swipper-cinema-content {
+    height: 500px;
+  }
+}

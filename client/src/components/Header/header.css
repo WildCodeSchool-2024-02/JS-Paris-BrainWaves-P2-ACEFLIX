@@ -1,0 +1,191 @@
+#Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  width: 100vw;
+  animation: mainHeaderMove 1s ease-in-out alternate forwards;
+  z-index: 50;
+}
+
+.hearder-burger {
+  margin-left: 90px;
+}
+.burger-btn {
+  font-size: 1.8rem;
+  background-color: transparent;
+  color: #b53dff;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.2s ease-in-out;
+}
+.burger-btn:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 20px #b53dff);
+  transform: scale(0.9);
+}
+.aceflix-logo {
+  position: fixed;
+  right: 50%;
+  transform: translateX(50%);
+  transition: all 1s ease-in-out;
+}
+.aceflix-logo img {
+  width: 110px;
+  cursor: pointer;
+}
+
+.main-search-input {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 0px;
+  width: 30%;
+  transition: all 1s ease-in-out;
+  margin: 30px 90px 30px 30px;
+}
+.main-search-input:hover {
+  box-shadow: 0 0 10px #b53dff;
+}
+.header-input {
+  padding: 10px;
+  display: none;
+  background-color: black;
+  opacity: 0.8;
+  font-style: italic;
+  color: white;
+  margin: 0px;
+  border: none;
+  width: 100%;
+}
+.header-input::placeholder {
+  color: whitesmoke;
+  font-style: italic;
+}
+.header-search-btn {
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  overflow: hidden;
+  opacity: 1;
+  animation: mooveSearchButton 2s ease-in-out infinite forwards;
+  background-color: #b53dff;
+  margin: 0px;
+}
+
+.header-search-btn:hover {
+  background-color: black;
+  color: aliceblue;
+  animation: none;
+}
+.main-search-input:hover .header-input {
+  display: inline-block;
+}
+
+.main-search-input .header-input:focus {
+  display: block;
+}
+
+.main-search-input:hover .header-search-btn {
+  animation: none;
+}
+
+.delete-input {
+  position: absolute;
+  right: 50px;
+  top: 8px;
+  color: whitesmoke;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+@keyframes mooveSearchButton {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes mainHeaderMove {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+/* RESPONSIVE MOBILE ET TABLETTE  */
+
+@media (max-width: 1025px) {
+  .burger-btn {
+    display: none;
+  }
+  .main-search-input {
+    margin: 30px;
+  }
+  .aceflix-logo img {
+    width: 100px;
+  }
+  .main-search-input .header-input {
+    display: inline-block;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #Header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 15px;
+  }
+
+  .hearder-burger {
+    display: none;
+  }
+
+  .hearder-burger .burger-btn {
+    display: none;
+  }
+
+  .aceflix-logo {
+    position: initial;
+    width: 20%;
+  }
+
+  .aceflix-logo img {
+    width: 80px;
+  }
+
+  .main-search-input {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  #Header {
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100px;
+  }
+  .aceflix-logo {
+    position: fixed;
+    right: 55px;
+    top: 0;
+    display: none;
+    transition: all 1s ease-in-out;
+    width: 100vw;
+  }
+}

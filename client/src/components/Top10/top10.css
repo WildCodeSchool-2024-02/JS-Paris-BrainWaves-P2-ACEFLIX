@@ -1,0 +1,30 @@
+.test-top {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 170px;
+  font-style: italic;
+  font-weight: 700;
+  color: rgb(0, 0, 0, 0.6);
+  filter: brightness(1.9);
+  margin: 0;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: rgb(245, 245, 245, 0.4);
+  z-index: 5;
+  pointer-events: none;
+}
+
+@media (max-width: 1025px) {
+  .test-top {
+    font-size: 140px;
+    bottom: -50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .test-top {
+    font-size: 100px;
+    bottom: -30px;
+  }
+}

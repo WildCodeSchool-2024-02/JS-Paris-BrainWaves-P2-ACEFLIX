@@ -1,0 +1,104 @@
+#SecondHeader {
+  position: fixed;
+  top: 100px;
+  z-index: 50;
+}
+
+.active {
+  overflow-y: hidden;
+}
+
+.swiper-button-prev {
+  color: white;
+  transform: scale(0.7);
+}
+
+.swiper-button-next {
+  color: white;
+  transform: scale(0.7);
+}
+
+.main-title {
+  color: whitesmoke;
+  font-size: 20px;
+}
+
+.static-button {
+  position: fixed;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.black-screen {
+  position: fixed;
+}
+
+.slider-popular {
+  margin: 0 90px 0 90px;
+}
+
+.slider-top10 {
+  margin: 0 90px 0 90px;
+}
+
+.horror-slider {
+  margin: 0 90px 0 90px;
+}
+
+.drama-slider {
+  margin: 0 90px 0 90px;
+}
+
+.family-slider {
+  margin: 0 90px 0 90px;
+}
+
+.reality-slider {
+  margin: 0 90px 0 90px;
+}
+
+@media (max-width: 1025px) {
+  .swiper-button-prev {
+    display: none;
+  }
+
+  .swiper-button-next {
+    display: none;
+  }
+
+  .slider-popular {
+    margin: 0;
+  }
+
+  .slider-top10 {
+    margin: 0;
+  }
+
+  .horror-slider {
+    margin: 0;
+  }
+
+  .drama-slider {
+    margin: 0;
+  }
+
+  .family-slider {
+    margin: 0;
+  }
+
+  .reality-slider {
+    margin: 0;
+  }
+
+  .main-title {
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-title {
+    font-size: 15px;
+  }
+}

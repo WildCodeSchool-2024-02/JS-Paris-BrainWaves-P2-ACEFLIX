@@ -1,0 +1,208 @@
+#Comments {
+  color: white;
+  padding: 5px;
+  line-height: 25px;
+  width: 90%;
+  box-sizing: border-box;
+  margin: 10px;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+  margin: 50px;
+  font-weight: 300;
+  overflow: hidden;
+}
+#Comments:hover {
+  box-shadow: 0 0 5px rgb(94, 94, 94);
+}
+#Comments h2 {
+  text-align: center;
+}
+
+.user-input-container {
+  box-sizing: border-box;
+  width: 80%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 5px;
+  overflow: hidden;
+  transform: scale(0.8);
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0 0 5px #b53dff;
+}
+.user-input-container input {
+  padding: 20px;
+  border: none;
+  color: white;
+  background-color: black;
+}
+.user-input-container:hover {
+  box-shadow: 0 0 20px #b53dff;
+  transform: scale(1);
+}
+
+.user-input-container input:focus {
+  outline: none;
+}
+
+.user-input-container input::placeholder {
+  font-style: italic;
+}
+.user-input-container button {
+  padding: 10px;
+  border-radius: 0px;
+  font-weight: 600;
+  background-color: black;
+  color: #b53dff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.user-input-container button:hover {
+  transform: scale(1.2);
+  background-color: #b53dff;
+  color: black;
+  padding: 15px 10px;
+}
+.user-input-container .input-name {
+  width: 20%;
+}
+.user-input-container .input-name-error {
+  color: red;
+}
+.user-input-container .input-comments {
+  margin-left: 50px;
+  width: 70%;
+}
+.list {
+  padding: 15px;
+  margin: 10px;
+  box-shadow: 0 0 5px rgb(0, 0, 0);
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  animation: fromLeft 1s ease-in-out alternate backwards;
+}
+
+@keyframes fromLeft {
+  from {
+    transform: translateX(-1000px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+.all-list-container {
+  box-sizing: border-box;
+  overflow: scroll;
+  overflow-y: scroll;
+  scrollbar-color: rgb(193, 58, 251) transparent;
+  scroll-behavior: smooth;
+  max-height: 400px;
+}
+.comments-list-container {
+  display: flex;
+  flex-direction: column-reverse;
+  font-size: 30px;
+}
+
+.list p {
+  margin: 0px;
+  font-size: 15px;
+  text-align: left;
+}
+.list:hover {
+  box-shadow: 0 0 10px #b53dff;
+
+  background-color: black;
+}
+
+.user-btn {
+  color: #b53dff;
+  font-size: 15px;
+  margin-right: 10px;
+}
+.date {
+  font-style: italic;
+  transform: scale(0.6);
+  position: absolute;
+  left: 5px;
+  top: 40px;
+}
+.delete-comment {
+  font-weight: 800;
+  color: white;
+  font-size: 25px;
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.delete-comment:hover {
+  color: #b53dff;
+  font-size: 25px;
+}
+
+@media screen and (max-width: 900px) {
+  #Comments {
+    width: 90%;
+    padding: 0px;
+    margin: 5px auto;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #Comments {
+    width: 90%;
+    padding: 0px;
+    margin: 5px auto;
+    font-size: 10px;
+  }
+
+  .input-name {
+    width: 40%;
+  }
+  .input-name-error {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .all-list-container {
+    max-height: 300px;
+  }
+  .list p {
+    margin: 0px;
+    font-size: 12px;
+    text-align: left;
+  }
+  .user-input-container .input-name {
+    width: 80%;
+    text-align: center;
+  }
+  .input-name-error {
+    width: 80%;
+  }
+  .user-input-container .input-comments {
+    width: 80%;
+    text-align: center;
+    margin-left: 0;
+  }
+  .user-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: none;
+    width: 90%;
+    text-align: center;
+  }
+
+  .user-input-container input {
+    padding: 10px;
+  }
+}

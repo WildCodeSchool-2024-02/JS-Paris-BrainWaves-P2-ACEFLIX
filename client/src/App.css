@@ -1,165 +1,120 @@
 body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.7;
-  color: #eee;
   margin: 0;
-}
-
-.container {
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black;
+  width: 100vw;
   height: 100vh;
-  background-image: url("./assets/images/background.webp");
-  background-size: cover;
-  background-position: top;
+  overflow-x: hidden;
   position: relative;
+}
+#Footer {
+  position: sticky;
+  top: 10%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  max-height: 100px;
+  width: 100%;
+  background-color: #000000;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+#Footer-list {
+  display: flex;
   justify-content: space-between;
-  padding: 30px;
+  width: 60%;
+  align-items: center;
+  margin: 0px auto;
 }
 
-.logo {
-  font-size: 20px;
-  margin-top: 16px;
-}
-
-.navbar ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: #eee;
-  display: flex;
-  gap: 5px;
-  justify-content: end;
-  margin-top: auto;
-  font-size: 15px;
-}
-
-.navbar a:hover {
-  scale: 110%;
-}
-
-.text-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+#Footer-list a {
   text-align: center;
+  line-height: 10px;
+  color: white;
 }
 
-.block-primary {
-  text-transform: uppercase;
-  margin-bottom: 30px;
+#Footer-list a :hover {
+  color: blueviolet;
+}
+h1 {
+  font-size: 45px;
+  font-family: "Tilt Neon", sans-serif;
 }
 
-.block-primary-main {
-  font-size: 50px;
-  font-weight: 400;
-  letter-spacing: 5px;
-  animation: blink 12s infinite;
+h2 {
+  font-size: 20px;
+  font-family: "Tilt Neon", sans-serif;
 }
 
-.block-primary-sub {
-  display: block;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 7px;
+p {
+  font-family: "Poppins", sans-serif;
 }
 
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 10px 20px;
-  display: inline-block;
-  border-radius: 100px;
-  transition: all 0.2s;
-  position: relative;
+button {
+  border-radius: 7px;
+  text-align: center;
+  border: none;
 }
 
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 110;
 }
 
-.btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+.nav-blackscreen {
+  position: fixed;
+  top: 0;
+  z-index: 52;
 }
 
-.btn-white {
-  background-color: #fff;
-  color: #777;
-  font-size: 14px;
+header {
+  position: fixed;
+  top: 0;
+  z-index: 100;
 }
 
-footer {
-  position: absolute;
-  top: 85%;
-  left: 75%;
-}
-
-.wcs {
-  text-decoration: none;
-  color: #ff1493ad;
-}
-
-.wcs:hover {
-  border-bottom: solid 1px #ff1493ad;
-}
-
-@media screen and (max-width: 760px) {
-  .logo {
+/* Media pour tablette */
+@media (max-width: 1025px) {
+  h1 {
+    font-size: 35px;
+  }
+  nav {
+    position: sticky;
+    bottom: 0;
+    right: 0;
+  }
+  .blackscreen-nav {
     display: none;
   }
 
-  .container {
-    justify-content: center;
+  #Footer p {
+    font-size: 15px;
   }
-
-  footer {
-    position: absolute;
-    top: 85%;
-    left: 20%;
+  #Footer {
+    max-height: 100px;
   }
-}
-
-@media screen and (min-width: 761px) and (max-width: 960px) {
-  footer {
-    position: absolute;
-    top: 85%;
-    left: 60%;
+  #Footer-list {
+    font-size: 15px;
   }
 }
 
-@keyframes blink {
-  20%,
-  24%,
-  55% {
-    color: #111;
-    text-shadow: none;
+/* Media pour mobile */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 25px;
   }
-  0%,
-  19%,
-  21%,
-  23%,
-  25%,
-  54%,
-  56%,
-  100% {
-    text-shadow:
-      0 0 5px #ff1493ad,
-      0 0 15px #eee,
-      0 0 20px #ff1493ad,
-      0 0 40px #a00ac9,
-      0 0 60px #ff0000,
-      0 0 10px #970dc5,
-      0 0 98px #ff0000;
-    color: #fff;
+
+  #Footer p {
+    font-size: 10px;
+  }
+  #Footer {
+    max-height: 100px;
+  }
+  #Footer-list {
+    font-size: 10px;
   }
 }
