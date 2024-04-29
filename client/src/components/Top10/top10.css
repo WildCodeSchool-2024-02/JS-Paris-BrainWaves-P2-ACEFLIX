@@ -24,7 +24,7 @@
 
 @media (max-width: 600px) {
   .test-top {
-    font-size: 120px;
-    bottom: -40px;
+    font-size: 100px;
+    bottom: -30px;
   }
 }

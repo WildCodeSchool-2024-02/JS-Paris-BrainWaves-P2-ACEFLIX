@@ -20,7 +20,7 @@ export default function App() {
         setSerieActive={setSerieActive}
       />
       <Outlet />
-
+      { isOpen && <BlackScreen setIsOpen={setIsOpen} />}
       <Footer/>
       <Nav
         setIsOpen={setIsOpen}

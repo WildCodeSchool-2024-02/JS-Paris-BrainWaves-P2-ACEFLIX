@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import "./secondHeader.css";
+import { useState } from "react";
 
 export default function SecondHeader({
   handleAll,
@@ -9,8 +11,28 @@ export default function SecondHeader({
   activeMovie,
   activeSerie,
 }) {
+  const [hidden, setHidden] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+    if (latest > previous && latest > 300) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
+
   return (
-    <div id="SecondHeader">
+    <motion.div
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: "-400%" },
+      }}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
+      id="SecondHeader"
+    >
       <div className="SecondHeader-btn">
         <button
           className={
@@ -48,7 +70,7 @@ export default function SecondHeader({
           Series
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

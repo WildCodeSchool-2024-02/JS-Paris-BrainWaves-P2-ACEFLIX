@@ -47,6 +47,11 @@
   font-size: 20px;
   color: whitesmoke;
 }
+
+.second-container-mobile {
+  display: none;
+}
+
 @media (max-width: 1025px) {
   .container::-webkit-scrollbar {
     display: none;
@@ -56,7 +61,7 @@
     width: 150px;
   }
   .credits-title {
-    font-size: 17px;
+    font-size: 15px;
   }
 }
 
@@ -80,5 +85,21 @@
     font-size: 8px;
     font-style: italic;
     opacity: 0.9;
+  }
+
+  .second-container-mobile {
+    display: block;
+    margin-left: 10px;
+  }
+
+  .second-container-mobile h2 {
+    color: whitesmoke;
+    font-size: 15px;
+  }
+
+  .second-container-mobile p {
+    color: white;
+    font-size: 10px;
+    font-weight: 400;
   }
 }

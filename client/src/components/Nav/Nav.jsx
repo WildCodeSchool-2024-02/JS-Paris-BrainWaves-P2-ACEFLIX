@@ -26,6 +26,7 @@ export default function Nav({
     setSerieActive(false);
     setHomeActive(true);
     navigate("/");
+    document.body.classList.remove("active");
   };
 
   const navigateMovie = () => {
@@ -34,6 +35,7 @@ export default function Nav({
     setSerieActive(false);
     setHomeActive(false);
     navigate("/filter/movie");
+    document.body.classList.remove("active");
   };
 
   const navigateSerie = () => {
@@ -42,10 +44,12 @@ export default function Nav({
     setSerieActive(true);
     setHomeActive(false);
     navigate("/filter/tv");
+    document.body.classList.remove("active");
   };
 
   const closeNav = () => {
     setIsOpen(false);
+    document.body.classList.remove("active");
   };
 
   return (

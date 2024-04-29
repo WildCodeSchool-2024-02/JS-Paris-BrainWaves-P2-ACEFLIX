@@ -65,7 +65,7 @@ nav {
   z-index: 110;
 }
 
-.blackscreen-nav {
+.nav-blackscreen {
   position: fixed;
   top: 0;
   z-index: 52;

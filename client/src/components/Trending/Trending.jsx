@@ -1,54 +1,35 @@
 /* eslint-disable import/no-unresolved */
-import PropTypes from "prop-types";
 import { FreeMode, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/scrollbar";
-import "./drama.css";
+import "./trending.css";
 import Card from "../Card/Card";
 import useFetch from "../../useFetch";
 import "swiper/css/free-mode";
 
-export default function Drama({ shuffle }) {
+export default function Trending() {
   const theApiKey = import.meta.env.VITE_API_KEY;
-  const dramaFetchUrl = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&watch_region=US&with_genres=10764&with_watch_providers=8&api_key=${theApiKey}`;
-  const dramaFetchUrl2 = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=2&sort_by=popularity.desc&watch_region=US&with_genres=10764&with_watch_providers=8&api_key=${theApiKey}`;
+  const trendingFetchUrl = `https://api.themoviedb.org/3/trending/tv/week?language=en-US8&api_key=${theApiKey}`;
 
   // Fetch de ces contenus via le Hook useFetch (20 de chaque)
   const {
-    data: dramaMovies,
-    loading: loadingDrama,
-    error: errorDrama,
-  } = useFetch(dramaFetchUrl);
-  const {
-    data: dramaMovies2,
-    loading: loadingDrama2,
-    error: errorDrama2,
-  } = useFetch(dramaFetchUrl2);
+    data: trendingSeries,
+    loading: loadingTrending,
+    error: errorTrending,
+  } = useFetch(trendingFetchUrl);
 
-  if (loadingDrama || loadingDrama2) {
+  if (loadingTrending) {
     return <h1>LOADING ...</h1>;
   }
-  if (errorDrama || errorDrama2) {
+  if (errorTrending) {
     console.info("Error");
-  }
-
-  // Fonction permettant de mélanger 2 tableaux après les avoir concaténés
-  const ShuffleConcat = (arr1, arr2) => {
-    const final = shuffle(arr1.concat(arr2));
-    return final;
-  };
-
-  // Fusion + mélange des tendances movies + series et limité à 15
-  let allDrama = [];
-  if (dramaMovies && dramaMovies2) {
-    allDrama = ShuffleConcat(dramaMovies, dramaMovies2).slice(0, 20);
   }
 
   return (
     <div className="drama-slider">
-      <h1 className="main-title">REALITY SHOW</h1>
+      <h1 className="main-title">TRENDING THIS WEEK</h1>
       <div className="slider-container">
         <Swiper
           modules={[Navigation, FreeMode]}
@@ -81,7 +62,7 @@ export default function Drama({ shuffle }) {
           navigation
           className="mySwiper"
         >
-          {allDrama?.map((content) => (
+          {trendingSeries?.map((content) => (
             <SwiperSlide key={content.id}>
               <Card card={content} />
             </SwiperSlide>
@@ -91,7 +72,3 @@ export default function Drama({ shuffle }) {
     </div>
   );
 }
-
-Drama.propTypes = {
-  shuffle: PropTypes.func.isRequired,
-};

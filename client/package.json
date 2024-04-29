@@ -9,6 +9,7 @@
   "dependencies": {
     "@fontsource-variable/tilt-neon": "^5.0.4",
     "@mantine/hooks": "^7.8.0",
+    "framer-motion": "^11.1.7",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

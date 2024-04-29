@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import ReactPlayer from "react-player/youtube";
 import { IoMdClose } from "react-icons/io";
+import { motion } from "framer-motion";
 import VideoContext from "../ContextVideo";
 import "./video.css";
 
@@ -15,7 +16,7 @@ export default function Videos() {
       .then((response) => response.json())
       .then((response) => setVideo(response.results))
       .catch((err) => setError(err))
-      .finally(() => setLoading(false ));
+      .finally(() => setLoading(false));
   }, [urlVideo]);
 
   const urlTab = [];
@@ -43,7 +44,12 @@ export default function Videos() {
   return (
     <div className="black-screen">
       {urlTab?.length > 0 ? (
-        <div className="video-container">
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.2, ease: "easeInOut" }}
+          className="video-container"
+        >
           <ReactPlayer
             url={`https://www.youtube.com/watch?v=${urlTab[0]}`}
             controls
@@ -51,7 +57,7 @@ export default function Videos() {
             width="100%"
             height="100%"
           />
-        </div>
+        </motion.div>
       ) : (
         <div className="video-container-empty">
           <h1 className="no-video">

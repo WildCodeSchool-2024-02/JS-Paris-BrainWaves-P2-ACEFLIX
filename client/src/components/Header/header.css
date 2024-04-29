@@ -36,6 +36,7 @@
 }
 
 .main-search-input {
+  position: relative;
   display: flex;
   justify-content: flex-end;
   box-sizing: border-box;
@@ -84,8 +85,21 @@
   display: inline-block;
 }
 
+.main-search-input .header-input:focus {
+  display: block;
+}
+
 .main-search-input:hover .header-search-btn {
   animation: none;
+}
+
+.delete-input {
+  position: absolute;
+  right: 50px;
+  top: 8px;
+  color: whitesmoke;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 @keyframes mooveSearchButton {

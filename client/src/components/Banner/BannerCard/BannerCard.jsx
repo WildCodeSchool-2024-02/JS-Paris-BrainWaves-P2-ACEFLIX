@@ -5,18 +5,29 @@ import { useNavigate } from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
 import VideoContext from "../../ContextVideo";
 
-export default function BannerCard({ image, overview, title, id }) {
+export default function BannerCard({ overview, title, id }) {
   const [content, setContent] = useState(null);
+  const [backdrop, setBackdrop] = useState(null);
   const { setUrlVideo, setBlackScreen } = useContext(VideoContext);
   const navigate = useNavigate();
+  const theApiKey = import.meta.env.VITE_API_KEY;
+
+  const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=aea07ae608264c18c1ea1431604753c3`
+      `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=${theApiKey}`
     )
       .then((response) => response.json())
       .then((response) => setContent(response));
-  }, [id]);
+    fetch(
+      `https://api.themoviedb.org/3/movie/${id}/images?include_image_language=null&api_key=${theApiKey}`
+    )
+      .then((response) => response.json())
+      .then((response) =>
+        setBackdrop(shuffle(response.backdrops.slice(0, 10)))
+      );
+  }, [id, theApiKey]);
 
   let genresContent = [];
   let voteaverage = "";
@@ -26,7 +37,6 @@ export default function BannerCard({ image, overview, title, id }) {
   }
 
   const handleclick = () => {
-    const theApiKey = import.meta.env.VITE_API_KEY;
     setBlackScreen(true);
     setUrlVideo(
       `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US&api_key=${theApiKey}`
@@ -40,19 +50,21 @@ export default function BannerCard({ image, overview, title, id }) {
     <div className="card-container">
       <div className="img-container">
         <div className="bloc-black">1</div>
-        <img
-          className="img-cinema"
-          src={`https://image.tmdb.org/t/p/original${image}`}
-          alt="bannière"
-        />
+        {backdrop && (
+          <img
+            className="img-cinema"
+            src={`https://image.tmdb.org/t/p/original${backdrop[0].file_path}`}
+            alt="bannière"
+          />
+        )}
       </div>
       <div className="content-container">
         <h1 className="movie-title">{title}</h1>
         <p className="movie-overview">{overview}</p>
         <div className="movie-genres">
-          {genresContent?.map((value) => (
-            <p key={value.name}>{value.name}</p>
-          ))}
+          {genresContent
+            ?.map((value) => <p key={value.name}>{value.name}</p>)
+            .slice(0, 3)}
         </div>
         <div className="reco-release">
           <p className="recommandation">
@@ -82,7 +94,6 @@ export default function BannerCard({ image, overview, title, id }) {
 }
 
 BannerCard.propTypes = {
-  image: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
