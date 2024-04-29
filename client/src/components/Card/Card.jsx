@@ -43,10 +43,22 @@ export default function Card({ card }) {
     }
   }
 
+  const dateGenerate = (str) => {
+    let newDateMovie = "";
+    let strMut = str;
+    strMut = card.release_date.split("-");
+    newDateMovie = new Date(strMut[0], strMut[1] - 1, strMut[2]);
+    return newDateMovie;
+  };
+
+  let newDateMovie = "";
+  if (card.release_date) {
+    newDateMovie = dateGenerate(card.release_date);
+  }
+
   return (
     <div id="card">
-      {(card.first_air_date > "2024-04-30" ||
-        card.release_date > "2024-04-30") && (
+      {newDateMovie > new Date() && (
         <div className="appreciated">
           <p>Coming soon</p>
         </div>

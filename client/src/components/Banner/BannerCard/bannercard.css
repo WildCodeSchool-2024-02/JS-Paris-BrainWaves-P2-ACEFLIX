@@ -148,10 +148,12 @@
   font-size: 17px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .more:hover {
-  filter: brightness(1.2);
+  transform: scale(1.03);
+  background-color: rgba(0, 0, 0, 0.692);
 }
 
 @media (max-width: 1025px) {

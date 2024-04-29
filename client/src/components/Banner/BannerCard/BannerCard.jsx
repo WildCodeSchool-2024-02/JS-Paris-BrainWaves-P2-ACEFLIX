@@ -5,10 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
 import VideoContext from "../../ContextVideo";
 
-export default function BannerCard({ image, overview, title, id }) {
+export default function BannerCard({ overview, title, id }) {
   const [content, setContent] = useState(null);
+  const [backdrop, setBackdrop] = useState(null);
   const { setUrlVideo, setBlackScreen } = useContext(VideoContext);
   const navigate = useNavigate();
+
+  const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
 
   useEffect(() => {
     fetch(
@@ -16,6 +19,13 @@ export default function BannerCard({ image, overview, title, id }) {
     )
       .then((response) => response.json())
       .then((response) => setContent(response));
+    fetch(
+      `https://api.themoviedb.org/3/movie/${id}/images?include_image_language=null&api_key=aea07ae608264c18c1ea1431604753c3`
+    )
+      .then((response) => response.json())
+      .then((response) =>
+        setBackdrop(shuffle(response.backdrops.slice(0, 10)))
+      );
   }, [id]);
 
   let genresContent = [];
@@ -39,11 +49,13 @@ export default function BannerCard({ image, overview, title, id }) {
     <div className="card-container">
       <div className="img-container">
         <div className="bloc-black">1</div>
-        <img
-          className="img-cinema"
-          src={`https://image.tmdb.org/t/p/original${image}`}
-          alt="bannière"
-        />
+        {backdrop && (
+          <img
+            className="img-cinema"
+            src={`https://image.tmdb.org/t/p/original${backdrop[0].file_path}`}
+            alt="bannière"
+          />
+        )}
       </div>
       <div className="content-container">
         <h1 className="movie-title">{title}</h1>
@@ -81,7 +93,6 @@ export default function BannerCard({ image, overview, title, id }) {
 }
 
 BannerCard.propTypes = {
-  image: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,

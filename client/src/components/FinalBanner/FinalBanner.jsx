@@ -27,7 +27,7 @@ export default function FinalBanner({ bannerInfo, type }) {
         <div className="first-container">
           <div className="image-box">
             <img
-              src={`https://image.tmdb.org/t/p/w300/${bannerInfo.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500/${bannerInfo.poster_path}`}
               alt="poster"
             />
           </div>

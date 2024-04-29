@@ -35,10 +35,8 @@ export default function Banner() {
         spaceBetween={0}
         slidesPerView={1}
         direction="vertical"
-        // eslint-disable-next-line react/jsx-boolean-value
-        centeredSlides={true}
-        // eslint-disable-next-line react/jsx-boolean-value
-        loop={true}
+        centeredSlides
+        loop
         modules={[Autoplay]}
         autoplay={{
           delay: 4000,
@@ -57,7 +55,6 @@ export default function Banner() {
         {newCinema?.map((content) => (
           <SwiperSlide key={content.id}>
             <BannerCard
-              image={content.backdrop_path}
               overview={content.overview}
               title={content.original_title}
               id={content.id}
