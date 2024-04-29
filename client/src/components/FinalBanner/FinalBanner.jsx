@@ -28,7 +28,7 @@ export default function FinalBanner({ bannerInfo, type }) {
         <div className="first-container">
           <div className="image-box">
             <img
-              src={`https://image.tmdb.org/t/p/w300/${bannerInfo.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500/${bannerInfo.poster_path}`}
               alt="poster"
             />
           </div>
@@ -102,7 +102,7 @@ export default function FinalBanner({ bannerInfo, type }) {
 
         {bannerInfo.overview && (
           <div className="second-container">
-            <h2>Synopsis</h2>
+            <h2>SYNOPSIS</h2>
             <p>{bannerInfo.overview || bannerInfo.tagline}</p>
           </div>
         )}

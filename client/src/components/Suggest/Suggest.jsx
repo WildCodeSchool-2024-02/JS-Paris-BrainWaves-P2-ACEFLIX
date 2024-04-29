@@ -28,11 +28,13 @@ export default function Suggest({ id, type }) {
                 onClick={() => navigate(`/final/${type}/${content.id}`)}
                 role="presentation"
               >
-                <img
-                  className="img-suggest"
-                  src={`https://image.tmdb.org/t/p/original${content.backdrop_path}`}
-                  alt="bannière"
-                />
+                <a href="#top-page">
+                  <img
+                    className="img-suggest"
+                    src={`https://image.tmdb.org/t/p/original${content.backdrop_path}`}
+                    alt="bannière"
+                  />
+                </a>
                 <div className="bloc-text-container">
                   <div className="content-display">
                     <h2 className="title-context">
@@ -61,7 +63,7 @@ export default function Suggest({ id, type }) {
               </div>
             )
         )}
-      </div> 
+      </div>
     </div>
   );
 }

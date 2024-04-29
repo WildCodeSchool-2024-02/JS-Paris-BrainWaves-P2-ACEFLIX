@@ -19,6 +19,7 @@ export default function App() {
         setSerieActive={setSerieActive}
       />
       <Outlet />
+      { isOpen && <BlackScreen setIsOpen={setIsOpen} />}
       <Nav
         setIsOpen={setIsOpen}
         isOpen={isOpen}
@@ -29,7 +30,6 @@ export default function App() {
         setMovieActive={setMovieActive}
         movieActive={movieActive}
       />
-      {isOpen && <BlackScreen setIsOpen={setIsOpen} />}
     </>
   );
 }

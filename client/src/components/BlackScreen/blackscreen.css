@@ -1,5 +1,11 @@
-.blackscreen-nav {
+.nav-blackscreen {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgb(0, 0, 0, 0.5);
+  z-index: 109;
+  cursor: pointer;
+}
+
+.nav-blackscreen p {
+  color: transparent;
 }

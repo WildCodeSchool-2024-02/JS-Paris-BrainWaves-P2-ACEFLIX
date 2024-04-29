@@ -23,7 +23,7 @@
   align-items: center;
   height: 650px;
   width: 1000px;
-  background-color: black;
+  background-color: transparent;
 }
 
 .video-container-loading {

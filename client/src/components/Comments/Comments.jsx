@@ -40,7 +40,7 @@ export default function Comments({ comments }) {
 
   return (
     <div id="Comments">
-      <h2>comments</h2>
+      <h2>COMMENTS</h2>
       <div className="user-input-container">
         <input
           className={!nameValue ? "input-name-error" : "input-name"  }
@@ -59,7 +59,7 @@ export default function Comments({ comments }) {
           onKeyDown={keyPressed}
         />
         <button type="button" onClick={addNewComment}>
-          add
+          ADD
         </button>
       </div>
 

@@ -46,8 +46,8 @@ h3 {
   box-shadow: none;
 }
 .hidden-display button:hover {
-  font-size: 1.1rem;
-  color: rgb(155, 42, 216);
+  transform: scale(0.95);
+  color: #b53dff;
   filter: drop-shadow(0 0 40px rgb(18, 17, 18));
 }
 @keyframes popUp {

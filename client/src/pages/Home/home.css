@@ -2,8 +2,6 @@
   position: fixed;
   top: 100px;
   z-index: 50;
-  right: 50%;
-  transform: translateX(50%);
 }
 
 .active {
@@ -100,7 +98,7 @@
 }
 
 @media (max-width: 600px) {
-  #SecondHeader {
-    position: absolute;
+  .main-title {
+    font-size: 15px;
   }
 }

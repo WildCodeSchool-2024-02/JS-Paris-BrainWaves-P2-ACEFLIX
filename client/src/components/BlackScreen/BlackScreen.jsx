@@ -1,17 +1,15 @@
-import "./blackscreen.css";
 import PropTypes from "prop-types";
+import "./blackscreen.css";
 
 export default function BlackScreen({ setIsOpen }) {
-  const blackscreen = () => {
+  const handleClose = () => {
     setIsOpen(false);
+    document.body.classList.remove("active");
   };
-
   return (
-    <div
-      className="blackscreen-nav"
-      onClick={blackscreen}
-      role="presentation"
-    />
+    <div className="nav-blackscreen" onClick={handleClose} role="presentation">
+      <p>Blackscreen</p>
+    </div>
   );
 }
 

@@ -9,10 +9,11 @@ import SecondHeader from "../../components/SecondHeader/SecondHeader";
 import Horror from "../../components/Horror/Horror";
 import Drama from "../../components/Drama/Drama";
 import Family from "../../components/Family/Family";
-import Reality from "../../components/Reality/Reality";
 import Syfy from "../../components/Syfy/Syfy";
 import Upcoming from "../../components/Upcoming/Upcoming";
 import War from "../../components/War/War";
+import Trending from "../../components/Trending/Trending";
+import Action from "../../components/Action/Action";
 
 export default function Home() {
   // Initialisation des states
@@ -21,6 +22,7 @@ export default function Home() {
   const [uniqueTendances, setUniqueTendances] = useState([]); // State qui vient ajouter les données d'une seule catégorie
   const [uniqueSyfy, setUniqueSyfy] = useState([]); // State qui vient ajouter les données d'une seule catégorie
   const [uniqueWar, setUniqueWar] = useState([]); // State qui vient ajouter les données d'une seule catégorie
+  const [uniqueAction, setUniqueAction] = useState([]); // State qui vient ajouter les données d'une seule catégorie
   const [activeMovie, setActiveMovie] = useState(false); // State qui permet de mettre en surbrillance quand l'utilisateur est sur la catégorie movie
   const [activeSerie, setActiveSerie] = useState(false); // State qui permet de mettre en surbrillance quand l'utilisateur est sur la catégorie serie
   const [activeAll, setActiveAll] = useState(true); // State qui permet de mettre en surbrillance quand l'utilisateur est sur la catégorie all
@@ -28,15 +30,18 @@ export default function Home() {
   const [serieContent, setSerieContent] = useState(false); // State qui permet d'afficher les sections contenant uniquement des series
   const { blackScreen } = useContext(VideoContext);
   const theApiKey = import.meta.env.VITE_API_KEY;
+
   // URL à fetch
   const moviesFetch = `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=${theApiKey}`;
   const seriesFetch = `https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1&api_key=${theApiKey}`;
   const popularSeries = `https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&api_key=${theApiKey}`;
   const popularMovies = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=${theApiKey}`;
   const syfyMovies = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=878&api_key=${theApiKey}`;
-  const syfySeries = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10765&api_key=${theApiKey}`;
+  const syfySeries = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&watch_region=US&with_genres=10765&with_watch_providers=8&api_key=${theApiKey}`;
   const warMovies = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10752&api_key=${theApiKey}`;
-  const warSeries = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10768&api_key=${theApiKey}`;
+  const warSeries = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&watch_region=US&with_genres=10768&with_watch_providers=8&api_key=${theApiKey}`;
+  const actionMovies = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=28&with_watch_providers=8&api_key=${theApiKey}`;
+  const actionSeries = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&watch_region=US&with_genres=10759&with_watch_providers=8&api_key=${theApiKey}`;
 
   // Comportements
   const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
@@ -64,6 +69,10 @@ export default function Home() {
       .then((response) => response.json())
       .then((response) => setUniqueWar(response.results))
       .catch((err) => console.error(err));
+    fetch(actionMovies)
+      .then((response) => response.json())
+      .then((response) => setUniqueAction(response.results))
+      .catch((err) => console.error(err));
   };
 
   const handleSeries = () => {
@@ -89,6 +98,10 @@ export default function Home() {
       .then((response) => response.json())
       .then((response) => setUniqueWar(response.results))
       .catch((err) => console.error(err));
+    fetch(actionSeries)
+      .then((response) => response.json())
+      .then((response) => setUniqueAction(response.results))
+      .catch((err) => console.error(err));
   };
 
   const handleAll = () => {
@@ -107,15 +120,16 @@ export default function Home() {
       <Top10 status={status} uniqueTop={uniqueTop} />
       {movieContent && <Upcoming />}
       {movieContent && <Family shuffle={shuffle} />}
+      {serieContent && <Trending />}
+      <Syfy status={status} uniqueSyfy={uniqueSyfy} shuffle={shuffle} />
       <Popular
         status={status}
         uniqueTendances={uniqueTendances}
         shuffle={shuffle}
       />
       {movieContent && <Horror shuffle={shuffle} />}
-      <Syfy status={status} uniqueSyfy={uniqueSyfy} shuffle={shuffle} />
-      {serieContent && <Reality shuffle={shuffle} />}
       <War status={status} uniqueWar={uniqueWar} shuffle={shuffle} />
+      <Action status={status} uniqueAction={uniqueAction} shuffle={shuffle} />
       {serieContent && <Drama shuffle={shuffle} />}
       <a href="#haut-page" aria-label="anker">
         <SecondHeader
