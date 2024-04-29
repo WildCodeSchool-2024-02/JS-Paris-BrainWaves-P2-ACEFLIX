@@ -10,7 +10,7 @@ export default function FilterMovies({
   setDisplayGenre,
   displayGenre,
 }) {
-  const theApiKey = import.meta.env.API_KEY;
+  const theApiKey = import.meta.env.VITE_API_KEY;
   const url =
   `https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=${theApiKey}`;
 

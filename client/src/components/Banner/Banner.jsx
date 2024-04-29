@@ -7,8 +7,8 @@ import useFetch from "../../useFetch";
 import BannerCard from "./BannerCard/BannerCard";
 
 export default function Banner() {
-  const theApiKey = import.meta.env.API_KEY;
-  const cinemaURL = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=${theApiKey} `;
+  const theApiKey = import.meta.env.VITE_API_KEY;
+  const cinemaURL = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=${theApiKey}`;
 
   const {
     data: cinemaContent,

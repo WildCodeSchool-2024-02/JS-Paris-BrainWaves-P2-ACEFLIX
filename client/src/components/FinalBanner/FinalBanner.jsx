@@ -7,7 +7,7 @@ import VideoContext from "../ContextVideo";
 export default function FinalBanner({ bannerInfo, type }) {
   const { setUrlVideo, setBlackScreen } = useContext(VideoContext);
   const backImg = `https://image.tmdb.org/t/p/original${bannerInfo.backdrop_path}`;
-  const theApiKey = import.meta.env.API_KEY;
+  const theApiKey = import.meta.env.VITE_API_KEY;
 
   const handleclick = () => {
     setBlackScreen(true);

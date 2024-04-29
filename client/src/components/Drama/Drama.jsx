@@ -11,9 +11,9 @@ import useFetch from "../../useFetch";
 import "swiper/css/free-mode";
 
 export default function Drama({ shuffle }) {
-  const theApiKey = import.meta.env.API_KEY;
-  const dramaFetchUrl = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=18&api_key=${theApiKey} `;
-  const dramaFetchUrl2 = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=2&sort_by=popularity.desc&with_genres=18&api_key=${theApiKey} `;
+  const theApiKey = import.meta.env.VITE_API_KEY ;
+  const dramaFetchUrl =`https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=18&api_key=${theApiKey}`;
+  const dramaFetchUrl2 =`https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=2&sort_by=popularity.desc&with_genres=18&api_key=${theApiKey}`;
 
   // Fetch de ces contenus via le Hook useFetch (20 de chaque)
   const {

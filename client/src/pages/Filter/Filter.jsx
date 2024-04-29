@@ -44,7 +44,7 @@ export default function Filter() {
       clearTimeout(timer);
     };
   }, [type]);
-  const theApiKey = import.meta.env.API_KEY;
+  const theApiKey = import.meta.env.VITE_API_KEY;
   const url = `https://api.themoviedb.org/3/${type}/${filter}?language=en-US&page=${page}&api_key=${theApiKey}`;
   const {
     data: dataFilter,

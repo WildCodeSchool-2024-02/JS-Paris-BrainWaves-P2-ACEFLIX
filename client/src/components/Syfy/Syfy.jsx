@@ -11,11 +11,11 @@ import "./syfy.css";
 
 export default function Syfy({ status, uniqueSyfy, shuffle }) {
   // URL des Movies et Series Syfy
-  const theApiKey = import.meta.env.API_KEY;
+  const theApiKey = import.meta.env.VITE_API_KEY;
   const syfyMoviesFetchURL =
-  `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=878&api_key=${theApiKey} `;
+  `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=878&api_key=${theApiKey}`;
   const syfySeriesFetchURL =
-  `Fhttps://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10765&api_key=${theApiKey} `;
+  `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10765&api_key=${theApiKey}`;
 
   // Fetch de ces contenus via le Hook useFetch (20 de chaque)
   const {

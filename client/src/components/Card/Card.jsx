@@ -13,7 +13,7 @@ export default function Card({ card }) {
       ? navigate(`/final/movie/${card.id}`)
       : navigate(`/final/tv/${card.id}`);
 
-  const theApiKey = import.meta.env.API_KEY;
+  const theApiKey = import.meta.env.VITE_API_KEY;
 
   const { setUrlVideo, setBlackScreen } = useContext(VideoContext);
 

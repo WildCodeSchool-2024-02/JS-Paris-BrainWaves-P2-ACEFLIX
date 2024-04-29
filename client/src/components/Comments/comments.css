@@ -69,6 +69,9 @@
 .user-input-container .input-name {
   width: 20%;
 }
+.user-input-container .input-name-error {
+  color: red;
+}
 .user-input-container .input-comments {
   margin-left: 50px;
   width: 70%;
@@ -164,6 +167,9 @@
   .input-name {
     width: 40%;
   }
+  .input-name-error {
+    width: 40%;
+  }
 }
 
 @media screen and (max-width: 450px) {
@@ -178,6 +184,9 @@
   .user-input-container .input-name {
     width: 80%;
     text-align: center;
+  }
+  .input-name-error {
+    width: 80%;
   }
   .user-input-container .input-comments {
     width: 80%;

@@ -12,7 +12,7 @@ import "swiper/css/free-mode";
 
 export default function Top10({ status, uniqueTop }) {
   // URL des Movies et Series les mieux notés
-  const theApiKey = import.meta.env.API_KEY;
+  const theApiKey = import.meta.env.VITE_API_KEY;
   const moviesFetchURL =
   `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=${theApiKey}`;
   const seriesFetchURL =

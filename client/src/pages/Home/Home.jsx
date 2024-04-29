@@ -27,7 +27,7 @@ export default function Home() {
   const [movieContent, setMovieContent] = useState(false); // State qui permet d'afficher les sections contenant uniquement des films
   const [serieContent, setSerieContent] = useState(false); // State qui permet d'afficher les sections contenant uniquement des series
   const { blackScreen } = useContext(VideoContext);
-  const theApiKey = import.meta.env.API_KEY;
+  const theApiKey = import.meta.env.VITE_API_KEY;
   // URL à fetch
   const moviesFetch = `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=${theApiKey}`;
   const seriesFetch = `https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1&api_key=${theApiKey}`;

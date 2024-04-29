@@ -11,7 +11,7 @@ import useFetch from "../../useFetch";
 import "swiper/css/free-mode";
 
 export default function Reality({ shuffle }) {
-  const theApiKey = import.meta.env.API_KEY;
+  const theApiKey = import.meta.env.VITE_API_KEY;
   const realityFetchUrl = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10764&api_key=${theApiKey}`;
   const realityFetchUrl2 = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=2&sort_by=popularity.desc&with_genres=10764&api_key=${theApiKey}`;
 

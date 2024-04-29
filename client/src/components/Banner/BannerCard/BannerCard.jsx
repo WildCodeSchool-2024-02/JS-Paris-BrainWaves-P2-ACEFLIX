@@ -26,7 +26,7 @@ export default function BannerCard({ image, overview, title, id }) {
   }
 
   const handleclick = () => {
-    const theApiKey = import.meta.env.API_KEY;
+    const theApiKey = import.meta.env.VITE_API_KEY;
     setBlackScreen(true);
     setUrlVideo(
       `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US&api_key=${theApiKey}`
