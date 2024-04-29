@@ -8,7 +8,36 @@ body {
   overflow-x: hidden;
   position: relative;
 }
+#Footer {
+  position: sticky;
+  top: 10%;
+  display: flex;
+  flex-direction: column;
+  max-height: 100px;
+  width: 100%;
+  background-color: #000000;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
 
+#Footer-list {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  align-items: center;
+  margin: 0px auto;
+}
+
+#Footer-list a {
+  text-align: center;
+  line-height: 10px;
+  color: white;
+}
+
+#Footer-list a :hover {
+  color: blueviolet;
+}
 h1 {
   font-size: 45px;
   font-family: "Tilt Neon", sans-serif;
@@ -61,11 +90,31 @@ header {
   .blackscreen-nav {
     display: none;
   }
+
+  #Footer p {
+    font-size: 15px;
+  }
+  #Footer {
+    max-height: 100px;
+  }
+  #Footer-list {
+    font-size: 15px;
+  }
 }
 
 /* Media pour mobile */
 @media (max-width: 600px) {
   h1 {
     font-size: 25px;
+  }
+
+  #Footer p {
+    font-size: 10px;
+  }
+  #Footer {
+    max-height: 100px;
+  }
+  #Footer-list {
+    font-size: 10px;
   }
 }
