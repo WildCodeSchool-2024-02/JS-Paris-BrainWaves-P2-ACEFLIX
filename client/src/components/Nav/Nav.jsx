@@ -100,7 +100,7 @@ export default function Nav({
         </li>
       </ul>
       <div className="logo" onClick={navigateHome} role="presentation">
-        <img id="logo" src="./src/assets/images/Logo.png" alt="Logo" />
+        <img id="logo" src="../../assets/images/aceflixLogo.png" alt="Logo" />
       </div>
     </nav>
   );
