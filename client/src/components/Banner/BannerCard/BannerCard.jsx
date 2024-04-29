@@ -10,23 +10,24 @@ export default function BannerCard({ overview, title, id }) {
   const [backdrop, setBackdrop] = useState(null);
   const { setUrlVideo, setBlackScreen } = useContext(VideoContext);
   const navigate = useNavigate();
+  const theApiKey = import.meta.env.VITE_API_KEY;
 
   const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=aea07ae608264c18c1ea1431604753c3`
+      `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=${theApiKey}`
     )
       .then((response) => response.json())
       .then((response) => setContent(response));
     fetch(
-      `https://api.themoviedb.org/3/movie/${id}/images?include_image_language=null&api_key=aea07ae608264c18c1ea1431604753c3`
+      `https://api.themoviedb.org/3/movie/${id}/images?include_image_language=null&api_key=${theApiKey}`
     )
       .then((response) => response.json())
       .then((response) =>
         setBackdrop(shuffle(response.backdrops.slice(0, 10)))
       );
-  }, [id]);
+  }, [id, theApiKey]);
 
   let genresContent = [];
   let voteaverage = "";
@@ -38,7 +39,7 @@ export default function BannerCard({ overview, title, id }) {
   const handleclick = () => {
     setBlackScreen(true);
     setUrlVideo(
-      `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US&api_key=aea07ae608264c18c1ea1431604753c3`
+      `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US&api_key=${theApiKey}`
     );
     document.body.classList.add("active");
   };

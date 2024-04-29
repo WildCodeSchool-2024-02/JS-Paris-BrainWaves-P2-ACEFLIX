@@ -11,10 +11,10 @@ import useFetch from "../../useFetch";
 import "swiper/css/free-mode";
 
 export default function Drama({ shuffle }) {
-  const dramaFetchUrl =
-    "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&watch_region=US&with_genres=10764&with_watch_providers=8&api_key=aea07ae608264c18c1ea1431604753c3";
-  const dramaFetchUrl2 =
-    "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=2&sort_by=popularity.desc&watch_region=US&with_genres=10764&with_watch_providers=8&api_key=aea07ae608264c18c1ea1431604753c3";
+  const theApiKey = import.meta.env.VITE_API_KEY;
+  const dramaFetchUrl = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&watch_region=US&with_genres=10764&with_watch_providers=8&api_key=${theApiKey}`;
+  const dramaFetchUrl2 = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=2&sort_by=popularity.desc&watch_region=US&with_genres=10764&with_watch_providers=8&api_key=${theApiKey}`;
+
   // Fetch de ces contenus via le Hook useFetch (20 de chaque)
   const {
     data: dramaMovies,
@@ -54,8 +54,7 @@ export default function Drama({ shuffle }) {
           modules={[Navigation, FreeMode]}
           spaceBetween={10}
           slidesPerView={6}
-          // eslint-disable-next-line react/jsx-boolean-value
-          freeMode={true}
+          freeMode
           centeredSlides={false}
           breakpoints={{
             1200: {

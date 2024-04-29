@@ -5,32 +5,32 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/scrollbar";
-import "./family.css";
+import "./reality.css";
 import Card from "../Card/Card";
 import useFetch from "../../useFetch";
 import "swiper/css/free-mode";
 
-export default function Family({ shuffle }) {
+export default function Reality({ shuffle }) {
   const theApiKey = import.meta.env.VITE_API_KEY;
-  const familyFetchUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10751&api_key=${theApiKey}`;
-  const familyFetchUrl2 = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=2&sort_by=popularity.desc&with_genres=10751&api_key=${theApiKey}`;
+  const realityFetchUrl = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10764&api_key=${theApiKey}`;
+  const realityFetchUrl2 = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=2&sort_by=popularity.desc&with_genres=10764&api_key=${theApiKey}`;
 
   // Fetch de ces contenus via le Hook useFetch (20 de chaque)
   const {
-    data: familyMovies,
-    loading: loadingFamily,
-    error: errorFamily,
-  } = useFetch(familyFetchUrl);
+    data: realitySeries,
+    loading: loadingReality,
+    error: errorReality,
+  } = useFetch(realityFetchUrl);
   const {
-    data: familyMovies2,
-    loading: loadingFamily2,
-    error: errorFamily2,
-  } = useFetch(familyFetchUrl2);
+    data: realitySeries2,
+    loading: loadingReality2,
+    error: errorReality2,
+  } = useFetch(realityFetchUrl2);
 
-  if (loadingFamily || loadingFamily2) {
+  if (loadingReality || loadingReality2) {
     return <h1>LOADING ...</h1>;
   }
-  if (errorFamily || errorFamily2) {
+  if (errorReality || errorReality2) {
     console.info("Error");
   }
 
@@ -41,21 +41,20 @@ export default function Family({ shuffle }) {
   };
 
   // Fusion + mélange des tendances movies + series et limité à 15
-  let allDrama = [];
-  if (familyMovies && familyMovies2) {
-    allDrama = ShuffleConcat(familyMovies, familyMovies2).slice(0, 20);
+  let allReality = [];
+  if (realitySeries && realitySeries2) {
+    allReality = ShuffleConcat(realitySeries, realitySeries2).slice(0, 20);
   }
 
   return (
-    <div className="family-slider">
-      <h1 className="main-title">WATCH WITH FAMILY</h1>
+    <div className="reality-slider">
+      <h1 className="main-title">REALITY SHOW</h1>
       <div className="slider-container">
         <Swiper
           modules={[Navigation, FreeMode]}
           spaceBetween={10}
           slidesPerView={6}
-          // eslint-disable-next-line react/jsx-boolean-value
-          freeMode={true}
+          freeMode
           centeredSlides={false}
           breakpoints={{
             1200: {
@@ -82,17 +81,20 @@ export default function Family({ shuffle }) {
           navigation
           className="mySwiper"
         >
-          {allDrama?.map((content) => (
-            <SwiperSlide key={content.id}>
-              <Card card={content} />
-            </SwiperSlide>
-          ))}
+          {allReality?.map(
+            (content) =>
+              content.poster_path && (
+                <SwiperSlide key={content.id}>
+                  <Card card={content} />
+                </SwiperSlide>
+              )
+          )}
         </Swiper>
       </div>
     </div>
   );
 }
 
-Family.propTypes = {
+Reality.propTypes = {
   shuffle: PropTypes.func.isRequired,
 };

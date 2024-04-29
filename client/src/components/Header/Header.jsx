@@ -23,7 +23,7 @@ export default function Header({
   const { scrollY } = useScroll();
   const navigate = useNavigate();
 
-  const apiKey = "aea07ae608264c18c1ea1431604753c3";
+  const apiKey = import.meta.env.VITE_API_KEY;
   const fetchResults = `https://api.themoviedb.org/3/search/multi?query=${inputValue}&include_adult=false&language=en-US&page=1&api_key=${apiKey}`;
 
   useMotionValueEvent(scrollY, "change", (latest) => {

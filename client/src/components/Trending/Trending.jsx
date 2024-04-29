@@ -10,8 +10,8 @@ import useFetch from "../../useFetch";
 import "swiper/css/free-mode";
 
 export default function Trending() {
-  const trendingFetchUrl =
-    "https://api.themoviedb.org/3/trending/tv/week?language=en-US8&api_key=aea07ae608264c18c1ea1431604753c3";
+  const theApiKey = import.meta.env.VITE_API_KEY;
+  const trendingFetchUrl = `https://api.themoviedb.org/3/trending/tv/week?language=en-US8&api_key=${theApiKey}`;
 
   // Fetch de ces contenus via le Hook useFetch (20 de chaque)
   const {
