@@ -18,7 +18,7 @@ export default function Comments({ comments }) {
 
   const addNewComment = () => {
     if (!nameValue || !commentValue) {
-      return;
+      return ;
     }
     SetAddComment([
       ...addComment,
@@ -43,11 +43,11 @@ export default function Comments({ comments }) {
       <h2>comments</h2>
       <div className="user-input-container">
         <input
-          className="input-name"
+          className={!nameValue ? "input-name-error" : "input-name"  }
           type="text"
           value={nameValue}
           onInput={handleNameValue}
-          placeholder="your Name..."
+          placeholder={nameValue ?  "your name" : "name is required"  }
           onKeyDown={keyPressed}
         />
         <input

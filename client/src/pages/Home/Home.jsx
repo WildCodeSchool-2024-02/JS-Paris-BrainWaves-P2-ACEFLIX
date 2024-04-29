@@ -27,24 +27,16 @@ export default function Home() {
   const [movieContent, setMovieContent] = useState(false); // State qui permet d'afficher les sections contenant uniquement des films
   const [serieContent, setSerieContent] = useState(false); // State qui permet d'afficher les sections contenant uniquement des series
   const { blackScreen } = useContext(VideoContext);
-
+  const theApiKey = import.meta.env.VITE_API_KEY;
   // URL à fetch
-  const moviesFetch =
-    "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3";
-  const seriesFetch =
-    "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3";
-  const popularSeries =
-    "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3";
-  const popularMovies =
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3";
-  const syfyMovies =
-    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=878&api_key=aea07ae608264c18c1ea1431604753c3";
-  const syfySeries =
-    "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10765&api_key=aea07ae608264c18c1ea1431604753c3";
-  const warMovies =
-    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10752&api_key=aea07ae608264c18c1ea1431604753c3";
-  const warSeries =
-    "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10768&api_key=aea07ae608264c18c1ea1431604753c3";
+  const moviesFetch = `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=${theApiKey}`;
+  const seriesFetch = `https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1&api_key=${theApiKey}`;
+  const popularSeries = `https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&api_key=${theApiKey}`;
+  const popularMovies = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=${theApiKey}`;
+  const syfyMovies = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=878&api_key=${theApiKey}`;
+  const syfySeries = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10765&api_key=${theApiKey}`;
+  const warMovies = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10752&api_key=${theApiKey}`;
+  const warSeries = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10768&api_key=${theApiKey}`;
 
   // Comportements
   const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);

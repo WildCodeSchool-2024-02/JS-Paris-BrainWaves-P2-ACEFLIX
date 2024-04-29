@@ -6,8 +6,8 @@ import "./suggest.css";
 export default function Suggest({ id, type }) {
   const [suggest, setSuggest] = useState(null);
   const navigate = useNavigate();
-
-  const urlSuggest = `https://api.themoviedb.org/3/${type}/${id}/recommendations?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3`;
+  const theApiKey = import.meta.env.VITE_API_KEY;
+  const urlSuggest = `https://api.themoviedb.org/3/${type}/${id}/recommendations?language=en-US&page=1&api_key=${theApiKey}`;
 
   useEffect(() => {
     fetch(urlSuggest)

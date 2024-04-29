@@ -1,1 +1,0 @@
-// Ce composant là accueillera tous les détails du film/série 

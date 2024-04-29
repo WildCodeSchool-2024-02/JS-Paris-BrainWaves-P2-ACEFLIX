@@ -11,10 +11,9 @@ import useFetch from "../../useFetch";
 import "swiper/css/free-mode";
 
 export default function Reality({ shuffle }) {
-  const realityFetchUrl =
-    "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10764&api_key=aea07ae608264c18c1ea1431604753c3";
-  const realityFetchUrl2 =
-    "https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=2&sort_by=popularity.desc&with_genres=10764&api_key=aea07ae608264c18c1ea1431604753c3";
+  const theApiKey = import.meta.env.VITE_API_KEY;
+  const realityFetchUrl = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10764&api_key=${theApiKey}`;
+  const realityFetchUrl2 = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=2&sort_by=popularity.desc&with_genres=10764&api_key=${theApiKey}`;
 
   // Fetch de ces contenus via le Hook useFetch (20 de chaque)
   const {

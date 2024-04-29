@@ -11,8 +11,9 @@ import "swiper/css/free-mode";
 
 export default function Upcoming() {
   // URL des Movies et Series les mieux notés
+  const theApiKey = import.meta.env.VITE_API_KEY;
   const upcomingFetchURL =
-    "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1&api_key=aea07ae608264c18c1ea1431604753c3";
+     `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1&api_key=${theApiKey}`;
   // Fetch de ces contenus via le Hook useFetch (20 de chaque)
   const [upcoming, setUpcoming] = useState([]);
 

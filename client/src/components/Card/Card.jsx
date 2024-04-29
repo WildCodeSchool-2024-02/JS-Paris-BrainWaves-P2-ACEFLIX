@@ -13,6 +13,8 @@ export default function Card({ card }) {
       ? navigate(`/final/movie/${card.id}`)
       : navigate(`/final/tv/${card.id}`);
 
+  const theApiKey = import.meta.env.VITE_API_KEY;
+
   const { setUrlVideo, setBlackScreen } = useContext(VideoContext);
 
   const handleUrlVideo = () => {
@@ -20,11 +22,11 @@ export default function Card({ card }) {
     document.body.classList.add("active");
     if (card.release_date) {
       setUrlVideo(
-        `https://api.themoviedb.org/3/movie/${card.id}/videos?language=en-US&api_key=aea07ae608264c18c1ea1431604753c3`
+        `https://api.themoviedb.org/3/movie/${card.id}/videos?language=en-US&api_key=${theApiKey}`
       );
     } else {
       setUrlVideo(
-        `https://api.themoviedb.org/3/tv/${card.id}/videos?language=en-US&api_key=aea07ae608264c18c1ea1431604753c3`
+        `https://api.themoviedb.org/3/tv/${card.id}/videos?language=en-US&api_key=${theApiKey}`
       );
     }
   };
