@@ -6,6 +6,7 @@ import { IoHomeOutline } from "react-icons/io5";
 import { BiCameraMovie } from "react-icons/bi";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { BiMoviePlay } from "react-icons/bi";
+import aceflixLogo from "../../assets/images/aceflixLogo.png";
 import "./nav.css";
 
 export default function Nav({
@@ -100,7 +101,7 @@ export default function Nav({
         </li>
       </ul>
       <div className="logo" onClick={navigateHome} role="presentation">
-        <img id="logo" src="../../assets/images/aceflixLogo.png" alt="Logo" />
+        <img id="logo" src={aceflixLogo} alt="Logo" />
       </div>
     </nav>
   );
