@@ -50,6 +50,7 @@ ul li :hover {
 .logo {
   margin-bottom: 60px;
   cursor: pointer;
+  width: 110px;
 }
 
 .icon {
