@@ -51,6 +51,7 @@ ul li :hover {
   margin-bottom: 60px;
   cursor: pointer;
   width: 110px;
+  display: none;
 }
 
 .icon {
