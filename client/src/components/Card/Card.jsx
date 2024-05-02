@@ -72,26 +72,23 @@ export default function Card({ card }) {
         alt="posterImage"
       />
       <div className="hidden-display">
-        <div className="info-moviec-card">
-          <div className="text-area">
-            <h3>{nameDisplay}</h3>
-          </div>
-          <p>{card.release_date ? card.release_date : card.first_air_date} </p>
-          <p className="vote">
-            {" "}
-            {Math.floor(parseFloat(card.vote_average) * 10) / 10}/10
+        <div className="content-container-card">
+          <h3 className="title-card">{nameDisplay}</h3>
+          <p className="release-card">
+            {card.release_date ? card.release_date : card.first_air_date}{" "}
           </p>
-
-          <div
-            className="btn-container"
-            onClick={handleUrlVideo}
-            role="presentation"
-          >
-            <button type="button" aria-label="logo">
-              <FaPlay />
-            </button>
-          </div>
+          {card.vote_average !== 0 ? (
+            <p className="recommandation-card">
+              Average rating {Math.floor(card.vote_average * 10)} %
+            </p>
+          ) : (
+            <p className="recommandation-card">No rating for the moment</p>
+          )}
         </div>
+        <button type="button" className="play-card" onClick={handleUrlVideo}>
+          <p>PLAY</p>
+          <FaPlay className="play-icon-card" />
+        </button>
       </div>
     </div>
   );

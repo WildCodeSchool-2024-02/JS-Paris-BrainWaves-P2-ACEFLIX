@@ -3,11 +3,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./header.css";
 import { IoSearch } from "react-icons/io5";
-import { IoMdClose } from "react-icons/io";
 import { SlMenu } from "react-icons/sl";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import aceflixLogo from "../../assets/images/aceflixLogo.png";
-import DisplaySearchResults from "../DisplaySearchResults/DisplaySearchResults";
+import BoxSearch from "../BoxSearch/BoxSearch";
 
 export default function Header({
   setIsOpen,
@@ -15,16 +14,10 @@ export default function Header({
   setMovieActive,
   setSerieActive,
 }) {
-  const [search, setSearch] = useState([]);
-  const [inputValue, setInputValue] = useState("");
   const [display, setDisplay] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [closeMark, setCloseMark] = useState(false);
   const { scrollY } = useScroll();
   const navigate = useNavigate();
-
-  const apiKey = import.meta.env.VITE_API_KEY;
-  const fetchResults = `https://api.themoviedb.org/3/search/multi?query=${inputValue}&include_adult=false&language=en-US&page=1&api_key=${apiKey}`;
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
@@ -35,36 +28,9 @@ export default function Header({
     }
   });
 
-  const handleInput = (e) => {
-    setInputValue(e.target.value);
-    setCloseMark(true);
-  };
-
-  const handleDelete = () => {
-    setInputValue("");
-    setCloseMark(false);
-  };
-
   const searchResult = () => {
-    if (inputValue === "") return console.error(" Sorry no results ");
-
-    fetch(fetchResults)
-      .then((response) => response.json())
-      .then((data) => setSearch(data.results))
-      .catch((err) => console.error(err));
-
-    setInputValue("");
     setDisplay(true);
-    setCloseMark(false);
-    return true;
-  };
-
-  const handleSearchKey = (e) => {
-    if (e.key === "Enter") {
-      searchResult();
-    } else if (inputValue === "") {
-      setCloseMark(false);
-    }
+    document.body.classList.add("active");
   };
 
   const openNav = () => {
@@ -77,6 +43,11 @@ export default function Header({
     setHomeActive(true);
     setMovieActive(false);
     setSerieActive(false);
+  };
+
+  const handleClose = () => {
+    setDisplay(false);
+    document.body.classList.remove("active");
   };
 
   return (
@@ -107,18 +78,7 @@ export default function Header({
         >
           <img src={aceflixLogo} alt="Aceflix-Logo" />
         </div>
-
         <div className="main-search-input">
-          <input
-            className="header-input"
-            type="text"
-            aria-label="search"
-            value={inputValue}
-            onInput={handleInput}
-            onKeyDown={handleSearchKey}
-            placeholder="Search for movies, series & actors ..."
-          />
-
           <button
             className="header-search-btn"
             type="button"
@@ -127,22 +87,17 @@ export default function Header({
             {" "}
             <IoSearch />{" "}
           </button>
-          {closeMark && (
-            <IoMdClose
-              className="delete-input"
-              onClick={handleDelete}
-              role="presentation"
-            />
-          )}
         </div>
       </div>
-
+      {display && <BoxSearch setDisplay={setDisplay} />}
       {display && (
-        <DisplaySearchResults
-          results={search}
-          inputValue={inputValue}
-          setDisplay={setDisplay}
-        />
+        <div
+          className="screen-cover-black"
+          role="presentation"
+          onClick={handleClose}
+        >
+          NUL
+        </div>
       )}
     </motion.header>
   );

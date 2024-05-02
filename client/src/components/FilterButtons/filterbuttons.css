@@ -4,6 +4,8 @@
   justify-content: flex-start;
   gap: 10px;
   overflow-x: scroll;
+  scrollbar-color: #b53dff transparent;
+  scrollbar-width: thin;
   margin: 10px 10px 30px 10px;
 }
 
@@ -22,10 +24,6 @@
   background-color: #b53dff;
   box-shadow: 0 0 15px #b53dff;
   opacity: 1;
-}
-
-.buttons-movies-container::-webkit-scrollbar {
-  display: none;
 }
 
 .buttons-movies:focus,

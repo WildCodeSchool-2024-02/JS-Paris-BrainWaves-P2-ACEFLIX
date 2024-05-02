@@ -1,0 +1,175 @@
+.box-container {
+  width: 50%;
+  height: 100vh;
+  background-color: black;
+  z-index: 111;
+  margin: 0 20px;
+  border-radius: 20px;
+  padding: 0 20px 20px 20px;
+  overflow-y: scroll;
+  scrollbar-color: #b53dff transparent;
+  scrollbar-width: thin;
+}
+
+.box-pop {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: black;
+  padding: 10px;
+  z-index: 10;
+}
+
+.close-mark-input {
+  position: absolute;
+  font-size: 20px;
+  right: 20px;
+  color: rgb(186, 186, 186);
+  cursor: pointer;
+}
+
+.close-mark-input:hover {
+  color: whitesmoke;
+}
+
+.arrow-close-search {
+  color: whitesmoke;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.input-search {
+  background-color: rgb(89, 89, 89);
+  color: whitesmoke;
+  border: none;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.input-search::placeholder {
+  color: rgb(166, 166, 166);
+}
+
+.input-search:focus {
+  outline: solid #b53dff thin;
+}
+
+.search-title {
+  color: whitesmoke;
+  font-size: 18px;
+}
+
+.contents-card-search {
+  margin-bottom: 30px;
+}
+
+.content-card-search {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  margin: 10px 0;
+}
+
+.img-search {
+  width: 35%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.content-title-search {
+  color: whitesmoke;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0;
+}
+
+.content-title-search:hover {
+  text-decoration: underline;
+}
+
+.play-video-search {
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #b53dff;
+  color: whitesmoke;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.play-video-search:hover {
+  transform: scale(1.03);
+  background-color: rgba(0, 0, 0, 0.692);
+}
+
+.search-card-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card-search-container {
+  width: 160px;
+}
+
+.recommandation-suggest {
+  color: #45cb65;
+  margin: 0;
+  font-size: 15px;
+}
+
+.release-suggest {
+  font-size: 15px;
+  color: whitesmoke;
+  margin: 0;
+}
+
+@media (max-width: 1025px) {
+  .box-container {
+    width: 95%;
+    margin: 0;
+  }
+  .card-search-container {
+    width: 140px;
+  }
+}
+
+@media (max-width: 600px) {
+  .recommandation-suggest {
+    font-size: 10px;
+  }
+
+  .release-suggest {
+    font-size: 10px;
+  }
+  .content-title-search {
+    font-size: 12px;
+  }
+  .search-title {
+    font-size: 15px;
+  }
+  .content-card-search {
+    gap: 10px;
+  }
+  .play-video-search {
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+  }
+  .card-search-container {
+    width: 100px;
+  }
+}

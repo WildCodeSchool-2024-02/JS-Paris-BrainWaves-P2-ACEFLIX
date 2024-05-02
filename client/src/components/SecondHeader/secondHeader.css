@@ -24,7 +24,6 @@
   color: white;
   background-color: black;
   opacity: 0.6;
-  box-shadow: 0 0 15px #b53dff;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }

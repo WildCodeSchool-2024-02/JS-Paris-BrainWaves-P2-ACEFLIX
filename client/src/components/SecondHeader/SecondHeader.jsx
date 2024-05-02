@@ -16,7 +16,7 @@ export default function SecondHeader({
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
-    if (latest > previous && latest > 300) {
+    if (latest > previous && latest > 100) {
       setHidden(true);
     } else {
       setHidden(false);
